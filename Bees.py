@@ -54,10 +54,7 @@ def runNeuralNet(values):
     test_results = sv.use_mlp_model('test')
     sv.output_results(test_results, 'test_results.csv')
     test_errors = sv.calc_error('rmse','r2','mean_abs_error','med_abs_error',dset = 'test')
-    print(test_errors)
     sv.publish_project()
-
-    print("VALUES:", values)
     return test_errors['rmse'][0]
 
 def generateRandomValues():
