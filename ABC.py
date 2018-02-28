@@ -1,9 +1,10 @@
-from Bee import *
+from Bees import *
 
 class ABC:
 
     def __init__(self, endValue):
 
+        print("INITIALIZING")
         self.scouts = []
         self.employers = []
         self.bestValues = []
@@ -18,14 +19,14 @@ class ABC:
             
         for i in range(50):
             self.employers.append(Bee('employer',generateRandomValues()))
-            self.employers[i].getFitnessScore(self.employer[i].values)
+            self.employers[i].getFitnessScore(self.employers[i].values)
 
     def assignNewPositions(self, firstBee):
         secondBee = randint(0, len(self.employers))
         firstCheck = True
         secondCheck = True
 
-        while (secondBee = firstBee):
+        while (secondBee == firstBee):
             secondBee = randint(0, len(beeList))
 
         self.employer[firstBee].getFitnessScore(onlooker.getPosition(self.employers, firstBee, secondBee))
@@ -54,13 +55,17 @@ class ABC:
         running = True
 
         while True:
+            print("Assigning new position")
             for i in range(self.employers):
                 self.assignNewPositions(i)
+            print("Checking if done")
             running = self.checkIfDone()
             if running == False:
                 break
             
+            print("Getting fitness average")
             self.getFitnessAverage()
+            print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
                 self.checkNewPositions(employer)
             
