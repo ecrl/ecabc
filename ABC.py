@@ -25,14 +25,11 @@ class ABC:
         while (secondBee = firstBee):
             secondBee = randint(0, len(beeList))
 
-        
         while self.cycle < 5:
-
             self.employer[firstBee].getFitnessScore(onlooker.getPosition(self.employers, firstBee, secondBee))
 
 
 def checkNewScore(beeList, bee):
-
     averageScore = 0
 
     for bee in beeList:
