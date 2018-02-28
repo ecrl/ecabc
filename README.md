@@ -5,5 +5,8 @@ Ability to model an artificial bee colony by creating scout, onlooker, and emplo
 contain its own set of functions that apply to an real bee colony. ABC.py will utilize the bees and create a colony, which will contain
 various different lists of the three bee types and simulate a real bee colony. 
 
+Positions = values for the 6 hyper-parameters of ECNET
+
 Employer bees - Generate fitness scores of 'nectar' at its current position.
 Scout bees - Find new locations for 'nectar' source at random.
+Onlooker bees - Generate new position for employer bees by getting a position between bee A and a random bee b for all employers in the colony
