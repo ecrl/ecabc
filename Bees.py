@@ -5,6 +5,7 @@ import numpy as np
 class Bee:
 
     def __init__(self, beeType, values = []):
+        
         self.beeType = beeType
         self.values = values
         self.currFitnessScore = -1
@@ -27,15 +28,17 @@ class Bee:
     '''Employer Bee Functions'''
     def getFitnessScore(self, values):
         fitnessScore = runNeuralNet(values)
+        
         if fitnessScore < self.currFitnessScore:
             self.value = values
             self.currFitnessScore = fitnessScore
-
+            
     def communicateData(self):
         return self.values, self.currFitnessScore
 
 
 def runNeuralNet(values):
+    '''Run the ECNET server'''
     sv = Server()
     sv.vars['learning_rate'] = values[0]
     sv.vars['valid_mdrmse_stop'] = values[1]
