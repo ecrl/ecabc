@@ -57,7 +57,7 @@ class ABC:
             for i in range(self.employers):
                 self.assignNewPositions(i)
             running = self.checkIfDone()
-            if !running:
+            if running == False:
                 break
             
             self.getFitnessAverage()
