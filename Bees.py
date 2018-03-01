@@ -1,7 +1,7 @@
 from ecnet.server import Server
 from random import *
 import numpy as np
-from BeeFunctions import *
+from Functions import *
 
 
 class Bee:
