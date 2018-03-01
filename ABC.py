@@ -37,7 +37,7 @@ class ABC:
         self.fitnessAverage = 0
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
-        self.fitnessAverage / len(self.employers)
+        self.fitnessAverage /= len(self.employers)
 
     def checkNewPositions(self, bee):
         if bee.currFitnessScore / (len(self.employers) -1) > self.fitnessAverage:
