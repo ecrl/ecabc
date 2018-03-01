@@ -1,7 +1,7 @@
 from Bees import *
 
-class ABC:
 
+class ABC:
     def __init__(self, endValue):
 
         print("INITIALIZING")
@@ -16,66 +16,68 @@ class ABC:
 
         for i in range(10):
             self.scouts.append(Bee('scout'))
-            
-        for i in range(50):
-            self.employers.append(Bee('employer',generateRandomValues()))
+
+        for i in range(5):
+            print("Creating bee number:", i + 1)
+            self.employers.append(Bee('employer', generateRandomValues()))
             self.employers[i].getFitnessScore(self.employers[i].values)
 
     def assignNewPositions(self, firstBee):
-        secondBee = randint(0, len(self.employers))
+        secondBee = randint(0, len(self.employers) -1)
         firstCheck = True
         secondCheck = True
 
         while (secondBee == firstBee):
-            secondBee = randint(0, len(beeList))
+            secondBee = randint(0, len(self.employers) -1)
 
-        self.employer[firstBee].getFitnessScore(onlooker.getPosition(self.employers, firstBee, secondBee))
+        self.onlooker.getPosition(self.employers, firstBee, secondBee)
+
 
     def getFitnessAverage(self):
         self.fitnessAverage = 0
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
         self.fitnessAverage / len(self.employers)
-        
+
     def checkNewPositions(self, bee):
         if bee.currFitnessScore / self.fitnessAverage < 1:
-            bee.values = self.onlooker.generateRandomValues()
-            bee.currFitnessScore = runNueralNetwork(bee.values)
+            print("Assigning new value for a bee")
+            bee.values = self.onlooker.findRandomLocation()
+            bee.currFitnessScore = runNeuralNet(bee.values)
 
     def checkIfDone(self):
         keepGoing = True
         for employer in self.employers:
-            if employer.currFitnessScore <= endValue:
+            if employer.currFitnessScore <= self.endValue:
                 print("Fitness score =", employer.currFitnessScore)
                 print("Values =", employer.values)
                 keepGoing = False
         return keepGoing
-            
+
     def runABC(self):
         running = True
 
         while True:
             print("Assigning new position")
-            for i in range(self.employers):
+            for i in range(len(self.employers)):
                 self.assignNewPositions(i)
             print("Checking if done")
             running = self.checkIfDone()
             if running == False:
                 break
-            
             print("Getting fitness average")
             self.getFitnessAverage()
             print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
                 self.checkNewPositions(employer)
-            
+
 
 def checkNewScore(beeList, bee):
     greaterThanAverage = True
     summationScore = 0
 
     for bee in beeList:
-        summationScore += bee.currFitnessScore  
+        summationScore += bee.currFitnessScore
 
     if (bee.currFitnessScore / summationScore) < 1 / (len(beeList) - 1):
         greaterThanAverage = False
@@ -83,8 +85,8 @@ def checkNewScore(beeList, bee):
         beeList[bee].currFitnessScore = runNeuralNet(beeList[bee].values)
 
     return greaterThanAverage
-            
 
-            
-        
-            
+
+
+
+
