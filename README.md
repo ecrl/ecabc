@@ -1,4 +1,4 @@
-#Artificial-Bee-Colony
+# Artificial-Bee-Colony
 Artificial Bee Colony for hyper-parameter selection on ECNET
 
 Ability to model an artificial bee colony by creating scout, onlooker, and employers bees via the Bee.py module. Each bee type will
