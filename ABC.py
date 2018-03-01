@@ -6,18 +6,15 @@ class ABC:
     def __init__(self, endValue):
 
         print("INITIALIZING")
-        self.scouts = []
         self.employers = []
         self.bestValues = []
         self.cycle = 0
+        self.scout = Bee('scout')
         self.onlooker = Bee('onlooker')
         self.bestFitnessScore = 10000
         self.fitnessAverage = 0
         self.endValue = endValue
-
-        for i in range(10):
-            self.scouts.append(Bee('scout'))
-
+        
         for i in range(50):
             print("Creating bee number:", i + 1)
             self.employers.append(Bee('employer', generateRandomValues()))
