@@ -31,19 +31,29 @@ class ABC:
 
     def getFitnessAverage(self):
         self.fitnessAverage = 0
+        self.iterBestFitnessScore = 100000
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
+
             if employer.currFitnessScore < self.bestFitnessScore:
                 self.bestFitnessScore = employer.currFitnessScore
                 self.bestValues = employer.values
+                
+            if employer.currFitnessScore < self.iterBestFitnessScore:
+                self.iterBestFitnessScore = self.currFitnessScore
+                self.iterBestValues = employer.values
+                
         self.fitnessAverage /= len(self.employers)
 
+    '''Check if the new posotions are better than the average fitness scores, if not assign
+       a new random position to the employer bee and calculate it's fitness score'''
     def checkNewPositions(self, bee):
         if bee.currFitnessScore  > self.fitnessAverage:
             print("Assigning new value for a bee")
             bee.values = self.onlooker.findRandomLocation()
             bee.currFitnessScore = runNeuralNet(bee.values)
 
+    '''Check if any current fitness scores are below the end value''' 
     def checkIfDone(self):
         keepGoing = True
         for employer in self.employers:
@@ -53,6 +63,7 @@ class ABC:
                 keepGoing = False
         return keepGoing
 
+    '''Run the artificial bee colony'''
     def runABC(self):
         running = True
 
@@ -60,15 +71,12 @@ class ABC:
             print("Assigning new positions")
             for i in range(len(self.employers)):
                 self.assignNewPositions(i)
-
             print("Checking if done")
             running = self.checkIfDone()
             if running == False:
                 break
-
             print("Getting fitness average")
             self.getFitnessAverage()
-
             print("Current fitness average:", self.fitnessAverage)
             print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
@@ -76,3 +84,5 @@ class ABC:
 
             print("Best score:", self.bestFitnessScore)
             print("Best value:", self.bestValues)
+            print("Iteration score:", self.iterBestFitnessScore)
+            print("Iteratiion values:", self.iterBestValues)
