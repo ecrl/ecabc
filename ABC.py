@@ -2,6 +2,7 @@ from Bees import *
 
 
 class ABC:
+
     def __init__(self, endValue):
 
         print("INITIALIZING")
@@ -17,26 +18,24 @@ class ABC:
         for i in range(10):
             self.scouts.append(Bee('scout'))
 
-        for i in range(5):
+        for i in range(50):
             print("Creating bee number:", i + 1)
             self.employers.append(Bee('employer', generateRandomValues()))
-            self.employers[i].getFitnessScore(self.employers[i].values)
+            self.employers[i].currFitnessScore = runNeuralNet(self.employers[i].values)
 
     def assignNewPositions(self, firstBee):
         secondBee = randint(0, len(self.employers) -1)
-        firstCheck = True
-        secondCheck = True
-
         while (secondBee == firstBee):
             secondBee = randint(0, len(self.employers) -1)
-
         self.onlooker.getPosition(self.employers, firstBee, secondBee)
-
 
     def getFitnessAverage(self):
         self.fitnessAverage = 0
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
+            if employer.currFitnessScore < self.bestFitnessScore:
+                self.bestFitnessScore = employer.currFitnessScore
+                self.bestValues = employer.values
         self.fitnessAverage /= len(self.employers)
 
     def checkNewPositions(self, bee):
@@ -61,16 +60,22 @@ class ABC:
             print("Assigning new positions")
             for i in range(len(self.employers)):
                 self.assignNewPositions(i)
+
             print("Checking if done")
             running = self.checkIfDone()
             if running == False:
                 break
+
             print("Getting fitness average")
             self.getFitnessAverage()
+
             print("Current fitness average:", self.fitnessAverage)
             print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
                 self.checkNewPositions(employer)
+
+            print("Best score:", self.bestFitnessScore)
+            print("Best value:", self.bestValues)
 
 
 def checkNewScore(beeList, bee):
