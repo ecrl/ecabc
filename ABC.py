@@ -40,7 +40,7 @@ class ABC:
         self.fitnessAverage /= len(self.employers)
 
     def checkNewPositions(self, bee):
-        if bee.currFitnessScore / (len(self.employers) -1) > self.fitnessAverage:
+        if bee.currFitnessScore  > self.fitnessAverage:
             print("Assigning new value for a bee")
             bee.values = self.onlooker.findRandomLocation()
             bee.currFitnessScore = runNeuralNet(bee.values)
@@ -58,7 +58,7 @@ class ABC:
         running = True
 
         while True:
-            print("Assigning new position")
+            print("Assigning new positions")
             for i in range(len(self.employers)):
                 self.assignNewPositions(i)
             print("Checking if done")
@@ -67,6 +67,7 @@ class ABC:
                 break
             print("Getting fitness average")
             self.getFitnessAverage()
+            print("Current fitness average:", self.fitnessAverage)
             print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
                 self.checkNewPositions(employer)
