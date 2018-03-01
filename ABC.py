@@ -76,18 +76,3 @@ class ABC:
 
             print("Best score:", self.bestFitnessScore)
             print("Best value:", self.bestValues)
-
-
-def checkNewScore(beeList, bee):
-    greaterThanAverage = True
-    summationScore = 0
-
-    for bee in beeList:
-        summationScore += bee.currFitnessScore
-
-    if (bee.currFitnessScore / summationScore) < 1 / (len(beeList) - 1):
-        greaterThanAverage = False
-        beeList[bee].values = generateRandomValues()
-        beeList[bee].currFitnessScore = runNeuralNet(beeList[bee].values)
-
-    return greaterThanAverage
