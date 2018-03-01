@@ -40,7 +40,7 @@ class ABC:
         self.fitnessAverage / len(self.employers)
 
     def checkNewPositions(self, bee):
-        if bee.currFitnessScore / self.fitnessAverage < 1:
+        if bee.currFitnessScore / (len(self.employers) -1) > self.fitnessAverage:
             print("Assigning new value for a bee")
             bee.values = self.onlooker.findRandomLocation()
             bee.currFitnessScore = runNeuralNet(bee.values)
