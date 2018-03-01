@@ -1,3 +1,7 @@
+from ecnet.server import Server
+from random import *
+import numpy as np
+
 def runNeuralNet(values):
     '''Run the ECNET server'''
     sv = Server()
