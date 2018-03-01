@@ -2,37 +2,41 @@ from ecnet.server import Server
 from random import *
 import numpy as np
 
-class Bee:
 
-    def __init__(self, beeType, values = []):
-        
+class Bee:
+    def __init__(self, beeType, values=[]):
+
         self.beeType = beeType
         self.values = values
-        self.currFitnessScore = -1
-    
-    '''Onlookeer Bee Functions'''
+        self.currFitnessScore = 100000
+
+    '''Onlooker Bee Functions'''
+
     def getPosition(self, beeList, firstBee, secondBee):
-        new_values = []
+        newValues = []
         currValue = 0
-        
-        for i in range(len(self.list)):
-            currValue = valueFunction(beeList[firstBee][i], beeList[secondBee][i])
+
+        for i in range(6):
+            currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
             newValues.append(currValue)
-            
+
         beeList[firstBee].getFitnessScore(newValues)
-    
+
     '''Scout Bee Function'''
+
     def findRandomLocation(self):
-        self.values = generateRandomValues() 
+        values = generateRandomValues()
+        return values
 
     '''Employer Bee Functions'''
+
     def getFitnessScore(self, values):
         fitnessScore = runNeuralNet(values)
-        
+
         if fitnessScore < self.currFitnessScore:
             self.value = values
             self.currFitnessScore = fitnessScore
-            
+
     def communicateData(self):
         return self.values, self.currFitnessScore
 
@@ -53,20 +57,22 @@ def runNeuralNet(values):
     sv.select_best()
     test_results = sv.use_mlp_model('test')
     sv.output_results(test_results, 'test_results.csv')
-    test_errors = sv.calc_error('rmse','r2','mean_abs_error','med_abs_error',dset = 'test')
+    test_errors = sv.calc_error('rmse', 'r2', 'mean_abs_error', 'med_abs_error', dset='test')
     sv.publish_project()
     return test_errors['rmse'][0]
+
 
 def generateRandomValues():
     values = []
     values.append(np.random.uniform(0.001, 0.1))
     values.append(np.random.uniform(0.000001, 0.01))
     values.append(randint(1250, 25000))
-    values.append(randint(500,2500))
+    values.append(randint(500, 2500))
     values.append(randint(12, 32))
-    values.append(randint(12,32))
+    values.append(randint(12, 32))
     return values
-    
+
+
 def valueFunction(a, b):
-    activationNum = np.random.uniform(-1,1)
-    return a + activationNum * (a - b)
+    activationNum = np.random.uniform(-1, 1)
+    return abs(a + activationNum * (a - b))
