@@ -3,7 +3,6 @@ from random import *
 import numpy as np
 from Functions import *
 
-
 class Bee:
     def __init__(self, beeType, values=[]):
 
