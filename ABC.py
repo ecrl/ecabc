@@ -85,8 +85,3 @@ def checkNewScore(beeList, bee):
         beeList[bee].currFitnessScore = runNeuralNet(beeList[bee].values)
 
     return greaterThanAverage
-
-
-
-
-
