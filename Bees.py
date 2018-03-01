@@ -16,7 +16,6 @@ class Bee:
         newValues = []
         currValue = 0
 
-        print("Assigning new position for bee:", firstBee + 1)
         for i in range(6):
             currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
             newValues.append(currValue)
