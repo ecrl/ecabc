@@ -1,6 +1,5 @@
 from Bees import *
 
-
 class ABC:
 
     def __init__(self, endValue):
