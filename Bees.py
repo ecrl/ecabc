@@ -61,7 +61,7 @@ def generateRandomValues():
     values = []
     values.append(np.random.uniform(0.001, 0.1))
     values.append(np.random.uniform(0.000001, 0.01))
-    values.append(randint(1250, 25000))
+    values.append(randint(1250, 2500))
     values.append(randint(500, 2500))
     values.append(randint(12, 32))
     values.append(randint(12, 32))
