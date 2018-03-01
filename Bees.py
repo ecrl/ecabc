@@ -32,13 +32,9 @@ class Bee:
 
     def getFitnessScore(self, values):
         fitnessScore = runNeuralNet(values)
-
         if fitnessScore < self.currFitnessScore:
             self.value = values
             self.currFitnessScore = fitnessScore
-
-    def communicateData(self):
-        return self.values, self.currFitnessScore
 
 
 def runNeuralNet(values):
@@ -61,7 +57,6 @@ def runNeuralNet(values):
     sv.publish_project()
     return test_errors['rmse'][0]
 
-
 def generateRandomValues():
     values = []
     values.append(np.random.uniform(0.001, 0.1))
@@ -71,7 +66,6 @@ def generateRandomValues():
     values.append(randint(12, 32))
     values.append(randint(12, 32))
     return values
-
 
 def valueFunction(a, b):
     activationNum = np.random.uniform(-1, 1)
