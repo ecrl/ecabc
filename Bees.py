@@ -1,6 +1,3 @@
-from ecnet.server import Server
-from random import *
-import numpy as np
 from Functions import *
 
 class Bee:
