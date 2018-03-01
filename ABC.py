@@ -45,7 +45,7 @@ class ABC:
        a new random position to the employer bee and calculate it's fitness score'''
     def checkNewPositions(self, bee):
         if bee.currFitnessScore  > self.fitnessAverage:
-            print("Assigning new value for a bee")
+            print("Assigning new position for a bee")
             bee.values = self.onlooker.findRandomLocation()
             bee.currFitnessScore = runNeuralNet(bee.values)
 
