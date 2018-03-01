@@ -36,7 +36,7 @@ class ABC:
                 self.bestValues = employer.values
                 
             if employer.currFitnessScore < self.iterBestFitnessScore:
-                self.iterBestFitnessScore = self.currFitnessScore
+                self.iterBestFitnessScore = employer.currFitnessScore
                 self.iterBestValues = employer.values
                 
         self.fitnessAverage /= len(self.employers)
