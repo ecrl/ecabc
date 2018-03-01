@@ -8,7 +8,6 @@ class ABC:
         print("INITIALIZING")
         self.employers = []
         self.bestValues = []
-        self.cycle = 0
         self.scout = Bee('scout')
         self.onlooker = Bee('onlooker')
         self.bestFitnessScore = 10000
