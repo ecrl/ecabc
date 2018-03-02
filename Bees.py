@@ -15,6 +15,10 @@ class Bee:
 
         for i in range(6):
             currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
+            if i > 1:
+                currValue = int(currValue)
+            if currValue <= 0:
+                currValue += 1
             newValues.append(currValue)
 
         beeList[firstBee].getFitnessScore(newValues)
