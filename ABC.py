@@ -34,10 +34,9 @@ class ABC:
         
         print("INITIALIZING")
         self.employers = []
-        self.bestValues = []
-        self.scout = Bee('scout')
+        self.bestValues = []                    # Store the values that are currently performing the best
         self.onlooker = Bee('onlooker')
-        self.bestFitnessScore = 10000
+        self.bestFitnessScore = 10000           # Store the current best Fitness Score
         self.fitnessAverage = 0
         self.endValue = endValue
         
