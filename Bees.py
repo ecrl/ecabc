@@ -60,18 +60,6 @@ class Bee:
         beeList[firstBee].getFitnessScore(newValues)
 
     '''
-    Scout Bee Function
-    
-    The scouter bee's sole responsiblity is to find a new random position. This random position will then be assigned to those bee's who have
-    lower than average current fitness scores, and is a way to ensure that the algorithm never gets 'stuck'.
-    
-    '''
-
-    def findRandomLocation(self):
-        values = generateRandomValues()
-        return values
-
-    '''
     Employer Bee Functions
     
     The employer bee's sole function is to calculate the fitness score of the new position it is passed, and compare it to its current 
