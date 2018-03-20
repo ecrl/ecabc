@@ -2,5 +2,5 @@
 
 from ABC import *
 
-abc = ABC(6)
-abc.runABC()
+abc = ABC(6)  # Create an artificial bee colony with an end value of 6
+abc.runABC()  # Run the artificial bee colony
