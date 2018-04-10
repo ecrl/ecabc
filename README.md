@@ -10,3 +10,12 @@ Positions = values for the 6 hyper-parameters of ECNET
 Employer bees - Generate fitness scores of 'nectar' at its current position.
 Scout bees - Find new locations for 'nectar' source at random.
 Onlooker bees - Generate new position for employer bees by getting a position between bee A and a random bee b for all employers in the colony
+
+Additional scripts included to demonstrate how to run the bee colony, and how to compare the test values against the generic ECNET hyperparameter test results.
+
+Dependencies required: 
+ECNET
+Pandas
+numpy
+random
+sklearn
