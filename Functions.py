@@ -23,14 +23,14 @@ def runNeuralNet(values):
     return test_errors['rmse'][0]
 
 def generateRandomValues():
-    values = []
-    values.append(np.random.uniform(0.001, 0.1))
-    values.append(np.random.uniform(0.000001, 0.01))
-    values.append(randint(1250, 2500))
-    values.append(randint(500, 2500))
-    values.append(randint(12, 32))
-    values.append(randint(12, 32))
-    return values
+    return [
+        np.random.uniform(0.001, 0.1),
+        np.random.uniform(0.000001, 0.01),
+        randint(1250, 2500),
+        randint(500, 2500),
+        randint(12, 32),
+        randint(12, 32)
+    ]
 
 def valueFunction(a, b):
     activationNum = np.random.uniform(-1, 1)
