@@ -14,4 +14,4 @@ Onlooker bees - Generate new position for employer bees by getting a position be
 Additional scripts included to demonstrate how to run the bee colony, and how to compare the test values against the generic ECNET hyperparameter test results.
 
 Dependencies required: 
-ECNET/Pandas/numpy/random
+ecnet/pandas/numpy/random
