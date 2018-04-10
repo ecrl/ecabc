@@ -21,7 +21,7 @@ be adapted to work however with whatever you would like.
 
 class ABC:
 
-    def __init__(self, endValue):
+    def __init__(self, endValue, amountOfEmployers = 50):
 
         
         '''
@@ -41,7 +41,7 @@ class ABC:
         self.fitnessAverage = 0
         self.endValue = endValue
         
-        for i in range(50):
+        for i in range(amountOfEmployers):
             print("Creating bee number:", i + 1)
             self.employers.append(Bee('employer', generateRandomValues()))
             self.employers[i].currFitnessScore = runNeuralNet(self.employers[i].values)
