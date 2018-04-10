@@ -1,5 +1,5 @@
 from ecnet.server import Server
-from random import *
+from random import randint
 import numpy as np
 
 def runNeuralNet(values):
