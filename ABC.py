@@ -77,7 +77,7 @@ class ABC:
         self.fitnessAverage /= len(self.employers)
 
     '''
-    Check if the new posotions are better than the average fitness scores, if not assig a new random position to the employer bee 
+    Check if the new positions are better than the average fitness scores, if not assig a new random position to the employer bee 
     and calculate it's fitness score. 
     
     Fitness scores are calculated by running the neural network and obtaining the RMSE that are the result of the given inputs, which is
