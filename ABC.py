@@ -24,7 +24,8 @@ class ABC:
     def __init__(self, endValue):
 
         
-        '''Initialize the program by assigning 50 worker bees, one scout, and one onlooker bee which will then be called upon by the program.
+        '''
+        Initialize the program by assigning 50 worker bees, one scout, and one onlooker bee which will then be called upon by the program.
         
         Pass an end value, which is the target fitness score you would like to achieve before the program terminates. 
         
