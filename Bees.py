@@ -20,10 +20,10 @@ class Bee:
     Each be must be given a type, which can be Worker/Onlooker/Scout, documentation on the responsibility of each bee can be found below, 
     and also at https://abc.erciyes.edu.tr/.
     
-    Each bee will store its position, or set of values that can be run through the ECNet neural network in order to obtain the fitness score, 
+    Each employer bee will store its position, or set of values that can be run through the ECNet neural network in order to obtain the fitness score, 
     or RMSE values of the outputs produced the by the value sets.
     
-    Each bee also stores its current fitness score.
+    Each employer bee also stores its current fitness score.
     
     '''
     def __init__(self, beeType, values=[]):
