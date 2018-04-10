@@ -89,38 +89,17 @@ After running the 10 builds/5 Nodes/75 trials, we have to calculate the average 
 most accurate representation of the static test sets that have already been done earlier in the year.
 
 '''
-def calculate_error():
-    error_generic = 0
-    error_modified = 0
-    df = pd.read_csv('test_results_generic_test_master.csv')
-    df_iter = list(df.itertuples())[0:]
-    for i in range(len(df_iter)):
-        df_iter[i] = df_iter[i][10:]
-    for row in df_iter:
-        sum = 0
-        for i in range(1, len(row)):
-            sum += row[i]
-        sum /= len(row)
-        error_generic += abs(row[0] - sum)
-    error_generic /= len(df_iter)
-    print('Generic error: ', error_generic)
-
-    df = pd.read_csv('test_results_modified_test_master.csv')
-    df_iter = list(df.itertuples())[0:]
-    for i in range(len(df_iter)):
-        df_iter[i] = df_iter[i][10:]
-    for row in df_iter:
-        sum = 0
-        for i in range(1, len(row)):
-            sum += row[i]
-        sum /= len(row)
-        error_modified += abs(row[0] - sum)
-    error_modified /= len(df_iter)
-    print('Modified error: ', error_modified)
-
+def calculate_error(test_error, str):
+    avg = 0
+    count = 0
+    for val in test_errors['rmse']:
+        avg+=val
+        count+=1
+    print(str, avg/count)
 
 if __name__ == "__main__":
 
-    run_server_generic()    # Create the CSV file for the generic values
-    run_server_modified()   # Create the CSV file for the modified values   
-    calculate_error()
+    generic_errors = run_server_generic()    # Create the CSV file for the generic values
+    modified_errors = run_server_modified()   # Create the CSV file for the modified values   
+    calculate_error(generic_errors, 'Generic Error:')
+    calculate_error(modfied_errors, 'Modified Error:')
