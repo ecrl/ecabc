@@ -29,8 +29,10 @@ class Bee:
     def __init__(self, beeType, values=[]):
 
         self.beeType = beeType
-        self.values = values
-        self.currFitnessScore = 100000
+        
+        if beeType == "employer":               # Only the employer bees should store values/fitness scores
+            self.values = values            
+            self.currFitnessScore = 100000
 
     '''
     Onlooker Bee Functions
