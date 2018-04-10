@@ -71,7 +71,10 @@ class Bee:
     '''
 
     def getFitnessScore(self, values):
-        fitnessScore = runNeuralNet(values)
-        if fitnessScore < self.currFitnessScore:
-            self.value = values
-            self.currFitnessScore = fitnessScore
+        if self.beeType != "employer":
+            raise RuntimeError("Cannot get fitness score on a non-employer bee")
+        else:
+            fitnessScore = runNeuralNet(values)
+            if fitnessScore < self.currFitnessScore:
+                self.value = values
+                self.currFitnessScore = fitnessScore
