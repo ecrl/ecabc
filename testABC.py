@@ -99,7 +99,7 @@ def calculate_error(test_error, str):
 
 if __name__ == "__main__":
 
-    generic_errors = run_server_generic()    # Create the CSV file for the generic values
-    modified_errors = run_server_modified()   # Create the CSV file for the modified values   
-    calculate_error(generic_errors, 'Generic Error:')
-    calculate_error(modfied_errors, 'Modified Error:')
+    generic_errors = run_server_generic()    # Create the CSV file for the generic values and return all errors
+    modified_errors = run_server_modified()   # Create the CSV file for the modified values and return all errors
+    calculate_error(generic_errors, 'Generic Error:')   # Extract RMSE across all builds, average them
+    calculate_error(modfied_errors, 'Modified Error:')  # Extract RMSE across all builds, average them
