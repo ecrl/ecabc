@@ -34,4 +34,4 @@ def generateRandomValues():
 
 def valueFunction(a, b):
     activationNum = np.random.uniform(-1, 1)
-    return abs(a + activationNum * (a - b))
+    return a + abs(activationNum * (a - b))
