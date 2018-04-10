@@ -137,3 +137,5 @@ class ABC:
             print("Best value:", self.bestValues)
             print("Iteration score:", self.iterBestFitnessScore)
             print("Iteratiion values:", self.iterBestValues)
+
+            
