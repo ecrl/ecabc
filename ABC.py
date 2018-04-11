@@ -5,6 +5,7 @@ ECNET Research Team
 '''
 
 from Bees import *
+import sys as sys
 
 '''
 Wrapper class for the ECNet neural network tasked with finding the ideal hyper parameters by which to run the network via the artificial
@@ -42,7 +43,8 @@ class ABC:
         self.endValue = endValue
         
         for i in range(amountOfEmployers):
-            print("Creating bee number:", i + 1)
+            sys.stdout.flush()
+            sys.stdout.write("Creating bee number: %d \r" % (i + 1))
             self.employers.append(Bee('employer', generateRandomValues()))
             self.employers[i].currFitnessScore = runNeuralNet(self.employers[i].values)
             
@@ -122,13 +124,13 @@ class ABC:
             print("Assigning new positions")
             for i in range(len(self.employers)):
                 self.assignNewPositions(i)
+            print("Getting fitness average")
+            self.getFitnessAverage()
             print("Checking if done")
             running = self.checkIfDone()
             saveScore(self.bestFitnessScore, self.bestValues)
             if running == False:
                 break
-            print("Getting fitness average")
-            self.getFitnessAverage()
             print("Current fitness average:", self.fitnessAverage)
             print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
