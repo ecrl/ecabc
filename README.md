@@ -15,13 +15,13 @@ Additional scripts included to demonstrate how to run the bee colony, and how to
 
 Dependencies required: 
 ecnet/pandas/numpy/random
-/.lm
+
 # Use
 
-The artificial bee colony can take a mulitude of parameters. 
-__endValue: The target fitness score you would like your values to produce in order to terminate program
-__iterationAmount: The amount of iterations you would like the program to undergo before terminating
-__amountOfEmployer: The amount of employer bees the artificial colony will contain, each containing its own set of value and __fitness scores correlating to the values.
+The artificial bee colony can take a mulitude of parameters.__ 
+endValue: The target fitness score you would like your values to produce in order to terminate program__
+iterationAmount: The amount of iterations you would like the program to undergo before terminating__
+amountOfEmployer: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
 
 Note:
 
