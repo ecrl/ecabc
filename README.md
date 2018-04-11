@@ -19,8 +19,8 @@ ecnet/pandas/numpy/random
 # Use
 
 The artificial bee colony can take a mulitude of parameters. 
-/.lm endValue: The target fitness score you would like your values to produce in order to terminate program
-/.lm iterationAmount: The amount of iterations you would like the program to undergo before terminating
+/nendValue: The target fitness score you would like your values to produce in order to terminate program
+/niterationAmount: The amount of iterations you would like the program to undergo before terminating
 /.lm amountOfEmployer: The amount of employer bees the artificial colony will contain, each containing its own set of value and /.lm fitness scores correlating to the values.
 
 Note:
