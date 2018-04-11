@@ -46,7 +46,7 @@ class ABC:
             self.employers.append(Bee('employer', generateRandomValues()))
             self.employers[i].currFitnessScore = runNeuralNet(self.employers[i].values)
             
-     '''
+    '''
      Assign a new position to the given bee, firstBee and secondBee are represented in the form of index values for the list of all bees 
      inside the employers list. 
      
@@ -124,6 +124,7 @@ class ABC:
                 self.assignNewPositions(i)
             print("Checking if done")
             running = self.checkIfDone()
+            saveScore(self.bestFitnessScore, self.bestValues)
             if running == False:
                 break
             print("Getting fitness average")
@@ -138,4 +139,3 @@ class ABC:
             print("Iteration score:", self.iterBestFitnessScore)
             print("Iteratiion values:", self.iterBestValues)
 
-# TODO -- Add file logging to store the best scores as they go.
