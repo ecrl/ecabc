@@ -13,7 +13,7 @@ def runNeuralNet(values):
     sv.vars['mlp_hidden_layers[1][0]'] = values[5]
 
     sv.create_save_env()
-    sv.import_data()
+    sv.import_data('cn_model_v1.0.csv')
     sv.fit_mlp_model_validation('shuffle_lv')
     sv.select_best()
     test_results = sv.use_mlp_model('test')
@@ -38,6 +38,6 @@ def valueFunction(a, b):
 
 def saveScore(score, values, filename = 'score.txt'):
     f = open(filename, 'w+')
-    f.write('Score:', score, '\n')
-    f.write('Values:', values)
+    string = "Score: {}".format(score) + " Values: {}".format(values)
+    f.write(string)
     f.close()
