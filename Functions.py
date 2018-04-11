@@ -35,3 +35,9 @@ def generateRandomValues():
 def valueFunction(a, b):
     activationNum = np.random.uniform(-1, 1)
     return a + abs(activationNum * (a - b))
+
+def saveScore(score, values, filename = 'score.txt'):
+    f = open(filename, 'w+')
+    f.write('Score:', score, '\n')
+    f.write('Values:', values)
+    f.close()
