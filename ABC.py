@@ -34,7 +34,7 @@ class ABC:
         
         '''
         
-        print("INITIALIZING")
+        print("***INITIALIZING***")
         self.employers = []
         self.bestValues = []                    # Store the values that are currently performing the best
         self.onlooker = Bee('onlooker')
@@ -47,6 +47,7 @@ class ABC:
             sys.stdout.write("Creating bee number: %d \r" % (i + 1))
             self.employers.append(Bee('employer', generateRandomValues()))
             self.employers[i].currFitnessScore = runNeuralNet(self.employers[i].values)
+        print("***DONE INITIALIZING***")
             
     '''
      Assign a new position to the given bee, firstBee and secondBee are represented in the form of index values for the list of all bees 
@@ -123,6 +124,8 @@ class ABC:
         while True:
             print("Assigning new positions")
             for i in range(len(self.employers)):
+                sys.stdout.flush()
+                sys.stdout.write('At bee number: %d \r' % (i+1))
                 self.assignNewPositions(i)
             print("Getting fitness average")
             self.getFitnessAverage()
