@@ -22,7 +22,7 @@ be adapted to work however with whatever you would like.
 
 class ABC:
 
-    def __init__(self, endValue, amountOfEmployers = 50):
+    def __init__(self, endValue = None, iterationAmount = None, amountOfEmployers = 50):
 
         
         '''
@@ -34,6 +34,9 @@ class ABC:
         
         '''
         
+        if endValue == None and iterationAmount == None:
+            raise ValueError("must select either an iterationAmount or and endValue")
+
         print("***INITIALIZING***")
         self.employers = []
         self.bestValues = []                    # Store the values that are currently performing the best
@@ -41,6 +44,7 @@ class ABC:
         self.bestFitnessScore = 10000           # Store the current best Fitness Score
         self.fitnessAverage = 0
         self.endValue = endValue
+        self.iterationAmount = iterationAmount
         
         for i in range(amountOfEmployers):
             sys.stdout.flush()
@@ -65,17 +69,12 @@ class ABC:
 
     def getFitnessAverage(self):
         self.fitnessAverage = 0
-        self.iterBestFitnessScore = 100000
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
 
             if employer.currFitnessScore < self.bestFitnessScore:
                 self.bestFitnessScore = employer.currFitnessScore
                 self.bestValues = employer.values
-                
-            if employer.currFitnessScore < self.iterBestFitnessScore:
-                self.iterBestFitnessScore = employer.currFitnessScore
-                self.iterBestValues = employer.values
                 
         self.fitnessAverage /= len(self.employers)
 
@@ -121,26 +120,50 @@ class ABC:
     def runABC(self):
         running = True
 
-        while True:
-            print("Assigning new positions")
-            for i in range(len(self.employers)):
-                sys.stdout.flush()
-                sys.stdout.write('At bee number: %d \r' % (i+1))
-                self.assignNewPositions(i)
-            print("Getting fitness average")
-            self.getFitnessAverage()
-            print("Checking if done")
-            running = self.checkIfDone()
-            saveScore(self.bestFitnessScore, self.bestValues)
-            if running == False:
-                break
-            print("Current fitness average:", self.fitnessAverage)
-            print("Checking new positions, assigning random positions to bad ones")
-            for employer in self.employers:
-                self.checkNewPositions(employer)
+        if self.endValue != None:
+            while True:
+                print("Assigning new positions")
+                for i in range(len(self.employers)):
+                    sys.stdout.flush()
+                    sys.stdout.write('At bee number: %d \r' % (i+1))
+                    self.assignNewPositions(i)
+                print("Getting fitness average")
+                self.getFitnessAverage()
+                print("Checking if done")
+                running = self.checkIfDone()
+                saveScore(self.bestFitnessScore, self.bestValues)
+                if running == False:
+                    break
+                print("Current fitness average:", self.fitnessAverage)
+                print("Checking new positions, assigning random positions to bad ones")
+                for employer in self.employers:
+                    self.checkNewPositions(employer)
 
-            print("Best score:", self.bestFitnessScore)
-            print("Best value:", self.bestValues)
-            print("Iteration score:", self.iterBestFitnessScore)
-            print("Iteratiion values:", self.iterBestValues)
+                print("Best score:", self.bestFitnessScore)
+                print("Best value:", self.bestValues)
+        
+        elif self.iterationAmount != None:
+            count = 0
+
+            while count < self.iterationAmount:
+                print("Assigning new positions")
+                for i in range(len(self.employers)):
+                    sys.stdout.flush()
+                    sys.stdout.write('At bee number: %d \r' % (i+1))
+                    self.assignNewPositions(i)
+                print("Getting fitness average")
+                self.getFitnessAverage()
+                saveScore(self.bestFitnessScore, self.bestValues)
+                print("Current fitness average:", self.fitnessAverage)
+                print("Checking new positions, assigning random positions to bad ones")
+                for employer in self.employers:
+                    self.checkNewPositions(employer)
+
+                print("Best score:", self.bestFitnessScore)
+                print("Best value:", self.bestValues)
+                print("Iteration {} / {}".format(count+1, self.iterationAmount))
+                count+= 1
+        
+        return self.bestValues
+
 
