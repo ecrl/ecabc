@@ -138,4 +138,4 @@ class ABC:
             print("Iteration score:", self.iterBestFitnessScore)
             print("Iteratiion values:", self.iterBestValues)
 
-            
+# TODO -- Add file logging to store the best scores as they go.
