@@ -38,6 +38,6 @@ def valueFunction(a, b):
 
 def saveScore(score, values, filename = 'score.txt'):
     f = open(filename, 'w+')
-    string = "Score: {}".format(score) + " Values: {}".format(values)
+    string = "Score: {}, Values: {}".format(score, values)
     f.write(string)
     f.close()
