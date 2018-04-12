@@ -37,7 +37,7 @@ def valueFunction(a, b):
     return a + abs(activationNum * (a - b))
 
 def saveScore(score, values, filename = 'score.txt'):
-    f = open(filename, 'w+')
+    f = open(filename, 'a')
     string = "Score: {}, Values: {}".format(score, values)
     f.write(string)
     f.close()
