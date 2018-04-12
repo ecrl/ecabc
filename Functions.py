@@ -40,4 +40,5 @@ def saveScore(score, values, filename = 'score.txt'):
     f = open(filename, 'a')
     string = "Score: {}, Values: {}".format(score, values)
     f.write(string)
+    f.write('\n')
     f.close()
