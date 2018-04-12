@@ -89,7 +89,7 @@ After running the 10 builds/5 Nodes/75 trials, we have to calculate the average 
 most accurate representation of the static test sets that have already been done earlier in the year.
 
 '''
-def calculate_error(test_error, str):
+def calculate_error(test_errors, str):
     avg = 0
     count = 0
     for val in test_errors['rmse']:
