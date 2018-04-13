@@ -74,7 +74,7 @@ class ABC:
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
 
-            if employer.currFitnessScore < self.bestFitnessScore or self.bestFitnessScore == None:
+            if self.bestFitnessScore == None or employer.currFitnessScore < self.bestFitnessScore:
                 self.bestFitnessScore = employer.currFitnessScore
                 self.bestValues = employer.values
                 
