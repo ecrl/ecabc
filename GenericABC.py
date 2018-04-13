@@ -11,10 +11,8 @@ import sys as sys
 Artificial bee colony used to optimize parameters given any range of parameter values, their types, and a fitness function. The fitness
 function will be passed to the constructor and called when each individual bee must generate a fitness score for its current set of 
 values that it contains.
-
 Was meant to be a wrapper class for the ecnet neural network.
 More information on artificial bee colonies can be found here : https://abc.erciyes.edu.tr/
-
 '''
 
 class ABC:
@@ -42,7 +40,7 @@ class ABC:
         self.employers = []
         self.bestValues = []                    # Store the values that are currently performing the best
         self.onlooker = Bee('onlooker')
-        self.bestFitnessScore = 10000           # Store the current best Fitness Score
+        self.bestFitnessScore = None           # Store the current best Fitness Score
         self.fitnessAverage = 0
         self.endValue = endValue
         self.iterationAmount = iterationAmount
@@ -70,14 +68,13 @@ class ABC:
 
     '''
     This function will collect the average of all the fitness scores across all employer bees. The average will be used as a model of comparison
-
     '''
     def getFitnessAverage(self):
         self.fitnessAverage = 0
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
 
-            if employer.currFitnessScore < self.bestFitnessScore:
+            if employer.currFitnessScore < self.bestFitnessScore or self.bestFitnessScore == None:
                 self.bestFitnessScore = employer.currFitnessScore
                 self.bestValues = employer.values
                 
@@ -177,9 +174,7 @@ class ABC:
 '''
 Class which contains the individual bees that will be used to run the artifical bee colony programmed in ABC.py. More information on how
 that program works can be found within that file.
-
 More information on how an artificial bee colony works can be found here : https://abc.erciyes.edu.tr/.
-
 '''
 
 class Bee:
@@ -253,7 +248,6 @@ class Bee:
 
 '''
 Private functions that are used to assist the ABC
-
 '''
 
 def generateRandomValues(value_ranges):
