@@ -238,7 +238,7 @@ class Bee:
             raise RuntimeError("Cannot get fitness score on a non-employer bee")
         else:
             fitnessScore = fitnessFunction(values)  # Your fitness function must take a certain set of values that you would like to optimize
-            if fitnessScore < self.currFitnessScore or self.currFitnessScore == None:
+            if self.currFitnessScore == None or fitnessScore < self.currFitnessScore:
                 self.value = values
                 self.currFitnessScore = fitnessScore
 
