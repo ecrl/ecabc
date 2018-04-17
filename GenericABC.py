@@ -196,7 +196,7 @@ class Bee:
         
         if beeType == "employer":               # Only the employer bees should store values/fitness scores
             self.values = values            
-            self.currFitnessScore = 100000
+            self.currFitnessScore = None
 
     '''
     Onlooker Bee Functions
@@ -238,7 +238,7 @@ class Bee:
             raise RuntimeError("Cannot get fitness score on a non-employer bee")
         else:
             fitnessScore = fitnessFunction(values)  # Your fitness function must take a certain set of values that you would like to optimize
-            if fitnessScore < self.currFitnessScore:
+            if fitnessScore < self.currFitnessScore or self.currFitnessScore == None:
                 self.value = values
                 self.currFitnessScore = fitnessScore
 
