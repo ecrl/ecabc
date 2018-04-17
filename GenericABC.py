@@ -61,10 +61,11 @@ class ABC:
      
     '''
     def assignNewPositions(self, firstBee):
+        valueTypes = [t[0] for t in self.valueRanges]
         secondBee = randint(0, len(self.employers) -1)
         while (secondBee == firstBee):
             secondBee = randint(0, len(self.employers) -1)
-        self.onlooker.getPosition(self.employers, firstBee, secondBee, self.fitnessFunction)
+        self.onlooker.getPosition(self.employers, firstBee, secondBee, self.fitnessFunction, valueTypes)
 
     '''
     This function will collect the average of all the fitness scores across all employer bees. The average will be used as a model of comparison
@@ -210,16 +211,15 @@ class Bee:
     
     '''
 
-    def getPosition(self, beeList, firstBee, secondBee, fitnessFunction):
+    def getPosition(self, beeList, firstBee, secondBee, fitnessFunction, valueTypes):
         newValues = []
         currValue = 0
 
-        for i in range(6):
+        for i in range(len(valueTypes)):
             currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
-            if i > 1:
+
+            if valueTypes[i] == 'int':
                 currValue = int(currValue)
-            if currValue <= 0:
-                currValue += 1
             newValues.append(currValue)
 
         beeList[firstBee].getFitnessScore(newValues, fitnessFunction)
@@ -268,7 +268,7 @@ def valueFunction(a, b):  # Method of generating a value in between the values g
     activationNum = np.random.uniform(-1, 1)
     return a + abs(activationNum * (a - b))
 
-def saveScore(score, values, filename = 'score.txt'):   # Function for saving the scores of each iteration onto a file
+def saveScore(score, values, filename = 'scores.txt'):   # Function for saving the scores of each iteration onto a file
     f = open(filename, 'a')
     string = "Score: {} Values: {}".format(score, values)
     f.write(string)
