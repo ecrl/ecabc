@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecnet/abc.py
-#  v.1.2.7.dev1
+#  v.1.3.0.dev1
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -12,16 +12,18 @@
 from random import randint
 import numpy as np
 import sys as sys
+from pathlib import Path
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
 
-    def __init__(self, valueRanges, fitnessFunction=None, endValue = None, iterationAmount = None, amountOfEmployers = 50):
+    def __init__(self, valueRanges, fitnessFunction=None, endValue = None, iterationAmount = None, amountOfEmployers = 50, self.filename = 'scores.txt'):
         if endValue == None and iterationAmount == None:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
         print("***INITIALIZING***")
+        self.iterationCount = 0
         self.valueRanges = valueRanges
         self.fitnessFunction = fitnessFunction
         self.employers = []
@@ -96,7 +98,7 @@ class ABC:
             count+=1
             running = self.checkIfDone(count)
             if running == False and self.endValue != None:
-                saveScore(self.bestFitnessScore, self.bestValues)
+                saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
                 break
             print("Current fitness average:", self.fitnessAverage)
             print("Checking new positions, assigning random positions to bad ones")
@@ -107,9 +109,10 @@ class ABC:
             if self.iterationAmount != None:
                 print("Iteration {} / {}".format(count, self.iterationAmount))
             if running == False:
-                saveScore(self.bestFitnessScore, self.bestValues)
+                saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
                 break
-            saveScore(self.bestFitnessScore, self.bestValues)
+            saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
+            self.iterationCount+=1
 
         return self.bestValues
 
@@ -170,8 +173,18 @@ def valueFunction(a, b):
     return a + abs(activationNum * (a - b))
 
 ### Function for saving the scores of each iteration onto a file
-def saveScore(score, values, filename = 'scores.txt'):
-    f = open(filename, 'a')
+def saveScore(score, values, iterationCount, filename):
+    # Check to see if the file name already exists on the first iteration
+    if (iterationCount == 0 and Path(filename).is_file()):
+        print('File:', filename, 'already exists, press y to overwrite')
+        if (input() != 'y'):
+            print('aborting')
+            sys.exit(1)
+        else:
+            f = open(filename, 'w')
+    else:
+        f = open(filename, 'a')
+    # Add scores to the file
     string = "Score: {} Values: {}".format(score, values)
     f.write(string)
     f.write('\n')
