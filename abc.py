@@ -17,12 +17,13 @@ from pathlib import Path
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
 
-    def __init__(self, valueRanges, fitnessFunction=None, endValue = None, iterationAmount = None, amountOfEmployers = 50, self.filename = 'scores.txt'):
+    def __init__(self, valueRanges, fitnessFunction=None, endValue = None, iterationAmount = None, amountOfEmployers = 50, filename = 'scores.txt'):
         if endValue == None and iterationAmount == None:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
         print("***INITIALIZING***")
+        self.filename = filename
         self.iterationCount = 0
         self.valueRanges = valueRanges
         self.fitnessFunction = fitnessFunction
