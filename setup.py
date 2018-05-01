@@ -1,6 +1,6 @@
 from setuptools import setup
 
-long_description = "Added support for maximizing a fitness function rather than minimizing it through the abc.specifyMinOrMax('max') function. Employer bees now reset if after an x amount of iterations the best fitness score has not improved."
+long_description = "Added support for maximizing a fitness function rather than minimizing it through the abc.specifyMinOrMax('max') function.
 
 setup(name = 'ecabc',
 version = "1.1.0.dev1",
