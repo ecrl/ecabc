@@ -1,21 +1,16 @@
-'''
-Simple sample script to demonstrate how to use the artificial bee colony
-'''
+from setuptools import setup
 
-from ecabc import ABC
+long_description = "Added support for maximizing a fitness function rather than minimizing it through the abc.specifyMinOrMax('max') function. Employer bees now reset if after an x amount of iterations the best fitness score has not improved."
 
-def fitnessTest(values):  # Fitness function that will be passed to the abc
-    fit = 0
-    for val in values:
-        fit+=val
-    return fit
-  
-values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (0, 10000))]  # Value type/ranges that will be passed to the abc
-abc = ABC(fitnessFunction=fitnessTest, 
-          valueRanges=values, 
-          amountOfEmployers=50, # Defaults to 50
-          endValue=50
-         )
-abc.specifyMinOrMax('min')  # Specify that you are looking to maximize the fitness cost -- Defaults to 'min'
-abc.setResetIteration(5000) # Specify that you are want to reset bees every 2000 iterations in which the score doesn't update
-abc.runABC()
+setup(name = 'ecabc',
+version = "1.1.0.dev1",
+description = 'Artificial bee colony for parameters tuning based on fitness scores',
+long_description = long_description,
+long_description_content_type = 'text/plain',
+url = 'https://github.com/hgromer/Artificial-Bee-Colony',
+author = 'Hernan Gelaf-Romer',
+author_email = 'Hernan_Gelafromer@student.uml.edu',
+license = 'MIT',
+packages = ['ecabc'],
+install_requires = ["numpy"],
+zip_safe = False)
