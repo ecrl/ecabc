@@ -36,8 +36,6 @@ class ABC:
         self.fitnessAverage = 0
         self.endValue = endValue
         self.iterationAmount = iterationAmount
-        self.resetEmployerIter = None           # Keep track of whether to reset the bess after this amount of iterations
-        self.resetBeeCount = 0                  # Keep track of how many iterations have gone by without a reset/score update
         self.mm = 'min'
         # Initialize employer bees, assign them values/fitness scores
         self.createEmployerBees(amountOfEmployers)
@@ -88,15 +86,6 @@ class ABC:
         elif count >= self.iterationAmount:
             keepGoing = False
         return keepGoing
-
-    ### Resetting all employer bees
-    def resetEmployerBees(self):
-        print('***RESETTING EMPLOYER BEES***')
-        amountOfEmployers = len(self.employers)
-        self.employers.clear()
-        self.createEmployerBees(amountOfEmployers)
-        self.resetBeeCount = 0
-        print('***DONE RESETTING***')
     
     ### Create employer bees
     def createEmployerBees(self, amountOfEmployers):
@@ -110,21 +99,11 @@ class ABC:
     def specifyMinOrMax(self, mm):
         if (mm == 'max'):
             self.mm = 'max'
-    
-    ### Specify how many iterations to run before resetting employer bees (if score is stagnant)
-    def setResetIteration(self, iterNum):
-        if type(iterNum) != type(1):
-            raise ValueError("reset iteration count passed must be an integer")
-        self.resetEmployerIter = iterNum
-        
-    ### Check whether it is necessary to reset all the employers
-    def needToReset(self):
-        return self.resetBeeCount >= self.resetEmployerIter
-
+            
     ### Run the artificial bee colony
     def runABC(self):
         running = True
-    
+
         while True:
             print("Assigning new positions")
             for i in range(len(self.employers)):
@@ -151,8 +130,5 @@ class ABC:
                 break
             saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
             self.iterationCount+=1
-            # If you need to reset the bees, reset them
-            if self.resetEmployerIter != None and self.needToReset():
-                self.resetEmployerBees()
 
         return self.bestValues
