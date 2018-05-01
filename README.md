@@ -1,5 +1,8 @@
-# Artificial-Bee-Colony
-// TODO
+# Artificial-Bee-Colony : Feature tuning program 
+
+[![PyPI version]([![PyPI version](https://badge.fury.io/py/artificial-bee-colony.svg)](https://badge.fury.io/py/artificial-bee-colony)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hgromer/Artificial-Bee-Colony/blob/master/LICENSE)
+
 
 # Use
 
