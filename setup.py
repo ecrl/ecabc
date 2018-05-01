@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name = 'abc',
+setup(name = 'ECabc',
 version = "1.0.2.dev2",
 description = 'Artificial bee colony for parameters tuning based on fitness scores',
 url = 'https://github.com/hgromer/Artificial-Bee-Colony',
