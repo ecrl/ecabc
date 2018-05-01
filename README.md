@@ -16,6 +16,5 @@ The artificial bee colony can take a mulitude of parameters.
 - **iterationAmount**: The amount of iterations you would like the program to undergo before terminating
 - **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
 - **specifyMinOrMax**: Specify whether the fitness cost will be minimized or maximized. Defaults to minimized.
-- **setResetIteration**: Specify how many iterations can go by before all employer bees will reset, this may help reduce stagnation a bit. If not specified, bees will never reset.
 
 
