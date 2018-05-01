@@ -16,6 +16,4 @@ abc = ABC(fitnessFunction=fitnessTest,
           amountOfEmployers=50, # Defaults to 50
           endValue=50
          )
-abc.specifyMinOrMax('min')  # Specify that you are looking to maximize the fitness cost -- Defaults to 'min'
-abc.setResetIteration(5000) # Specify that you are want to reset bees every 2000 iterations in which the score doesn't update
 abc.runABC()
