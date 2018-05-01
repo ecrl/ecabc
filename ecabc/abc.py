@@ -8,8 +8,13 @@
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
 #
 
-# artificial bee colony program imports
-from ecabc.bees import *
+# 3rd party packages (open src.)
+import sys as sys
+from random import randint
+
+# artificial bee colony packages
+from ecabc.bees import Bee
+from ecabc.helper_functions import generateRandomValues, saveScore
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
