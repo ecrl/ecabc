@@ -8,14 +8,8 @@
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
 #
 
-# 3rd party packages (open src.)
-from random import randint
-import numpy as np
-import sys as sys
-from pathlib import Path
-
 # artificial bee colony program imports
-import ecabc.bees
+from ecabc.bees import *
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
