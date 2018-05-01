@@ -15,7 +15,7 @@ import sys as sys
 from pathlib import Path
 
 # artificial bee colony program imports
-import abc.bees
+import ecabc.bees
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
