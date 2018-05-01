@@ -8,5 +8,5 @@ author = 'Hernan Gelaf-Romer',
 author_email = 'Hernan_Gelafromer@student.uml.edu',
 license = 'MIT',
 packages = ['abc'],
-install_requires = ["random", "numpy"],
+install_requires = ["numpy"],
 zip_safe = False)
