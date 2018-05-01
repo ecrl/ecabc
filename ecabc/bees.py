@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  abc/bees.py
+#  ecabc/bees.py
 #  v.1.0.0.dev1
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
