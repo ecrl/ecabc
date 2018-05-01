@@ -2,6 +2,7 @@
 
 # ECabc : Feature tuning program 
 
+[![GitHub version](https://badge.fury.io/gh/hgromer%2Fecabc.svg)](https://badge.fury.io/gh/hgromer%2Fecabc)
 [![PyPI version](https://badge.fury.io/py/ECabc.svg)](https://badge.fury.io/py/ECabc)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hgromer/Artificial-Bee-Colony/blob/master/LICENSE)
 
