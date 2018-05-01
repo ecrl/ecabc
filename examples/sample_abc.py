@@ -14,6 +14,6 @@ values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (
 abc = ABC(fitnessFunction=fitnessTest, 
           valueRanges=values, 
           amountOfEmployers=50, # Defaults to 50
-          endValue=50
+          endValue=50           # Or iterationAmount
          )
 abc.runABC()
