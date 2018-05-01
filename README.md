@@ -1,3 +1,5 @@
+[![UML Energy & Combustion Research Laboratory](http://faculty.uml.edu/Hunter_Mack/uploads/9/7/1/3/97138798/1481826668_2.png)](http://faculty.uml.edu/Hunter_Mack/)
+
 # Artificial-Bee-Colony : Feature tuning program 
 
 [![PyPI version](https://badge.fury.io/py/artificial-bee-colony.svg)](https://badge.fury.io/py/artificial-bee-colony)
