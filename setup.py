@@ -7,6 +7,6 @@ url = 'https://github.com/hgromer/Artificial-Bee-Colony',
 author = 'Hernan Gelaf-Romer',
 author_email = 'Hernan_Gelafromer@student.uml.edu',
 license = 'MIT',
-packages = ['abc'],
+packages = ['ecabc'],
 install_requires = ["numpy"],
 zip_safe = False)
