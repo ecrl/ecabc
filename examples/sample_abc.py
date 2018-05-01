@@ -2,7 +2,7 @@
 Simple sample script to demonstrate how to use the artificial bee colony
 '''
 
-from abc import *
+from abc.abc import ABC
 
 def fitnessTest(values):  # Fitness function that will be passed to the abc
     fit = 0
