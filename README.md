@@ -2,7 +2,7 @@
 
 # Artificial-Bee-Colony : Feature tuning program 
 
-
+[![PyPI version](https://badge.fury.io/py/artificial-bee-colony.svg)](https://badge.fury.io/py/artificial-bee-colony)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hgromer/Artificial-Bee-Colony/blob/master/LICENSE)
 
 The **artificial-bee-colony** is a generic, small scale feature tuning program that works with any **fitness function**, and **value set**. An **employer bee** is an object which ..
