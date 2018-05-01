@@ -2,7 +2,7 @@
 Simple sample script to demonstrate how to use the artificial bee colony
 '''
 
-from ecabc.abc import ABC
+from ecabc import ABC
 
 def fitnessTest(values):  # Fitness function that will be passed to the abc
     fit = 0
@@ -10,11 +10,12 @@ def fitnessTest(values):  # Fitness function that will be passed to the abc
         fit+=val
     return fit
   
-values = [('int', (0,100)), ('float', (0,100)), ('int',(0,100))]  # Value type/ranges that will be passed to the abc
-
+values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (0, 10000))]  # Value type/ranges that will be passed to the abc
 abc = ABC(fitnessFunction=fitnessTest, 
           valueRanges=values, 
-          amountOfEmployers=10, # Defaults to 50
-          iterationAmount=10 # or endValue = 2
+          amountOfEmployers=50, # Defaults to 50
+          endValue=50
          )
+abc.specifyMinOrMax('min')  # Specify that you are looking to maximize the fitness cost -- Defaults to 'min'
+abc.setResetIteration(5000) # Specify that you are want to reset bees every 2000 iterations in which the score doesn't update
 abc.runABC()
