@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  ecnet/abc.py
-#  v.1.3.0.dev1
+#  abc/abc.py
+#  v.1.0.0.dev1
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
