@@ -9,7 +9,7 @@
 #
 
 # artificial bee colony program import
-import abc.helper_functions
+from ecabc.helper_functions import *
 
 ### Bee object, employers contain value/fitness
 class Bee:
