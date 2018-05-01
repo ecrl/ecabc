@@ -13,8 +13,8 @@ import sys as sys
 from random import randint
 
 # artificial bee colony packages
-from bees import Bee
-from helper_functions import generateRandomValues, saveScore
+from ecabc.bees import Bee
+from ecabc.helper_functions import generateRandomValues, saveScore
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
