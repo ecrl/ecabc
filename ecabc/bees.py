@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/bees.py
-#  v.1.0.3.dev1
+#  v.1.1.0.dev1
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program defines the bee objects created in the artificial bee colony
@@ -16,8 +16,11 @@ class Bee:
     
     def __init__(self, beeType, values=[]):
         self.beeType = beeType
+        # Only onlooker bees should store best performing employers
+        if beeType == 'onlooker':
+            self.bestEmployers = []
         # Only the employer bees should store values/fitness scores
-        if beeType == "employer":               
+        elif beeType == "employer":               
             self.values = values            
             self.currFitnessScore = None
 
