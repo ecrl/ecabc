@@ -1,6 +1,6 @@
 from setuptools import setup
 
-long_description = "Added support for maximizing a fitness function rather than minimizing it through the abc.specifyMinOrMax('max') function.
+long_description = "Added support for maximizing a fitness function rather than minimizing it through the abc.specifyMinOrMax('max') function. Optimized merging two bees to only look at the bees that are performing well."
 
 setup(name = 'ecabc',
 version = "1.1.0.dev1",
