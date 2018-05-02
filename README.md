@@ -10,6 +10,29 @@
 
 The fitness function that is passed must take a tuple of **(value_type, (value_min, value_max)**, with the value types allowed either being a type **float** or a type **int**. The value_type should be passed in as a string. The user may define whether they would like the fitness cost to be minimized or maximized.
 
+# Installation
+
+### Prerequisites:
+- Have python 3.5 installed
+- Have the ability to install python packages
+
+### Method 1: pip
+If you are working in a Linux/Mac environment
+- **sudo pip install ecabc**
+
+Alternatively, in a windows environment, make sure you are running cmd as administrator
+- **pip install ecabc**
+
+Note: if multiple Python releases are installed on your system (e.g. 2.7 and 3.5), you may need to execute the correct version of pip. For Python 3.5, change **"pip install ecabc"** to **"pip3 install ecabc"**.
+
+### Method 2: From source
+- Download the ECabc repository, navigate to the download location on the command line/terminal, and execute 
+**"python setup.py install"**. 
+
+Additional package dependencies (Numpy) will be installed during the ECabc installation process.
+
+To update your version of ECabc to the latest release version, use "**pip install --upgrade ecabc**".
+
 # Use
 
 The artificial bee colony can take a mulitude of parameters.
