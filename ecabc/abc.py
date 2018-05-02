@@ -47,7 +47,7 @@ class ABC:
         secondBee = randint(0, len(self.employers) -1)
         # Avoid both bees being the same
         while (secondBee == firstBee):
-            secondBee = randint(0, len(self.employers) -1)
+            secondBee = randint(0, len(self.onlooker.bestEmployers) -1)
         self.onlooker.getPosition(self.employers, firstBee, secondBee, self.fitnessFunction, valueTypes)
     
     ### Collect the average fitness score across all employers
@@ -67,6 +67,9 @@ class ABC:
         if (self.mm == 'min' and bee.currFitnessScore  > self.fitnessAverage) or (self.mm == 'max' and bee.currFitnessScore < self.fitnessAverage):
             bee.values = generateRandomValues(self.valueRanges)
             bee.currFitnessScore = self.fitnessFunction(bee.values)
+        else:
+            # Assign the well performing bees to the onlooker
+            self.onlooker.bestEmployers.append(bee)
 
     ### If termination depends on a target value, check to see if it has been reached
     def checkIfDone(self, count):
@@ -99,8 +102,9 @@ class ABC:
         running = True
 
         while True:
+            self.onlooker.bestEmployers.clear()
             print("Assigning new positions")
-            for i in range(len(self.employers)):
+            for i in range(len(self.onlooker.bestEmployers)):
                 sys.stdout.flush()
                 sys.stdout.write('At bee number: %d \r' % (i+1))
                 self.assignNewPositions(i)
