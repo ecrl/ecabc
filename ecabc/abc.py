@@ -53,18 +53,12 @@ class ABC:
     ### Collect the average fitness score across all employers
     def getFitnessAverage(self):
         self.fitnessAverage = 0
-        scoreUpdated = False
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
             # While iterating through employers, look for the best fitness score/value pairing
             if self.bestFitnessScore == None or (self.mm == 'min' and employer.currFitnessScore < self.bestFitnessScore) or (self.mm == 'max' and employer.currFitnessScore > self.bestFitnessScore):
                 self.bestFitnessScore = employer.currFitnessScore
                 self.bestValues = employer.values  
-                scoreUpdated = True
-        if scoreUpdated:
-            self.resetBeeCount = 0
-        else:
-            self.resetBeeCount += 1
         self.fitnessAverage /= len(self.employers)
     
     ### Check if new position is better than current position held by a bee
