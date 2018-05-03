@@ -76,7 +76,7 @@ class ABC:
         keepGoing = True
         if self.endValue != None:
             for employer in self.employers:
-                    if self.hasTerminatingFitnessScore(employer):
+                    if self.betterThanEndValue(employer):
                         print("Fitness score =", employer.currFitnessScore)
                         print("Values =", employer.values)
                         keepGoing = False
@@ -99,15 +99,18 @@ class ABC:
         
     ### Return whether the bee has a fitness score worse than the average
     def isWorseThanAverage(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore  > self.fitnessAverage) or (self.mm == 'max' and bee.currFitnessScore < self.fitnessAverage)
+        return (self.mm == 'min' and bee.currFitnessScore  > self.fitnessAverage) or\
+               (self.mm == 'max' and bee.currFitnessScore < self.fitnessAverage)
     
     ### Return whether the bee's fitness score hits the specified end value
-    def hasTerminatingFitnessScore(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore <= self.endValue) or (self.mm == 'max' and bee.currFitnessScore >= self.endValue)
+    def betterThanEndValue(self, bee):
+        return (self.mm == 'min' and bee.currFitnessScore <= self.endValue) or\
+               (self.mm == 'max' and bee.currFitnessScore >= self.endValue)
 
     ### Return whether a bee's fitness average is better than the current best fitness score
     def isBetterThanCurrBest(self, bee):
-        return self.bestFitnessScore == None or (self.mm == 'min' and bee.currFitnessScore < self.bestFitnessScore) or (self.mm == 'max' and bee.currFitnessScore > self.bestFitnessScore)
+        return self.bestFitnessScore == None or (self.mm == 'min' and bee.currFitnessScore < self.bestFitnessScore) or\
+               (self.mm == 'max' and bee.currFitnessScore > self.bestFitnessScore)
             
     ### Run the artificial bee colony
     def runABC(self):
