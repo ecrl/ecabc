@@ -14,7 +14,7 @@ from random import randint
 
 # artificial bee colony packages
 from ecabc.bees import Bee
-from ecabc.helper_functions import generateRandomValues, saveScore
+from ecabc.helper_functions import generateRandomValues, saveScore, blockPrint, enablePrint
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
@@ -111,6 +111,13 @@ class ABC:
     def isBetterThanCurrBest(self, bee):
         return self.bestFitnessScore == None or (self.mm == 'min' and bee.currFitnessScore < self.bestFitnessScore) or\
                (self.mm == 'max' and bee.currFitnessScore > self.bestFitnessScore)
+
+    ### Decide whether print statements will occur
+    def printInfo(self, yn):
+        if yn == True:
+            enablePrint()
+        elif yn == False:
+            blockPrint()
             
     ### Run the artificial bee colony
     def runABC(self):
