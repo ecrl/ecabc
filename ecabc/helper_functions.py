@@ -30,10 +30,9 @@ def valueFunction(a, b):
 ### Function for saving the scores of each iteration onto a file
 def saveScore(score, values, iterationCount, filename):
     # Check to see if the file name already exists on the first iteration
-    printBlocked = False
+    printBlocked = sys.stdout != sys.__stdout__
     if (iterationCount == 0 and Path(filename).is_file()):
-        if sys.stdout != sys.__stdout__:
-            printBlocked = True
+        if printBlocked:
             enablePrint()
         print('File:', filename, 'already exists, press y to overwrite')
         if printBlocked:
@@ -58,4 +57,3 @@ def blockPrint():
 ### Allow the program to print out to the screen
 def enablePrint():
     sys.stdout = sys.__stdout__
-
