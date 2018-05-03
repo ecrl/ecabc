@@ -29,8 +29,17 @@ def valueFunction(a, b):
 
 ### Function for saving the scores of each iteration onto a file
 def saveScore(score, values, iterationCount, filename):
-    # Check to see if the file name already exists on the first iteration
+    # Add scores to the file
+    f = openFile(filename, iterationCount)
+    string = "Score: {} Values: {}".format(score, values)
+    f.write(string)
+    f.write('\n')
+    f.close()
+
+### Open and return a file 
+def openFile(filename, iterationCount):
     printBlocked = sys.stdout != sys.__stdout__
+    # Check to see if the file name already exists on the first iteration
     if (iterationCount == 0 and Path(filename).is_file()):
         if printBlocked:
             enablePrint()
@@ -41,14 +50,10 @@ def saveScore(score, values, iterationCount, filename):
             print('aborting')
             sys.exit(1)
         else:
-            f = open(filename, 'w')
+            return open(filename, 'w')
     else:
-        f = open(filename, 'a')
-    # Add scores to the file
-    string = "Score: {} Values: {}".format(score, values)
-    f.write(string)
-    f.write('\n')
-    f.close()
+        return open(filename, 'a')
+    
 
 ### Prevent the program from printing out to the screen
 def blockPrint():
