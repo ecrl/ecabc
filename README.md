@@ -40,5 +40,6 @@ The artificial bee colony can take a mulitude of parameters.
 - **iterationAmount**: The amount of iterations you would like the program to undergo before terminating
 - **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
 - **specifyMinOrMax**: Specify whether the fitness cost will be minimized or maximized. Defaults to minimized.
+- **printInfo**: Accepts a boolean value, if set to False will prevent any print statements from occuring, this will increase the speed of your program if your fitness function isn't computationally exepensive.
 
 
