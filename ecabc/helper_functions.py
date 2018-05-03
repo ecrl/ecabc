@@ -3,7 +3,7 @@
 # 3rd party packages (open src.)
 from random import randint
 import numpy as np
-import sys as sys, os
+import sys as sys
 from pathlib import Path
 
 ### Generate a random set of values given a value range
@@ -29,37 +29,18 @@ def valueFunction(a, b):
 
 ### Function for saving the scores of each iteration onto a file
 def saveScore(score, values, iterationCount, filename):
-    # Add scores to the file
-    f = openFile(filename, iterationCount)
-    string = "Score: {} Values: {}".format(score, values)
-    f.write(string)
-    f.write('\n')
-    f.close()
-
-### Open and return a file 
-def openFile(filename, iterationCount):
-    printBlocked = sys.stdout != sys.__stdout__
     # Check to see if the file name already exists on the first iteration
     if (iterationCount == 0 and Path(filename).is_file()):
-        if printBlocked:
-            enablePrint()
         print('File:', filename, 'already exists, press y to overwrite')
-        if printBlocked:
-            blockPrint()
         if (input() != 'y'):
             print('aborting')
             sys.exit(1)
         else:
-            return open(filename, 'w')
+            f = open(filename, 'w')
     else:
-        return open(filename, 'a')
-    
-
-### Prevent the program from printing out to the screen
-def blockPrint():
-    sys.stdout= open(os.devnull, 'w')
-
-### Allow the program to print out to the screen
-def enablePrint():
-    sys.stdout = sys.__stdout__
-
+        f = open(filename, 'a')
+    # Add scores to the file
+    string = "Score: {} Values: {}".format(score, values)
+    f.write(string)
+    f.write('\n')
+    f.close()
