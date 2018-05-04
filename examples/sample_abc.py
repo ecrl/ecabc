@@ -1,3 +1,18 @@
+'''
+Simple sample script to demonstrate how to use the artificial bee colony, this script is a simple example, which is just
+used to demonstrate how the program works.
+
+If an ideal day is 70 degrees, with 37.5% humidity. The fitness functions takes four values and tests how 'ideal' they are.
+The first two values input will be added to see how hot the day is, and the second two values will be multiplied to see how much
+humidity there is. The resulting values will be compared to 70 degrees, and 37.5% humidity to determine how ideal the day those 
+values produce is. 
+
+The goal is to have the first two values added up to as close to 70 as possible, while the second two values multiply out to as 
+close to 37.5 as possible.
+'''
+
+from ecabc.abc import ABC
+
 def idealDayTest(values):  # Fitness function that will be passed to the abc
     temperature = values[0] + values[1]       # Calcuate the day's temperature
     humidity = values[2] * values[3]          # Calculate the day's humidity
