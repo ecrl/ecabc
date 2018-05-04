@@ -14,8 +14,8 @@ close to 10 as possible.
 from ecabc.abc import ABC
 
 def idealDayTest(values):  # Fitness function that will be passed to the abc
-    temperature = values[0][1] + values[1][1] # Calcuate the day's temperature
-    humidity = values[2][1] * values[2][2]    # Calculate the day's humidity
+    temperature = values[0] + values[1]       # Calcuate the day's temperature
+    humidity = values[2] * values[2]          # Calculate the day's humidity
     
     cost_temperature = abs(70 - temperature)  # Check how close the daily temperature to 70
     cost_humidity = abs(10 - humidity)        # Check how close the humidity is to 10
