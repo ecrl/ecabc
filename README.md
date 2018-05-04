@@ -40,4 +40,25 @@ The artificial bee colony can take a mulitude of parameters.
 - **iterationAmount**: The amount of iterations you would like the program to undergo before terminating
 - **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
 
+# Example
+
+```python
+from ecabc.abc import ABC
+
+def fitnessTest(values):  # Fitness function that will be passed to the abc
+    fit = 0
+    for val in values:
+        fit+=val
+    return fit
+  
+values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (0, 10000))]  # Value type/ranges that will be passed to the abc
+abc = ABC(fitnessFunction=fitnessTest, 
+          valueRanges=values, 
+          amountOfEmployers=50, # Defaults to 50
+          endValue=50           # Or iterationAmount
+         )
+         
+abc.runABC() # Run the artificial bee colony
+```
+
 
