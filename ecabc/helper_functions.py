@@ -57,7 +57,7 @@ def openFile(filename, iterationCount):
 
 ### Prevent the program from printing out to the screen
 def blockPrint():
-    sys.stdout= open(os.devnull, 'w')
+    sys.stdout = open(os.devnull, 'w')
 
 ### Allow the program to print out to the screen
 def enablePrint():
