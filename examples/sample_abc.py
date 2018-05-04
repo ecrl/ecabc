@@ -1,5 +1,5 @@
 '''
-Simple sample script to demonstrate how to use the artificial bee colony, this script is a very stupid example, which is just
+Simple sample script to demonstrate how to use the artificial bee colony, this script is a simple example, which is just
 used to demonstrate how the program works.
 
 If an ideal day is 70 degrees, with 37.5% humidity. The fitness functions takes four values and tests how 'ideal' they are.
