@@ -33,9 +33,32 @@ Note: if multiple Python releases are installed on your system (e.g. 2.7 and 3.5
 
 Additional package dependencies (Numpy) will be installed during the ECabc installation process.
 
+To update your version of ECabc to the latest release version, use "**pip install --upgrade ecabc**
+
+# Installation
+
+### Prerequisites:
+- Have python 3.5 installed
+- Have the ability to install python packages
+
+### Method 1: pip
+If you are working in a Linux/Mac environment
+- **sudo pip install ecabc**
+
+Alternatively, in a windows environment, make sure you are running cmd as administrator
+- **pip install ecabc**
+
+Note: if multiple Python releases are installed on your system (e.g. 2.7 and 3.5), you may need to execute the correct version of pip. For Python 3.5, change **"pip install ecabc"** to **"pip3 install ecabc"**.
+
+### Method 2: From source
+- Download the ECabc repository, navigate to the download location on the command line/terminal, and execute 
+**"python setup.py install"**. 
+
+Additional package dependencies (Numpy) will be installed during the ECabc installation process.
+
 To update your version of ECabc to the latest release version, use "**pip install --upgrade ecabc**".
 
-# Use
+# Usage
 
 The artificial bee colony can take a mulitude of parameters.
 - **endValue**: The target fitness score you would like your values to produce in order to terminate program
@@ -43,5 +66,26 @@ The artificial bee colony can take a mulitude of parameters.
 - **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
 - **specifyMinOrMax**: Specify whether the fitness cost will be minimized or maximized. Defaults to minimized.
 - **printInfo**: Accepts a boolean value, if set to False will prevent any print statements from occuring, this will increase the speed of your program if your fitness function isn't computationally expensive.
+
+# Example
+
+```python
+from ecabc.abc import ABC
+
+def fitnessTest(values):  # Fitness function that will be passed to the abc
+    fit = 0
+    for val in values:
+        fit+=val
+    return fit
+  
+values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (0, 10000))]  # Value type/ranges that will be passed to the abc
+abc = ABC(fitnessFunction=fitnessTest, 
+          valueRanges=values, 
+          amountOfEmployers=50, # Defaults to 50
+          endValue=50           # Or iterationAmount
+         )
+         
+abc.runABC() # Run the artificial bee colony
+```
 
 
