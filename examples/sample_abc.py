@@ -29,6 +29,6 @@ abc = ABC(fitnessFunction=idealDayTest,
           valueRanges=values, 
           endValue=2           # Or iterationAmount
          )
-abc.printInfo(True)            # Specify that you would like information printed to the console (may reduce run time)
+abc.printInfo(True)            # Specify that you would like information printed to the console (may increase run time)
 abc.specifyMinOrMax('min')     # Here you are specifying you would like your fitness cost minimized
 abc.runABC()
