@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.1.1.0.dev1
+#  v.1.1.1.dev2
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -24,7 +24,7 @@ class ABC:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
-        print("***INITIALIZING***")
+        print("***INITIALIZING ABC***")
         self.filename = filename                # Name of file where the scores will be stored
         self.iterationCount = 0
         self.valueRanges = valueRanges
@@ -37,6 +37,7 @@ class ABC:
         self.endValue = endValue
         self.iterationAmount = iterationAmount
         self.mm = 'min'
+        self.printProjectFeedback = True
         # Initialize employer bees, assign them values/fitness scores
         self.createEmployerBees(amountOfEmployers)
         print("***DONE INITIALIZING***")
@@ -114,14 +115,14 @@ class ABC:
 
     ### Decide whether print statements will occur
     def printInfo(self, yn):
-        if yn == True:
-            enablePrint()
-        elif yn == False:
-            blockPrint()
+        self.printProjectFeedback = yn
             
     ### Run the artificial bee colony
     def runABC(self):
         running = True
+        
+        if self.printProjectFeedback == False:
+            blockPrint()
 
         while True:
             self.onlooker.bestEmployers.clear()
@@ -150,5 +151,9 @@ class ABC:
                 break
             saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
             self.iterationCount+=1
+        
+        # Return control of stdout to the user
+        if self.printProjectFeedback == False:
+            enablePrint()
 
         return self.bestValues
