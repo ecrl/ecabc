@@ -15,8 +15,8 @@ import numpy as np
 
 # artificial bee colony packages
 from ecabc.bees import Bee
-from settings import Settings
-from output import Output
+from ecabc.settings import Settings
+from ecabc.output import Output
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
@@ -41,7 +41,6 @@ class ABC:
         self.employers = []
         self.onlooker = Bee('onlooker')
         self.fitnessAverage = 0
-        self.mm = 'min'
         # Initialize employer bees, assign them values/fitness scores
         self.output.print("***INITIALIZING ABC***")
         self.createEmployerBees(amountOfEmployers)
@@ -114,24 +113,23 @@ class ABC:
             self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
-    def specifyMinOrMax(self, mm):
-        if (mm == 'max'):
-            self.mm = 'max'
+    def specifyMinOrMax(self, minimize):
+        self.settings._minimize = minimize
         
     ### Return whether the bee has a fitness score worse than the average
     def isWorseThanAverage(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore  > self.fitnessAverage) or\
-               (self.mm == 'max' and bee.currFitnessScore < self.fitnessAverage)
+        return (self.settings._minimize == True and bee.currFitnessScore  > self.fitnessAverage) or\
+               (self.settings._minimize == False and bee.currFitnessScore < self.fitnessAverage)
     
     ### Return whether the bee's fitness score hits the specified end value
     def betterThanEndValue(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore <= self.settings._endValue) or\
-               (self.mm == 'max' and bee.currFitnessScore >= self.settings._endValue)
+        return (self.settings._minimize == True and bee.currFitnessScore <= self.settings._endValue) or\
+               (self.settings._minimize == False and bee.currFitnessScore >= self.settings._endValue)
 
     ### Return whether a bee's fitness average is better than the current best fitness score
     def isBetterThanCurrBest(self, bee):
-        return self.settings._bestScore == None or (self.mm == 'min' and bee.currFitnessScore < self.settings._bestScore) or\
-               (self.mm == 'max' and bee.currFitnessScore > self.settings._bestScore)
+        return self.settings._bestScore == None or (self.settings._minimize == True and bee.currFitnessScore < self.settings._bestScore) or\
+               (self.settings._minimize == False and bee.currFitnessScore > self.settings._bestScore)
 
     ### Decide whether print statements will occur
     def printInfo(self, yn):
