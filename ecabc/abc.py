@@ -113,7 +113,7 @@ class ABC:
             self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
-    def specifyMinOrMax(self, minimize):
+    def minimize(self, minimize):
         self.settings._minimize = minimize
         
     ### Return whether the bee has a fitness score worse than the average
