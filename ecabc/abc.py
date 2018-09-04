@@ -143,8 +143,7 @@ class ABC:
             self.onlooker.bestEmployers.clear()
             self.output.print("Assigning new positions")
             for i in range(len(self.onlooker.bestEmployers)):
-                sys.stdout.flush()
-                sys.stdout.write('At bee number: %d \r' % (i+1))
+                self.output.print('At bee number: %d \r' % (i+1))
                 self.assignNewPositions(i)
             self.output.print("Getting fitness average")
             self.getFitnessAverage()
