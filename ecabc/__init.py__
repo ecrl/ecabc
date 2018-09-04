@@ -1,5 +1,5 @@
-import ecabc.abc
-import ecabc.bees
-import ecabc.settings
-import ecabc.output
+from . import abc
+from . import bees
+from . import settings
+from . import output
 __version__ = '1.2.0'
