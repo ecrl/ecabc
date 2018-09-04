@@ -2,14 +2,13 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/bees.py
-#  v.1.1.1.dev2
+#  v.1.2.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program defines the bee objects created in the artificial bee colony
 #
 
-# artificial bee colony program import
-from ecabc.helper_functions import valueFunction
+import numpy as np
 
 ### Bee object, employers contain value/fitness
 class Bee:
@@ -29,7 +28,7 @@ class Bee:
         newValues = []
         currValue = 0
         for i in range(len(valueTypes)):
-            currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
+            currValue = self.valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
             if valueTypes[i] == 'int':
                 currValue = int(currValue)
             newValues.append(currValue)
@@ -45,3 +44,8 @@ class Bee:
             if self.currFitnessScore == None or fitnessScore < self.currFitnessScore:
                 self.value = values
                 self.currFitnessScore = fitnessScore
+
+    ### Method of generating a value in between the values given
+    def valueFunction(self, a, b):  
+        activationNum = np.random.uniform(-1, 1)
+        return a + abs(activationNum * (a - b))
