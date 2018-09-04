@@ -47,7 +47,7 @@ class Settings:
     def importSettings(self):
         self._filename = self._filename
         if not os.path.isfile(self._filename):
-            raise ValueError('could not open setting file')
+            raise FileNotFoundError('could not open setting file')
         else:
             with open(self._filename, 'r') as jsonFile:
                 data = json.load(jsonFile)

@@ -34,7 +34,7 @@ class ABC:
         if self.saving:
             try:
                 self.settings.importSettings()
-            except ValueError:
+            except FileNotFoundError:
                 self.output.print("Creating new settings file")
             self.settings.saveSettings()
         self.fitnessFunction = fitnessFunction
