@@ -12,6 +12,7 @@ close to 37.5 as possible.
 '''
 
 from ecabc.abc import ABC
+import sys
 
 def idealDayTest(values):  # Fitness function that will be passed to the abc
     temperature = values[0] + values[1]       # Calcuate the day's temperature
@@ -27,8 +28,8 @@ values = [('int', (0,100)), ('int', (0,100)), ('float',(0,100)), ('float', (0, 1
 
 abc = ABC(fitnessFunction=idealDayTest, 
           valueRanges=values, 
-          endValue=2           # Or iterationAmount
+          endValue=2,           # Or iterationAmount
+          printInfo=True,
+          filename=sys.path[0] + '/settings.json'
          )
-abc.printInfo(True)            # Specify that you would like information printed to the console (may increase run time)
-abc.specifyMinOrMax('min')     # Here you are specifying you would like your fitness cost minimized
 abc.runABC()
