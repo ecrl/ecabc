@@ -14,9 +14,9 @@ from random import randint
 import numpy as np
 
 # artificial bee colony packages
-from ecabc.bees import Bee
-from settings import Settings
-from output import Output
+from .bees import Bee
+from .settings import Settings
+from .output import Output
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
