@@ -62,10 +62,14 @@ To update your version of ECabc to the latest release version, use "**pip instal
 
 The artificial bee colony can take a mulitude of parameters.
 - **endValue**: The target fitness score you would like your values to produce in order to terminate program
-- **iterationAmount**: The amount of iterations you would like the program to undergo before terminating
-- **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values.
-- **specifyMinOrMax**: Specify whether the fitness cost will be minimized or maximized. Defaults to minimized.
+- **iterationAmount**: The amount of iterations you would like the program to undergo before terminating. An iteration is one cycle of assinging values to N location for N many employer bees.
+- **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values. The more bees, the longer each iteration will take, however the less iterations your program will hypothetically need to arrive at a target min/max value.
 - **printInfo**: Accepts a boolean value, if set to False will prevent any print statements from occuring, this will increase the speed of your program if your fitness function isn't computationally expensive.
+- **filename**: Accepts the name of a file which you wish to save your settings and scores. Setting this to None will avoid creating a save file. If you have a settings file which matches the file you specified, the settings and scores from the settings file in your directory will be imported
+
+The artificial bee colony also utilizes a variety to methods to toggle certain settings.
+- **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
+- **printInfo**: Same as the printInfo argument.
 
 # Example
 
@@ -84,7 +88,8 @@ abc = ABC(fitnessFunction=fitnessTest,
           amountOfEmployers=50, # Defaults to 50
           endValue=50           # Or iterationAmount
          )
-         
+
+abc.minimize(False)         
 abc.runABC() # Run the artificial bee colony
 ```
 
