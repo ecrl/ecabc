@@ -27,15 +27,15 @@ class ABC:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
-        self.saving = True
+        self.saving = filename is not None
         self.iterationCount = 0
         self.output = Output(printInfo)
         self.settings = Settings(valueRanges, iterationAmount, endValue, amountOfEmployers, filename)
-        try:
-            self.settings.importSettings()
-        except ValueError:
-            self.output.print("Creating new settings file")
         if self.saving:
+            try:
+                self.settings.importSettings()
+            except ValueError:
+                self.output.print("Creating new settings file")
             self.settings.saveSettings()
         self.fitnessFunction = fitnessFunction
         self.employers = []
