@@ -70,6 +70,7 @@ The artificial bee colony can take a mulitude of parameters.
 The artificial bee colony also utilizes a variety to methods to toggle certain settings.
 - **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
 - **printInfo**: Same as the printInfo argument.
+- **import**: True if you'd wish to import from the filename given, false if you'd like to create a new settings file. Defaults to false.
 
 # Example
 
