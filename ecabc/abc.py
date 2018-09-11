@@ -161,10 +161,6 @@ class ABC:
             self.output.print("Best value: {}".format(self.settings._bestValues))
             if self.settings._iterationAmount != None:
                 self.output.print("Iteration {} / {}".format(self.iterationCount, self.settings._iterationAmount))
-            if self.saving:
-                self.settings.saveSettings()
-            if running == False:
-                break
             self.iterationCount+=1
 
         return self.settings._bestValues
