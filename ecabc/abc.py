@@ -22,7 +22,7 @@ from ecabc.output import Output
 class ABC:
 
     def __init__(self, valueRanges, fitnessFunction=None, endValue=None, iterationAmount=None,\
-     amountOfEmployers=50, filename='settings.json', printInfo=True):
+     amountOfEmployers=50, filename='settings.json', printInfo=True, importing=False):
         if endValue == None and iterationAmount == None:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
@@ -32,11 +32,14 @@ class ABC:
         self.output = Output(printInfo)
         self.settings = Settings(valueRanges, iterationAmount, endValue, amountOfEmployers, filename)
         if self.saving:
-            try:
-                self.settings.importSettings()
-            except FileNotFoundError:
-                self.output.print("Creating new settings file")
-            self.settings.saveSettings()
+            if importing:
+                try:
+                    self.settings.importSettings()
+                except FileNotFoundError:
+                    self.output.print("Creating new settings file")
+                self.settings.saveSettings()
+            else:
+                self.settings.saveSettings()
         self.fitnessFunction = fitnessFunction
         self.employers = []
         self.onlooker = Bee('onlooker')
@@ -84,26 +87,24 @@ class ABC:
     
     ### Check if new position is better than current position held by a bee
     def checkNewPositions(self, bee):
-        # Update the bee's fitness/value pair if the new location is better
+        #   the bee's fitness/value pair if the new location is better
         if self.isWorseThanAverage(bee):
             bee.values = self.generateRandomValues()
             bee.currFitnessScore = self.fitnessFunction(bee.values)
+            self.settings.update(bee.currFitnessScore, bee.values)
         else:
             # Assign the well performing bees to the onlooker
             self.onlooker.bestEmployers.append(bee)
 
     ### If termination depends on a target value, check to see if it has been reached
     def checkIfDone(self, count):
-        keepGoing = True
+        stop = False
         if self.settings._endValue != None:
-            for employer in self.employers:
-                    if self.betterThanEndValue(employer):
-                        self.output.print("Fitness score = {}".format(employer.currFitnessScore))
-                        self.output.print("Values = {}".format(employer.values))
-                        keepGoing = False
+            if self.betterThanEndValue(self.settings._bestScore):
+                stop = True
         elif count >= self.settings._iterationAmount:
-            keepGoing = False
-        return keepGoing
+            stop = True
+        return stop
     
     ### Create employer bees
     def createEmployerBees(self, amountOfEmployers):
@@ -122,9 +123,9 @@ class ABC:
                (self.settings._minimize == False and bee.currFitnessScore < self.fitnessAverage)
     
     ### Return whether the bee's fitness score hits the specified end value
-    def betterThanEndValue(self, bee):
-        return (self.settings._minimize == True and bee.currFitnessScore <= self.settings._endValue) or\
-               (self.settings._minimize == False and bee.currFitnessScore >= self.settings._endValue)
+    def betterThanEndValue(self, score):
+        return (self.settings._minimize == True and score <= self.settings._endValue) or\
+               (self.settings._minimize == False and score >= self.settings._endValue)
 
     ### Return whether a bee's fitness average is better than the current best fitness score
     def isBetterThanCurrBest(self, bee):
@@ -137,9 +138,9 @@ class ABC:
 
     ### Run the artificial bee colony
     def runABC(self):
-        running = True
 
         while True:
+            
             self.onlooker.bestEmployers.clear()
             self.output.print("Assigning new positions")
             for i in range(len(self.onlooker.bestEmployers)):
@@ -147,20 +148,21 @@ class ABC:
                 self.assignNewPositions(i)
             self.output.print("Getting fitness average")
             self.getFitnessAverage()
-            self.output.print("Checking if done")
-            running = self.checkIfDone(self.iterationCount)
-            if running == False and self.settings._endValue != None:
-                if self.saving:
-                    self.settings.saveSettings()
-                break
             self.output.print("Current fitness average: {}".format(self.fitnessAverage))
+            if self.settings._iterationAmount != None:
+                self.output.print("Iteration {} / {}".format(self.iterationCount+1, self.settings._iterationAmount))
+            self.iterationCount+=1
+            self.output.print("Checking if done")
+            
+            if self.saving:
+                self.settings.saveSettings()
+            if self.checkIfDone(self.iterationCount):
+                break
+
             self.output.print("Checking new positions, assigning random positions to bad ones")
             for employer in self.employers:
                 self.checkNewPositions(employer)
             self.output.print("Best score: {}".format(self.settings._bestScore))
             self.output.print("Best value: {}".format(self.settings._bestValues))
-            if self.settings._iterationAmount != None:
-                self.output.print("Iteration {} / {}".format(self.iterationCount, self.settings._iterationAmount))
-            self.iterationCount+=1
 
         return self.settings._bestValues
