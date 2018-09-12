@@ -14,12 +14,13 @@ import sys
 
 class Settings:
 
-    def __init__(self, valueRanges=None, iterationAmount=None, endValue=None, amountOfEmployers=50, filename='settings.json'):
+    def __init__(self, valueRanges=None, iterationAmount=None, endValue=None, amountOfEmployers=50, filename='settings.json', processes=5):
         self._valueRanges = valueRanges
         self._iterationAmount = iterationAmount
         self._amountOfEmployers = amountOfEmployers
         self._filename = filename
         self._bestValues = []
+        self._processes = processes
         self._bestScore = None
         self._minimize = True
         self._printFeedback = True
@@ -34,6 +35,7 @@ class Settings:
         data['printFeedback'] = self._printFeedback
         data['amountOfEmployers'] = self._amountOfEmployers
         data['bestScore'] = self._bestScore
+        data['processes'] = self._processes
         if self._iterationAmount == None:
             data['iterationAmount'] = -1
             data['endValue'] = self._endValue
@@ -51,6 +53,7 @@ class Settings:
         else:
             with open(self._filename, 'r') as jsonFile:
                 data = json.load(jsonFile)
+                self._processes = data['processes']
                 self._valueRanges = data['valueRanges']
                 self._bestValues = data['bestValues']
                 self._minimize = data['minimize']
