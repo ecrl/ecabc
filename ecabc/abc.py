@@ -15,7 +15,7 @@ import numpy as np
 from multiprocessing import Pool
 
 # artificial bee colony packages
-from ecab.bees import Bee
+from ecabc.bees import Bee
 from ecabc.settings import Settings
 from ecabc.output import Output
 
@@ -23,16 +23,15 @@ from ecabc.output import Output
 class ABC:
 
     def __init__(self, valueRanges, fitnessFunction=None, endValue=None, iterationAmount=None,\
-     amountOfEmployers=50, filename='settings.json', printInfo=True, importing=False):
+     amountOfEmployers=50, filename='settings.json', printInfo=True, importing=False, processes=5):
         if endValue == None and iterationAmount == None:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
-        self.pool = Pool(5)
         self.saving = filename is not None
         self.iterationCount = 0
         self.output = Output(printInfo)
-        self.settings = Settings(valueRanges, iterationAmount, endValue, amountOfEmployers, filename)
+        self.settings = Settings(valueRanges, iterationAmount, endValue, amountOfEmployers, filename, processes)
         if self.saving:
             if importing:
                 try:
@@ -42,6 +41,8 @@ class ABC:
                 self.settings.saveSettings()
             else:
                 self.settings.saveSettings()
+        if self.settings._processes > 0:
+            self.pool = Pool(5)
         self.fitnessFunction = fitnessFunction
         self.employers = []
         self.onlooker = Bee('onlooker')
@@ -111,12 +112,12 @@ class ABC:
     ### Create employer bees
     def createEmployerBees(self, amountOfEmployers):
         for i in range(amountOfEmployers):
-            self.output.print("Creating bee number: %d \r" % (i + 1))
             self.employers.append(Bee('employer', self.generateRandomValues()))
             score = self.pool.apply_async(self.fitnessFunction, [self.employers[i].values])
             self.employers[i].currFitnessScore = score
-        for employer in self.employers:
-            employer.currFitnessScore = employer.currFitnessScore.get()
+        for i in range(amountOfEmployers):
+            self.employers[i].currFitness = self.employers[i].currFitnessScore.get()
+            self.output.print("Bee number {} created".format(i+1))
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
