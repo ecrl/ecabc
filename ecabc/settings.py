@@ -14,7 +14,7 @@ import sys
 
 class Settings:
 
-    def __init__(self, valueRanges=None, iterationAmount=None, endValue=None, amountOfEmployers=50, filename='settings.json', processes=5):
+    def __init__(self, valueRanges, iterationAmount, endValue, amountOfEmployers, filename, processes):
         self._valueRanges = valueRanges
         self._iterationAmount = iterationAmount
         self._amountOfEmployers = amountOfEmployers
