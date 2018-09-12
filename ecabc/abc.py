@@ -42,7 +42,7 @@ class ABC:
             else:
                 self.settings.saveSettings()
         if self.settings._processes > 0:
-            self.pool = Pool(5)
+            self.pool = Pool(processes)
         self.fitnessFunction = fitnessFunction
         self.employers = []
         self.onlooker = Bee('onlooker')
@@ -89,15 +89,28 @@ class ABC:
         return values
     
     ### Check if new position is better than current position held by a bee
-    def checkNewPositions(self, bee):
-        #   the bee's fitness/value pair if the new location is better
-        if self.isWorseThanAverage(bee):
-            bee.values = self.generateRandomValues()
-            bee.currFitnessScore = self.fitnessFunction(bee.values)
-            self.settings.update(bee.currFitnessScore, bee.values)
+    def checkNewPositions(self):
+        # If multi processing
+        if self.settings._processes > 0:
+            modified_bees = []
+            for bee in self.employers:
+                if self.isWorseThanAverage(bee):
+                    bee.values = self.generateRandomValues()
+                    bee.currFitnessScore = self.pool.apply_async(self.fitnessFunction, [bee.values])
+                    modified_bees.append(bee)
+                else:
+                    # Assign the well performing bees to the onlooker
+                    self.onlooker.bestEmployers.append(bee)
+            for bee in modified_bees:
+                bee.currFitnessScore = bee.currFitnessScore.get()
+                self.settings.update(bee.currFitnessScore, bee.values)
+
+        # No multiprocessing
         else:
-            # Assign the well performing bees to the onlooker
-            self.onlooker.bestEmployers.append(bee)
+            for bee in self.employers:
+                if self.isWorseThanAverage(bee):
+                    bee.values = self.generateRandomValues()
+                    bee.currFitnessScore = self.fitnessFunction(bee.values)
 
     ### If termination depends on a target value, check to see if it has been reached
     def checkIfDone(self, count):
@@ -111,13 +124,21 @@ class ABC:
     
     ### Create employer bees
     def createEmployerBees(self, amountOfEmployers):
-        for i in range(amountOfEmployers):
-            self.employers.append(Bee('employer', self.generateRandomValues()))
-            score = self.pool.apply_async(self.fitnessFunction, [self.employers[i].values])
-            self.employers[i].currFitnessScore = score
-        for i in range(amountOfEmployers):
-            self.employers[i].currFitness = self.employers[i].currFitnessScore.get()
-            self.output.print("Bee number {} created".format(i+1))
+        # If multiprocessing
+        if self.settings._processes > 0:
+            for i in range(amountOfEmployers):
+                self.employers.append(Bee('employer', self.generateRandomValues()))
+                self.employers[i].currFitnessScore = self.pool.apply_async(self.fitnessFunction, [self.employers[i].values])
+            for i in range(amountOfEmployers):
+                self.employers[i].currFitnessScore = self.employers[i].currFitnessScore.get()
+                self.output.print("Bee number {} created".format(i+1))
+
+        # No multiprocessing
+        else:
+            for i in range(amountOfEmployers):
+                self.employers.append(Bee('employer', self.generateRandomValues()))
+                self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
+                self.output.print("Bee number {} created".format(i+1))
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
@@ -166,8 +187,7 @@ class ABC:
                 break
 
             self.output.print("Checking new positions, assigning random positions to bad ones")
-            for employer in self.employers:
-                self.checkNewPositions(employer)
+            self.checkNewPositions()
             self.output.print("Best score: {}".format(self.settings._bestScore))
             self.output.print("Best value: {}".format(self.settings._bestValues))
 
