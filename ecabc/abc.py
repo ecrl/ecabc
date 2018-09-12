@@ -12,9 +12,10 @@
 import sys as sys
 from random import randint
 import numpy as np
+from multiprocessing import Pool
 
 # artificial bee colony packages
-from ecabc.bees import Bee
+from ecab.bees import Bee
 from ecabc.settings import Settings
 from ecabc.output import Output
 
@@ -27,6 +28,7 @@ class ABC:
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
             raise ValueError("must pass a fitness function")
+        self.pool = Pool(5)
         self.saving = filename is not None
         self.iterationCount = 0
         self.output = Output(printInfo)
@@ -111,7 +113,10 @@ class ABC:
         for i in range(amountOfEmployers):
             self.output.print("Creating bee number: %d \r" % (i + 1))
             self.employers.append(Bee('employer', self.generateRandomValues()))
-            self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
+            score = self.pool.apply_async(self.fitnessFunction, [self.employers[i].values])
+            self.employers[i].currFitnessScore = score
+        for employer in self.employers:
+            employer.currFitnessScore = employer.currFitnessScore.get()
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
