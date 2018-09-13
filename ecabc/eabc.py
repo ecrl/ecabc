@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.1.2.0
+#  v.2.0.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -17,16 +17,15 @@ from multiprocessing import Pool
 
 # artificial bee colony packages
 from ecabc.bees import Bee
-from ecabc.settings import Settings
-import ecabc.logger
+from settings import Settings
+from logger import Logger
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
 
     def __init__(self, valueRanges, fitnessFunction=None, endValue=None, iterationAmount=None,\
-     amountOfEmployers=50, filename='settings.json', printLevel=logging.INFO, importing=False, processes=5):
-        logger.setup_folder()
-        self.logger = logger.get_logger(printLevel)
+     amountOfEmployers=50, filename='settings.json', printLevel=logging.DEBUG, importing=False, processes=5):
+        self.logger = Logger(printLevel, 'abc_logger')
         if endValue == None and iterationAmount == None:
             self.logger.fatal("must select either an iterationAmount or and endValue")
             raise ValueError("must select either an iterationAmount or and endValue")

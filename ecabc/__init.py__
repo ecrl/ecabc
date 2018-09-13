@@ -1,5 +1,5 @@
 import ecabc.abc
 import ecabc.bees
 import ecabc.settings
-import ecabc.output
-__version__ = '1.2.0'
+import ecabc.logger
+__version__ = '2.0.0'

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.1.2.0
+#  v.2.0.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This class stores the settings for the the bee colony
