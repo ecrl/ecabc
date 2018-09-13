@@ -31,16 +31,16 @@ class Logger:
         self.__setup_file_handlers()
         self.__setup_stream_handler(print_level)
 
-    def debug(self, message, *args, **kwargs):
+    def debug(self, message):
         self.__logger.debug(message)
 
-    def info(self, message, *args, **kwargs):
+    def info(self, message):
         self.__logger.info(message)
 
-    def warn(self, message, *args, **kwargs):
+    def warn(self, message):
         self.__logger.warn(message)
 
-    def fatal(self, message, *args, **kwargs):
+    def fatal(self, message):
         self.__logger.fatal(message)
 
     def clean_logs(self): 
