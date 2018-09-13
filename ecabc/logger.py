@@ -49,17 +49,17 @@ class Logger:
             fh.setLevel(log_level)
             formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
             fh.setFormatter(formatter)
-            if log_level != logging.NOTSET:
-                fh.addFilter(MyFilter(log_level))
+            fh.addFilter(MyFilter(log_level))
             self.__logger.addHandler(fh)
 
     ### Set up stream handler to output data to console
     def __setup_stream_handler(self, print_level):
-        sh = logging.StreamHandler()
-        sh.setLevel(print_level)
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        sh.setFormatter(formatter)
-        self.__logger.addHandler(sh)
+        if print_level:
+            sh = logging.StreamHandler()
+            sh.setLevel(print_level)
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            sh.setFormatter(formatter)
+            self.__logger.addHandler(sh)
 
     ### Set up folder hierarchy
     def __setup_folders(self):
