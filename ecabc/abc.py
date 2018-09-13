@@ -24,8 +24,9 @@ from ecabc.logger import Logger
 class ABC:
 
     def __init__(self, valueRanges, fitnessFunction=None, endValue=None, iterationAmount=None,\
-     amountOfEmployers=50, filename='settings.json', printLevel=logging.DEBUG, importing=False, processes=5):
-        self.logger = Logger(printLevel, 'abc_logger')
+     amountOfEmployers=50, filename='settings.json', printLevel=logging.INFO, file_logging=False, 
+     importing=False, processes=5):
+        self.logger = Logger(printLevel, file_logging, 'abc_logger')
         if endValue == None and iterationAmount == None:
             self.logger.fatal("must select either an iterationAmount or and endValue")
             raise ValueError("must select either an iterationAmount or and endValue")
@@ -208,4 +209,6 @@ class ABC:
         if self.settings._processes > 0:
             self.pool.close()
             self.pool.join()
+            self.logger.debug("Process pool closed")
+        self.logger.info("Run ABC finished. Score: {} | Values: {}".format(self.settings._bestScore, self.settings._bestValues))
         return self.settings._bestValues
