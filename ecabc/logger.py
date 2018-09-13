@@ -47,7 +47,6 @@ class Logger:
     def clean_logs(self): 
         try:
             for log_folder in os.listdir('logs'):
-                print(log_folder)
                 shutil.rmtree('logs/{}'.format(log_folder))
         except Exception as e:
             raise e
