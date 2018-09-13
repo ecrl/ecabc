@@ -64,14 +64,14 @@ The artificial bee colony can take a mulitude of parameters.
 - **endValue**: The target fitness score you would like your values to produce in order to terminate program
 - **iterationAmount**: The amount of iterations you would like the program to undergo before terminating. An iteration is one cycle of assinging values to N location for N many employer bees.
 - **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values. The more bees, the longer each iteration will take, however the less iterations your program will hypothetically need to arrive at a target min/max value.
-- **printInfo**: Accepts a boolean value, if set to False will prevent any print statements from occuring, this will increase the speed of your program if your fitness function isn't computationally expensive.
+- **file_logging**: Accepts a boolean value. If set to true, will log for abc. This can be quite exepensive. If your fitness function is trivial, this will add an unecessary amount of time to reach target goal. You should instead just output to console.
+- **print_level**: Accepts logging.DEBUG/INFO/WARN/ERROR/FATAL or None. This will print out log information to the console, and is less costly compared to saving logs to a file. If set to None, won't output to console. Defaults to logging.INFO.
 - **filename**: Accepts the name of a file which you wish to save your settings and scores. Setting this to None will avoid creating a save file. If you have a settings file which matches the file you specified, the settings and scores from the settings file in your directory will be imported
 - **import**: True if you'd wish to import from the filename given, false if you'd like to create a new settings file. Defaults to false.
 - **processes**: Decide how many processes you'd like to have running at a time. A process will run the fitness function once per iteration. Processes run in parallel, and thus the more processes you utilize, the more fitness functions can run concurrently, cutting program run time significantly. If your fitness function takes 5 seconds to execute. Utilizing 50 bees, and 5 processes, calculating the values for all bees will take 50 seconds, rather than 250. Be mindful that this will increase CPU usage heavily, and you should be careful with how many processes you allow a time, to avoid a crash or computer freeze. **If your fitness function is trivial, set processes to 0. Process spawning is expensive, and only worth it for costly fitness functions.** Defaults to 5.
 
 The artificial bee colony also utilizes a variety to methods to toggle certain settings.
 - **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
-- **printInfo**: Same as the printInfo argument.
 
 # Example
 
