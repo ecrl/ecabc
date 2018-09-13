@@ -39,12 +39,16 @@ class ABC:
             if importing:
                 try:
                     self.settings.importSettings()
+                    self.logger.debug("Imported file {}".format(filename))
                 except FileNotFoundError:
                     self.logger.debug("Creating new settings file")
                 self.settings.saveSettings()
+                self.logger.debug("Settings saved'")
             else:
                 self.settings.saveSettings()
+                self.logger.debug("Settings saved'")
         if self.settings._processes > 0:
+            self.logger.debug("Creating {} processes".format(self.settings._processes))
             self.pool = Pool(processes)
         self.fitnessFunction = fitnessFunction
         self.employers = []
@@ -70,9 +74,8 @@ class ABC:
         for employer in self.employers:
             self.fitnessAverage += employer.currFitnessScore
             # While iterating through employers, look for the best fitness score/value pairing
-            if self.isBetterThanCurrBest(employer):
-                self.settings._bestScore = employer.currFitnessScore
-                self.settings._bestValues = employer.values  
+            if self.settings.update(employer.currFitnessScore, employer.values):
+                self.logger.info("Best score update to score: {} | values: {}".format(employer.currFitnessScore, employer.values)) 
         self.fitnessAverage /= len(self.employers)
 
     ### Generate a random set of values given a value range
@@ -109,7 +112,8 @@ class ABC:
             for bee in modified_bees:
                 try:
                     bee.currFitnessScore = bee.currFitnessScore.get()
-                    self.settings.update(bee.currFitnessScore, bee.values)
+                    if self.settings.update(bee.currFitnessScore, bee.values):
+                        self.logger.info("Best score update to score: {} | values: {} ".format(bee.currFitnessScore, bee.values))
                 except Exception as e:
                     raise e
 
@@ -119,6 +123,8 @@ class ABC:
                 if self.isWorseThanAverage(bee):
                     bee.values = self.generateRandomValues()
                     bee.currFitnessScore = self.fitnessFunction(bee.values)
+                    if self.settings.update(bee.currFitnessScore, bee.values):
+                        self.logger.info("Best score update to score: {} | values: {} ".format(bee.currFitnessScore, bee.values))
 
     ### If termination depends on a target value, check to see if it has been reached
     def checkIfDone(self, count):
@@ -189,6 +195,7 @@ class ABC:
 
             self.logger.debug("Checking if done")
             if self.saving:
+                self.logger.debug("Saving settings")
                 self.settings.saveSettings()
             if self.checkIfDone(self.iterationCount):
                 break
