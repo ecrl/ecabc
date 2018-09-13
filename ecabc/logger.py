@@ -11,10 +11,11 @@
 import os
 import logging
 import datetime
+import shutil
 
 class Logger:
 
-    def __init__(self, print_level, logger_name):
+    def __init__(self, print_level, logger_name=__name__):
         self.__logger = logging.getLogger(logger_name)
         self.__logger.setLevel(logging.DEBUG)
         self.__folder = datetime.datetime.now()
@@ -41,6 +42,14 @@ class Logger:
 
     def fatal(self, message, *args, **kwargs):
         self.__logger.fatal(message)
+
+    def clean_logs(self): 
+        try:
+            for log_folder in os.listdir('logs'):
+                print(log_folder)
+                shutil.rmtree('logs/{}'.format(log_folder))
+        except Exception as e:
+            raise e
 
     ### Set up various files logger will be outputting to
     def __setup_file_handlers(self):
