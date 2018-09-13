@@ -12,33 +12,36 @@
 import sys as sys
 from random import randint
 import numpy as np
+import logging
 from multiprocessing import Pool
-import traceback
 
 # artificial bee colony packages
 from ecabc.bees import Bee
 from ecabc.settings import Settings
-from ecabc.output import Output
+import ecabc.logger
 
 ### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
 
     def __init__(self, valueRanges, fitnessFunction=None, endValue=None, iterationAmount=None,\
-     amountOfEmployers=50, filename='settings.json', printInfo=True, importing=False, processes=5):
+     amountOfEmployers=50, filename='settings.json', printLevel=logging.INFO, importing=False, processes=5):
+        logger.setup_folder()
+        self.logger = logger.get_logger(printLevel)
         if endValue == None and iterationAmount == None:
+            self.logger.fatal("must select either an iterationAmount or and endValue")
             raise ValueError("must select either an iterationAmount or and endValue")
         if fitnessFunction == None:
+            self.logger.fatal("must pass a fitness function")
             raise ValueError("must pass a fitness function")
         self.saving = filename is not None
         self.iterationCount = 0
-        self.output = Output(printInfo)
         self.settings = Settings(valueRanges, iterationAmount, endValue, amountOfEmployers, filename, processes)
         if self.saving:
             if importing:
                 try:
                     self.settings.importSettings()
                 except FileNotFoundError:
-                    self.output.print("Creating new settings file")
+                    self.logger.debug("Creating new settings file")
                 self.settings.saveSettings()
             else:
                 self.settings.saveSettings()
@@ -49,9 +52,9 @@ class ABC:
         self.onlooker = Bee('onlooker')
         self.fitnessAverage = 0
         # Initialize employer bees, assign them values/fitness scores
-        self.output.print("***INITIALIZING ABC***")
+        self.logger.debug("***INITIALIZING ABC***")
         self.createEmployerBees(amountOfEmployers)
-        self.output.print("***DONE INITIALIZING***")
+        self.logger.debug("***DONE INITIALIZING***")
      
     ### Assign a new position to the given bee
     def assignNewPositions(self, firstBee):
@@ -77,6 +80,7 @@ class ABC:
     def generateRandomValues(self):
         values = []
         if self.settings._valueRanges == None:
+            self.logger.fatal("must set the type/range of possible values")
             raise RuntimeError("must set the type/range of possible values")
         else:
             # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
@@ -86,6 +90,7 @@ class ABC:
                 elif t[0] == 'float':
                     values.append(np.random.uniform(t[1][0], t[1][1]))
                 else:
+                    self.logger.fatal("value type must be either an 'int' or a 'float'")
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
     
@@ -107,7 +112,6 @@ class ABC:
                     bee.currFitnessScore = bee.currFitnessScore.get()
                     self.settings.update(bee.currFitnessScore, bee.values)
                 except Exception as e:
-                    traceback.print_exc()
                     raise e
 
         # No multiprocessing
@@ -137,9 +141,8 @@ class ABC:
             for i in range(amountOfEmployers):
                 try:
                     self.employers[i].currFitnessScore = self.employers[i].currFitnessScore.get()
-                    self.output.print("Bee number {} created".format(i+1))
+                    self.logger.debug("Bee number {} created".format(i+1))
                 except Exception as e:
-                    traceback.print_exc()
                     raise e
 
         # No multiprocessing
@@ -147,7 +150,7 @@ class ABC:
             for i in range(amountOfEmployers):
                 self.employers.append(Bee('employer', self.generateRandomValues()))
                 self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
-                self.output.print("Bee number {} created".format(i+1))
+                self.logger.debug("Bee number {} created".format(i+1))
     
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
@@ -168,37 +171,33 @@ class ABC:
         return self.settings._bestScore == None or (self.settings._minimize == True and bee.currFitnessScore < self.settings._bestScore) or\
                (self.settings._minimize == False and bee.currFitnessScore > self.settings._bestScore)
 
-    ### Decide whether print statements will occur
-    def printInfo(self, yn):
-        self.output._print = yn
-
     ### Run the artificial bee colony
     def runABC(self):
 
         while True:
             
             self.onlooker.bestEmployers.clear()
-            self.output.print("Assigning new positions")
+            self.logger.debug("Assigning new positions")
             for i in range(len(self.onlooker.bestEmployers)):
-                self.output.print('At bee number: %d \r' % (i+1))
+                self.logger.debug('At bee number: %d \r' % (i+1))
                 self.assignNewPositions(i)
-            self.output.print("Getting fitness average")
+            self.logger.debug("Getting fitness average")
             self.getFitnessAverage()
-            self.output.print("Current fitness average: {}".format(self.fitnessAverage))
+            self.logger.info("Current fitness average: {}".format(self.fitnessAverage))
             if self.settings._iterationAmount != None:
-                self.output.print("Iteration {} / {}".format(self.iterationCount+1, self.settings._iterationAmount))
+                self.logger.debug("Iteration {} / {}".format(self.iterationCount+1, self.settings._iterationAmount))
             self.iterationCount+=1
-            self.output.print("Checking if done")
-            
+
+            self.logger.debug("Checking if done")
             if self.saving:
                 self.settings.saveSettings()
             if self.checkIfDone(self.iterationCount):
                 break
 
-            self.output.print("Checking new positions, assigning random positions to bad ones")
+            self.logger.debug("Checking new positions, assigning random positions to bad ones")
             self.checkNewPositions()
-            self.output.print("Best score: {}".format(self.settings._bestScore))
-            self.output.print("Best value: {}".format(self.settings._bestValues))
+            self.logger.info("Best score: {}".format(self.settings._bestScore))
+            self.logger.info("Best value: {}".format(self.settings._bestValues))
 
         if self.settings._processes > 0:
             self.pool.close()
