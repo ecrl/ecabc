@@ -67,14 +67,17 @@ class Settings:
                     self._iterationAmount = data['iterationAmount']
                     self._amountOfEmployers = -1
 
-    ### Update the current best score/values
+    ### Update the current best score/values, returns True if scores were updated
     def update(self, score, values):
         if self._minimize: 
-            if score < self._bestScore or self._bestScore == None:
+            if self._bestScore == None or score < self._bestScore:
                 self._bestScore = score
                 self._bestValues = values
+                return True
         elif not self._minimize:
-            if score > self._bestScore or self._bestScore == None:
+            if self._bestScore == None or score > self._bestScore:
                 self._bestScore = score
                 self._bestValues = values
+                return True
+        return False
 
