@@ -23,7 +23,8 @@ class Logger:
             logging.INFO : "Info",
             logging.WARN : "Warn", 
             logging.ERROR : "Error", 
-            logging.FATAL : "Fatal"
+            logging.FATAL : "Fatal",
+            logging.NOTSET : "All"
         }
         self.__setup_folders()
         self.__setup_file_handlers()
@@ -48,7 +49,8 @@ class Logger:
             fh.setLevel(log_level)
             formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
             fh.setFormatter(formatter)
-            fh.addFilter(MyFilter(log_level))
+            if log_level != logging.NOTSET:
+                fh.addFilter(MyFilter(log_level))
             self.__logger.addHandler(fh)
 
     ### Set up stream handler to output data to console
