@@ -13,6 +13,7 @@ import sys as sys
 from random import randint
 import numpy as np
 from multiprocessing import Pool
+import traceback
 
 # artificial bee colony packages
 from ecabc.bees import Bee
@@ -102,8 +103,12 @@ class ABC:
                     # Assign the well performing bees to the onlooker
                     self.onlooker.bestEmployers.append(bee)
             for bee in modified_bees:
-                bee.currFitnessScore = bee.currFitnessScore.get()
-                self.settings.update(bee.currFitnessScore, bee.values)
+                try:
+                    bee.currFitnessScore = bee.currFitnessScore.get()
+                    self.settings.update(bee.currFitnessScore, bee.values)
+                except Exception as e:
+                    traceback.print_exc()
+                    raise e
 
         # No multiprocessing
         else:
@@ -130,8 +135,12 @@ class ABC:
                 self.employers.append(Bee('employer', self.generateRandomValues()))
                 self.employers[i].currFitnessScore = self.pool.apply_async(self.fitnessFunction, [self.employers[i].values])
             for i in range(amountOfEmployers):
-                self.employers[i].currFitnessScore = self.employers[i].currFitnessScore.get()
-                self.output.print("Bee number {} created".format(i+1))
+                try:
+                    self.employers[i].currFitnessScore = self.employers[i].currFitnessScore.get()
+                    self.output.print("Bee number {} created".format(i+1))
+                except Exception as e:
+                    traceback.print_exc()
+                    raise e
 
         # No multiprocessing
         else:
@@ -191,4 +200,7 @@ class ABC:
             self.output.print("Best score: {}".format(self.settings._bestScore))
             self.output.print("Best value: {}".format(self.settings._bestValues))
 
+        if self.settings._processes > 0:
+            self.pool.close()
+            self.pool.join()
         return self.settings._bestValues
