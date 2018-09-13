@@ -15,7 +15,7 @@ import shutil
 
 class Logger:
 
-    def __init__(self, print_level, logger_name=__name__):
+    def __init__(self, print_level, file_logging=True, logger_name=__name__):
         self.__logger = logging.getLogger(logger_name)
         self.__logger.setLevel(logging.DEBUG)
         self.__folder = datetime.datetime.now()
@@ -27,8 +27,9 @@ class Logger:
             logging.FATAL : "Fatal",
             logging.NOTSET : "All"
         }
-        self.__setup_folders()
-        self.__setup_file_handlers()
+        if file_logging == True:
+            self.__setup_folders()
+            self.__setup_file_handlers()
         self.__setup_stream_handler(print_level)
 
     def debug(self, message):
