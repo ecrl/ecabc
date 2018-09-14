@@ -19,8 +19,13 @@ from ecabc.bees import Bee
 from ecabc.settings import Settings
 from ecabc.logger import Logger
 
-### Artificial bee colony object, which contains multiple bee objects ###
 class ABC:
+    
+    '''
+    ABC object: Manages employer and onlooker bees to optimize a set of generic values 
+    given a generic user defined fitness function. Handles data transfer and manipulation 
+    between bees.
+    '''
 
     def __init__(self, value_ranges, fitness_fxn, print_level=logging.INFO, file_logging=False, processes=5):
         self.__logger = Logger(print_level, file_logging, 'abc_logger')
@@ -32,9 +37,40 @@ class ABC:
         self.__saving = None
         self.__settings = None
         self.__employers = []
+
+    ### Create employer bees
+    def create_employers(self):
+        '''
+        Generate a set of employer bees. This method must be called in order to generate a set
+        of usable employers bees. Other methods depend on this.
+        '''
+        self.__verify_ready(True)
+        num_employers = self.__settings._num_employers
+        # If multiprocessing
+        if self.__processes > 0:
+            for i in range(num_employers):
+                self.__employers.append(Bee('employer', self.__gen_random_values()))
+                self.__employers[i].score = self.__pool.apply_async(self.__fitness_fxn, [self.__employers[i].values])
+            for i in range(num_employers):
+                try:
+                    self.__employers[i].score = self.__employers[i].score.get()
+                    self.__logger.debug("Bee number {} created".format(i+1))
+                except Exception as e:
+                    raise e
+        # No multiprocessing
+        else:
+            for i in range(num_employers):
+                self.__employers.append(Bee('employer', self.__gen_random_values()))
+                self.__employers[i].score = self.__fitness_fxn(self.__employers[i].values)
+                self.__logger.debug("Bee number {} created".format(i+1))
      
-    ### Assign a new position to the given bee
     def calc_new_positions(self):
+        '''
+        Calculate new positions for well performing bees. Each bee that has performed better then
+        average is combined with another well performing bee to move to a more optimal location. A 
+        location is a combination of values, the more optimal, the better that set of values will 
+        perform given the fitness function.
+        '''
         self.__verify_ready()
         modified_bees = []
         for i in range(len(self.__onlooker.best_employers)):
@@ -61,8 +97,10 @@ class ABC:
                 modified_bees[i].score = modified_bees[i].score.get()
                 self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
     
-    ### Collect the average fitness score across all employers
     def calc_average(self):
+        '''
+        Calculate the average of all bees' cost
+        '''
         self.__verify_ready()
         self.__average_score = 0
         for employer in self.__employers:
@@ -75,8 +113,11 @@ class ABC:
     def get_average(self):
         return self.__average_score
     
-    ### Iterate through all bees to see if their positions are below average, assign them new values if they are
     def check_positions(self):
+        '''
+        Check the fitness cost of every bee to the average. If below average, assign that bee a new random
+        set of values. Additionally, group together well performing bees.
+        '''
         self.__verify_ready()
         self.__onlooker.best_employers = []
         # If multi processing
@@ -124,28 +165,6 @@ class ABC:
     def save_settings(self, filename):
         self.__settings.save_settings(filename)
     
-    ### Create employer bees
-    def create_employers(self):
-        self.__verify_ready(True)
-        num_employers = self.__settings._num_employers
-        # If multiprocessing
-        if self.__processes > 0:
-            for i in range(num_employers):
-                self.__employers.append(Bee('employer', self.__gen_random_values()))
-                self.__employers[i].score = self.__pool.apply_async(self.__fitness_fxn, [self.__employers[i].values])
-            for i in range(num_employers):
-                try:
-                    self.__employers[i].score = self.__employers[i].score.get()
-                    self.__logger.debug("Bee number {} created".format(i+1))
-                except Exception as e:
-                    raise e
-        # No multiprocessing
-        else:
-            for i in range(num_employers):
-                self.__employers.append(Bee('employer', self.__gen_random_values()))
-                self.__employers[i].score = self.__fitness_fxn(self.__employers[i].values)
-                self.__logger.debug("Bee number {} created".format(i+1))
-    
     ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
         self.__settings._minimize = minimize
@@ -157,6 +176,9 @@ class ABC:
 
     ### Generate a random set of values given a value range
     def __gen_random_values(self):
+        '''
+        Generate a random list of values based on the allowed value ranges
+        '''
         values = []
         if self.__settings._valueRanges == None:
             self.__logger.fatal("must set the type/range of possible values")
@@ -175,14 +197,20 @@ class ABC:
 
     ### Check that you have created employers
     def __verify_ready(self, creating=False):
+        '''
+        Some cleanup, ensures that everything is set up properly to avoid random 
+        errors during execution
+        '''
         if len(self.__employers) == 0 and creating == False:
             self.__logger.fatal("Need to create employers")
             raise RuntimeWarning("Need to create employers")
         elif not self.__settings:
             self.__settings = Settings(self.__value_ranges, 50)
 
-    ### Some miscellaneous cleanup
     def __del__(self):
+        '''
+        Class destructor
+        '''
         if self.__processes > 0:
             self.__logger.debug("Object being destroyed, joining and closing pool")
             self.__pool.join()
