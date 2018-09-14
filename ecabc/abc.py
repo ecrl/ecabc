@@ -38,7 +38,6 @@ class ABC:
         self.__settings = None
         self.__employers = []
 
-    ### Create employer bees
     def create_employers(self):
         '''
         Generate a set of employer bees. This method must be called in order to generate a set
@@ -147,11 +146,9 @@ class ABC:
                     if self.__settings.update(bee.score, bee.values):
                         self.__logger.info("Best score update to score: {} | values: {} ".format(bee.score, bee.values))
 
-    ### Return a tuple, best score - best values pair
     def get_best_performer(self):
         return self.__settings.get_best()
 
-    ### Import settings from a file
     def import_settings(self, filename):
         try:
             self.__settings.import_settings(filename)
@@ -161,20 +158,16 @@ class ABC:
             self.__settings = Settings(self.__value_ranges, 50)
             return False
 
-    ### Save all current settings/scores
     def save_settings(self, filename):
         self.__settings.save_settings(filename)
     
-    ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
     def minimize(self, minimize):
         self.__settings._minimize = minimize
         
-    ### Return whether the bee has a fitness score worse than the average
     def __below_average(self, bee):
         return (self.__settings._minimize == True and bee.score  > self.__average_score) or\
                (self.__settings._minimize == False and bee.score < self.__average_score)
 
-    ### Generate a random set of values given a value range
     def __gen_random_values(self):
         '''
         Generate a random list of values based on the allowed value ranges
@@ -195,7 +188,6 @@ class ABC:
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
-    ### Check that you have created employers
     def __verify_ready(self, creating=False):
         '''
         Some cleanup, ensures that everything is set up properly to avoid random 
