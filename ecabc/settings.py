@@ -81,3 +81,9 @@ class Settings:
                 return True
         return False
 
+    def set_process_limit(self, process_limit):
+        self._processes = process_limit
+
+    def get_best(self):
+        return (self._bestScore, self._bestValues)
+

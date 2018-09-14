@@ -13,15 +13,15 @@ import numpy as np
 ### Bee object, employers contain value/fitness
 class Bee:
     
-    def __init__(self, beeType, values=[]):
-        self.beeType = beeType
+    def __init__(self, bee_type, values=[]):
+        self.__bee_type = bee_type
         # Only onlooker bees should store best performing employers
-        if beeType == 'onlooker':
+        if bee_type == 'onlooker':
             self.bestEmployers = []
         # Only the employer bees should store values/fitness scores
-        elif beeType == "employer":               
+        elif bee_type == "employer":               
             self.values = values            
-            self.currFitnessScore = None
+            self.score = None
 
     ### Onlooker bee function, create a new set of positions
     def getPosition(self, beeList, firstBee, secondBee, fitnessFunction, valueTypes):
@@ -36,14 +36,14 @@ class Bee:
 
     #### Employer bee function, get fitness score for a given set of values
     def getFitnessScore(self, values, fitnessFunction):
-        if self.beeType != "employer":
+        if self.__bee_type != "employer":
             raise RuntimeError("Cannot get fitness score on a non-employer bee")
         else:
             # Your fitness function must take a certain set of values that you would like to optimize
             fitnessScore = fitnessFunction(values)  
-            if self.currFitnessScore == None or fitnessScore < self.currFitnessScore:
+            if self.score == None or fitnessScore < self.score:
                 self.value = values
-                self.currFitnessScore = fitnessScore
+                self.score = fitnessScore
 
     ### Method of generating a value in between the values given
     def valueFunction(self, a, b):  

@@ -1,0 +1,1104 @@
+2018-09-13 20:24:56,159 - abc_logger - DEBUG - Settings saved'
+2018-09-13 20:24:56,159 - abc_logger - DEBUG - Creating 5 processes
+2018-09-13 20:24:56,175 - abc_logger - DEBUG - ***INITIALIZING ABC***
+2018-09-13 20:24:56,179 - abc_logger - DEBUG - Bee number 1 created
+2018-09-13 20:24:56,179 - abc_logger - DEBUG - Bee number 2 created
+2018-09-13 20:24:56,180 - abc_logger - DEBUG - Bee number 3 created
+2018-09-13 20:24:56,180 - abc_logger - DEBUG - Bee number 4 created
+2018-09-13 20:24:56,181 - abc_logger - DEBUG - Bee number 5 created
+2018-09-13 20:24:56,182 - abc_logger - DEBUG - Bee number 6 created
+2018-09-13 20:24:56,182 - abc_logger - DEBUG - Bee number 7 created
+2018-09-13 20:24:56,182 - abc_logger - DEBUG - Bee number 8 created
+2018-09-13 20:24:56,183 - abc_logger - DEBUG - Bee number 9 created
+2018-09-13 20:24:56,183 - abc_logger - DEBUG - Bee number 10 created
+2018-09-13 20:24:56,183 - abc_logger - DEBUG - Bee number 11 created
+2018-09-13 20:24:56,183 - abc_logger - DEBUG - Bee number 12 created
+2018-09-13 20:24:56,183 - abc_logger - DEBUG - Bee number 13 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 14 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 15 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 16 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 17 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 18 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 19 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 20 created
+2018-09-13 20:24:56,184 - abc_logger - DEBUG - Bee number 21 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 22 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 23 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 24 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 25 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 26 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 27 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 28 created
+2018-09-13 20:24:56,185 - abc_logger - DEBUG - Bee number 29 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 30 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 31 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 32 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 33 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 34 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 35 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 36 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 37 created
+2018-09-13 20:24:56,186 - abc_logger - DEBUG - Bee number 38 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 39 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 40 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 41 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 42 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 43 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 44 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 45 created
+2018-09-13 20:24:56,187 - abc_logger - DEBUG - Bee number 46 created
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Bee number 47 created
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Bee number 48 created
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Bee number 49 created
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Bee number 50 created
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - ***DONE INITIALIZING***
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,188 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,190 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,190 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,191 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,199 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,199 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,199 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,199 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,200 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,204 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,204 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,204 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,204 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,205 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,208 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,208 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,209 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,209 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,210 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,219 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,219 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,219 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,220 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,220 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,224 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,224 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,224 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,225 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,225 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,231 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,231 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,232 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,232 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,232 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,240 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,240 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,240 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,240 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,241 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,242 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,243 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,243 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,243 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,244 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,248 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,248 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,249 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,249 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,249 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,252 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,252 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,253 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,253 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,253 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,256 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,256 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,257 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,257 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,258 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,261 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,261 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,262 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,262 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,262 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,265 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,265 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,265 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,265 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,266 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,271 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,271 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,271 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,272 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,272 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,277 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,277 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,278 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,278 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,278 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,284 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,284 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,285 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,285 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,285 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,287 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,287 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,288 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,288 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,288 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,293 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,294 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,294 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,294 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,294 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,297 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,297 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,298 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,298 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,299 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,303 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,304 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,304 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,304 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,305 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,307 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,307 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,307 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,307 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,308 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,315 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,315 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,317 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,317 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,317 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,323 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,323 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,323 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,324 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,324 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,326 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,326 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,326 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,326 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,327 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,329 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,329 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,331 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,331 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,331 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,341 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,341 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,341 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,341 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,342 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,345 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,345 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,345 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,345 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,346 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,349 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,349 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,349 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,349 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,351 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,355 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,355 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,355 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,356 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,356 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,358 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,358 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,358 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,358 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,359 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,362 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,363 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,363 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,363 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,363 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,365 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,365 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,366 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,366 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,366 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,368 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,368 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,369 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,369 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,369 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,371 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,371 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,372 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,372 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,372 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,375 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,375 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,375 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,375 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,376 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,378 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,378 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,378 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,378 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,379 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,381 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,381 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,381 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,382 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,382 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,383 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,384 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,384 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,384 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,385 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,386 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,386 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,386 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,387 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,387 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,389 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,390 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,390 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,390 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,390 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,393 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,393 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,394 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,394 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,394 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,397 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,397 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,397 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,397 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,398 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,403 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,403 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,403 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,403 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,404 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,407 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,407 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,407 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,407 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,408 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,411 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,411 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,411 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,411 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,412 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,413 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,414 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,414 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,415 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,416 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,418 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,418 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,418 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,418 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,419 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,421 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,421 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,421 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,422 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,422 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,424 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,424 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,424 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,424 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,425 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,428 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,428 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,428 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,428 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,429 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,431 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,431 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,431 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,432 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,450 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,452 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,453 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,453 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,453 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,454 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,455 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,456 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,456 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,456 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,457 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,458 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,458 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,459 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,459 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,459 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,461 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,461 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,462 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,462 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,462 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,464 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,464 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,464 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,464 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,465 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,469 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,469 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,470 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,470 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,470 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,473 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,473 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,474 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,474 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,474 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,477 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,477 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,478 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,478 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,479 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,481 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,481 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,482 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,482 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,482 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,484 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,484 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,484 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,485 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,485 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,487 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,487 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,488 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,488 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,488 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,490 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,490 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,491 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,491 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,491 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,493 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,493 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,494 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,494 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,494 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,496 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,496 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,496 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,497 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,497 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,500 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,500 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,500 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,500 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,501 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,502 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,502 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,503 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,503 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,503 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,505 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,505 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,505 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,505 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,506 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,509 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,509 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,509 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,509 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,510 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,512 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,512 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,512 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,512 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,513 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,515 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,515 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,516 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,516 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,516 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,518 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,518 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,519 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,519 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,520 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,522 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,522 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,522 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,522 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,523 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,525 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,525 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,525 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,525 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,526 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,529 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,529 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,530 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,530 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,531 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,533 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,533 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,533 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,533 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,534 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,536 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,536 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,536 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,536 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,537 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,540 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,540 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,540 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,541 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,541 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,544 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,544 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,544 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,544 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,545 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,547 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,547 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,547 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,547 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,549 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,551 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,551 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,552 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,552 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,552 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,555 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,555 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,556 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,556 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,556 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,558 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,558 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,559 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,559 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,560 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,563 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,563 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,563 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,564 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,568 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,571 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,572 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,572 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,572 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,572 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,574 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,574 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,575 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,575 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,575 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,578 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,578 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,579 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,579 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,579 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,582 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,582 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,583 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,583 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,583 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,585 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,585 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,586 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,586 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,586 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,588 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,588 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,589 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,589 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,589 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,591 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,591 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,592 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,592 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,592 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,595 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,595 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,595 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,596 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,596 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,598 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,598 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,598 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,599 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,599 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,601 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,601 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,601 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,601 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,602 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,603 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,604 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,604 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,604 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,605 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,606 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,606 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,606 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,606 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,607 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,609 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,609 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,610 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,610 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,611 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,613 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,613 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,613 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,613 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,614 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,616 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,616 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,617 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,617 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,618 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,619 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,619 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,620 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,620 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,620 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,622 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,622 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,622 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,623 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,623 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,625 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,625 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,625 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,625 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,626 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,628 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,628 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,628 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,628 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,629 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,631 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,631 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,632 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,632 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,633 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,635 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,635 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,635 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,635 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,636 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,637 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,637 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,638 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,638 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,638 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,640 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,640 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,640 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,640 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,641 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,643 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,643 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,644 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,644 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,644 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,646 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,646 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,646 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,646 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,647 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,649 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,649 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,650 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,650 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,650 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,652 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,652 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,652 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,653 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,653 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,655 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,655 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,656 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,656 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,657 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,659 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,659 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,659 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,659 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,659 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,661 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,661 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,661 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,661 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,662 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,670 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,671 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,671 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,671 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,671 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,673 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,673 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,673 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,673 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,674 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,675 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,675 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,676 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,677 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,677 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,679 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,679 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,679 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,679 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,680 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,681 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,682 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,682 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,682 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,683 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,685 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,685 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,686 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,686 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,686 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,688 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,688 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,689 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,689 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,690 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,691 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,691 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,692 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,692 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,693 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,695 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,695 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,695 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,695 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,696 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,698 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,698 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,699 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,699 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,699 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,701 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,701 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,702 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,702 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,702 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,704 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,704 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,704 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,704 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,705 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,706 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,706 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,707 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,707 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,707 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,708 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,708 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,709 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,709 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,710 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,711 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,711 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,712 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,712 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,712 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,713 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,713 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,715 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,715 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,715 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,721 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,721 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,721 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,721 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,722 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,726 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,726 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,727 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,727 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,727 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,731 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,731 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,731 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,731 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,732 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,734 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,735 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,735 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,735 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,736 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,737 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,737 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,738 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,738 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,738 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,740 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,740 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,741 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,741 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,741 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,744 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,744 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,745 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,745 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,745 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,747 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,747 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,747 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,747 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,748 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,750 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,751 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,751 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,751 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,752 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,753 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,753 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,754 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,754 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,755 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,756 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,756 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,757 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,757 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,758 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,760 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,760 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,760 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,760 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,761 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,763 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,763 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,763 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,764 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,764 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,766 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,766 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,767 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,767 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,768 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,769 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,769 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,770 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,770 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,770 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,772 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,772 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,773 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,773 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,810 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,813 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,813 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,813 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,813 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,814 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,816 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,816 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,817 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,817 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,818 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,819 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,819 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,820 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,820 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,820 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,823 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,823 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,823 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,823 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,824 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,825 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,825 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,826 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,826 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,827 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,828 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,828 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,829 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,829 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,829 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,833 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,833 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,833 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,833 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,834 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,835 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,835 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,835 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,835 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,836 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,838 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,838 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,838 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,838 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,838 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,840 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,840 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,841 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,841 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,841 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,843 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,843 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,843 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,843 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,843 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,845 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,845 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,845 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,845 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,846 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,848 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,848 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,848 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,848 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,849 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,850 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,851 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,851 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,851 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,852 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,853 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,853 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,854 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,854 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,854 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,856 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,856 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,857 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,857 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,857 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,860 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,861 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,861 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,861 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,862 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,863 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,863 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,864 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,864 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,865 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,867 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,867 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,868 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,868 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,868 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,870 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,870 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,870 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,870 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,871 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,873 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,873 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,873 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,873 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,874 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,875 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,875 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,875 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,876 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,876 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,880 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,880 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,880 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,880 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,881 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,884 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,884 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,884 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,884 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,885 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,887 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,887 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,887 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,887 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,888 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,890 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,890 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,890 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,890 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,891 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,893 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,894 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,894 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,894 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,895 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,897 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,897 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,897 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,897 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,898 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,900 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,900 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,900 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,900 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,901 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,903 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,903 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,904 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,904 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,904 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,906 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,906 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,906 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,907 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,907 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,909 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,909 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,910 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,910 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,910 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,912 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,912 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,912 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,912 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,913 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,915 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,915 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,915 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,915 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,916 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,918 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,918 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,918 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,918 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,919 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,921 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,921 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,922 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,922 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,923 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,925 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,925 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,925 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,925 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,926 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,928 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,928 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,929 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,929 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,929 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,932 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,932 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,932 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,932 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,933 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,934 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,934 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,935 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,935 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,935 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,937 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,937 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,937 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,937 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,938 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,939 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,939 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,940 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,940 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,940 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,942 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,942 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,942 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,942 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,943 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,944 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,944 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,945 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,945 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,945 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,947 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,947 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,948 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,948 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,948 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,950 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,950 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,950 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,950 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,951 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,953 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,953 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,953 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,953 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,954 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,955 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,956 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,956 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,956 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,957 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,958 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,958 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,958 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,959 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,959 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,961 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,961 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,961 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,961 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,962 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,964 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,964 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,964 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,964 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,965 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,966 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,967 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,967 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,967 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,968 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,969 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,969 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,969 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,970 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,970 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,971 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,971 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,972 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,972 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,972 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,976 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,976 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,977 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,977 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,977 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,981 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,981 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,981 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,981 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,982 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,985 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,985 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,985 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,985 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,986 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:56,989 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:56,989 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:56,989 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:56,989 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:56,997 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:57,001 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:57,001 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:57,001 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:57,001 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:57,002 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:57,004 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:57,004 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:57,004 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:57,004 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:57,005 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:57,007 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:57,007 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:57,008 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:57,008 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:57,008 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:57,010 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:57,010 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:57,011 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:57,011 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:57,011 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones
+2018-09-13 20:24:57,013 - abc_logger - DEBUG - Assigning new positions
+2018-09-13 20:24:57,013 - abc_logger - DEBUG - Getting fitness average
+2018-09-13 20:24:57,013 - abc_logger - DEBUG - Checking if done
+2018-09-13 20:24:57,013 - abc_logger - DEBUG - Saving settings
+2018-09-13 20:24:57,014 - abc_logger - DEBUG - Checking new positions, assigning random positions to bad ones

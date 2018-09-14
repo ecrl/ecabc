@@ -1,0 +1,640 @@
+2018-09-13 20:24:56,188 - abc_logger - INFO - Best score update to score: 4380.6269433061 | values: [46, 37, 46.909805409139885, 93.90631457294016]
+2018-09-13 20:24:56,189 - abc_logger - INFO - Best score update to score: 1608.3360999216575 | values: [75, 54, 58.70601297434139, 27.030214104562255]
+2018-09-13 20:24:56,189 - abc_logger - INFO - Best score update to score: 1109.9615869438655 | values: [44, 32, 34.58785739025695, 33.00180100966311]
+2018-09-13 20:24:56,189 - abc_logger - INFO - Best score update to score: 175.06059243308877 | values: [44, 69, 2.710396734136833, 62.55932583503792]
+2018-09-13 20:24:56,189 - abc_logger - INFO - Best score update to score: 87.04234796983599 | values: [59, 33, 2.2199508832724812, 46.19126879900871]
+2018-09-13 20:24:56,189 - abc_logger - INFO - Current fitness average: 2521.679812607601
+2018-09-13 20:24:56,198 - abc_logger - INFO - Best score: 87.04234796983599
+2018-09-13 20:24:56,198 - abc_logger - INFO - Best value: [59, 33, 2.2199508832724812, 46.19126879900871]
+2018-09-13 20:24:56,199 - abc_logger - INFO - Current fitness average: 1676.3761127249877
+2018-09-13 20:24:56,203 - abc_logger - INFO - Best score update to score: 74.82987808298124 | values: [49, 49, 38.16791796107879, 2.2094440196862575] 
+2018-09-13 20:24:56,204 - abc_logger - INFO - Best score: 74.82987808298124
+2018-09-13 20:24:56,204 - abc_logger - INFO - Best value: [49, 49, 38.16791796107879, 2.2094440196862575]
+2018-09-13 20:24:56,204 - abc_logger - INFO - Current fitness average: 1613.1609466005973
+2018-09-13 20:24:56,208 - abc_logger - INFO - Best score: 74.82987808298124
+2018-09-13 20:24:56,208 - abc_logger - INFO - Best value: [49, 49, 38.16791796107879, 2.2094440196862575]
+2018-09-13 20:24:56,209 - abc_logger - INFO - Current fitness average: 1049.430817912561
+2018-09-13 20:24:56,218 - abc_logger - INFO - Best score: 74.82987808298124
+2018-09-13 20:24:56,219 - abc_logger - INFO - Best value: [49, 49, 38.16791796107879, 2.2094440196862575]
+2018-09-13 20:24:56,219 - abc_logger - INFO - Current fitness average: 1133.18930439365
+2018-09-13 20:24:56,224 - abc_logger - INFO - Best score: 74.82987808298124
+2018-09-13 20:24:56,224 - abc_logger - INFO - Best value: [49, 49, 38.16791796107879, 2.2094440196862575]
+2018-09-13 20:24:56,224 - abc_logger - INFO - Current fitness average: 948.1298082428677
+2018-09-13 20:24:56,231 - abc_logger - INFO - Best score: 74.82987808298124
+2018-09-13 20:24:56,231 - abc_logger - INFO - Best value: [49, 49, 38.16791796107879, 2.2094440196862575]
+2018-09-13 20:24:56,232 - abc_logger - INFO - Current fitness average: 977.5189303018929
+2018-09-13 20:24:56,237 - abc_logger - INFO - Best score update to score: 59.9021899824698 | values: [6, 20, 58.14734081379309, 0.9183943622371515] 
+2018-09-13 20:24:56,240 - abc_logger - INFO - Best score: 59.9021899824698
+2018-09-13 20:24:56,240 - abc_logger - INFO - Best value: [6, 20, 58.14734081379309, 0.9183943622371515]
+2018-09-13 20:24:56,240 - abc_logger - INFO - Current fitness average: 1042.1447364685423
+2018-09-13 20:24:56,242 - abc_logger - INFO - Best score: 59.9021899824698
+2018-09-13 20:24:56,242 - abc_logger - INFO - Best value: [6, 20, 58.14734081379309, 0.9183943622371515]
+2018-09-13 20:24:56,243 - abc_logger - INFO - Current fitness average: 669.7588996564754
+2018-09-13 20:24:56,248 - abc_logger - INFO - Best score: 59.9021899824698
+2018-09-13 20:24:56,248 - abc_logger - INFO - Best value: [6, 20, 58.14734081379309, 0.9183943622371515]
+2018-09-13 20:24:56,249 - abc_logger - INFO - Current fitness average: 891.5295743314076
+2018-09-13 20:24:56,251 - abc_logger - INFO - Best score update to score: 52.02696024195426 | values: [22, 8, 75.59214006446088, 0.3369800052799632] 
+2018-09-13 20:24:56,252 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,252 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,252 - abc_logger - INFO - Current fitness average: 845.5470555610694
+2018-09-13 20:24:56,256 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,256 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,257 - abc_logger - INFO - Current fitness average: 597.1084080051025
+2018-09-13 20:24:56,261 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,261 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,262 - abc_logger - INFO - Current fitness average: 683.6007717738606
+2018-09-13 20:24:56,264 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,264 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,265 - abc_logger - INFO - Current fitness average: 449.82079044645303
+2018-09-13 20:24:56,270 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,271 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,271 - abc_logger - INFO - Current fitness average: 1421.502670564644
+2018-09-13 20:24:56,276 - abc_logger - INFO - Best score: 52.02696024195426
+2018-09-13 20:24:56,277 - abc_logger - INFO - Best value: [22, 8, 75.59214006446088, 0.3369800052799632]
+2018-09-13 20:24:56,277 - abc_logger - INFO - Current fitness average: 762.4903696226393
+2018-09-13 20:24:56,281 - abc_logger - INFO - Best score update to score: 33.760579625575 | values: [57, 4, 5.3811236341777535, 11.570181965367265] 
+2018-09-13 20:24:56,284 - abc_logger - INFO - Best score: 33.760579625575
+2018-09-13 20:24:56,284 - abc_logger - INFO - Best value: [57, 4, 5.3811236341777535, 11.570181965367265]
+2018-09-13 20:24:56,284 - abc_logger - INFO - Current fitness average: 684.1612769715914
+2018-09-13 20:24:56,287 - abc_logger - INFO - Best score: 33.760579625575
+2018-09-13 20:24:56,287 - abc_logger - INFO - Best value: [57, 4, 5.3811236341777535, 11.570181965367265]
+2018-09-13 20:24:56,287 - abc_logger - INFO - Current fitness average: 718.0927480461563
+2018-09-13 20:24:56,292 - abc_logger - INFO - Best score: 33.760579625575
+2018-09-13 20:24:56,293 - abc_logger - INFO - Best value: [57, 4, 5.3811236341777535, 11.570181965367265]
+2018-09-13 20:24:56,294 - abc_logger - INFO - Current fitness average: 800.6486089300545
+2018-09-13 20:24:56,296 - abc_logger - INFO - Best score update to score: 19.56301814544323 | values: [23, 48, 51.82866988295852, 1.0816989568138036] 
+2018-09-13 20:24:56,297 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,297 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,298 - abc_logger - INFO - Current fitness average: 544.7163360566874
+2018-09-13 20:24:56,303 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,303 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,304 - abc_logger - INFO - Current fitness average: 687.124313428603
+2018-09-13 20:24:56,306 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,306 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,307 - abc_logger - INFO - Current fitness average: 670.4607607812326
+2018-09-13 20:24:56,314 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,315 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,315 - abc_logger - INFO - Current fitness average: 538.6420622220504
+2018-09-13 20:24:56,323 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,323 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,323 - abc_logger - INFO - Current fitness average: 549.3220170957528
+2018-09-13 20:24:56,325 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,326 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,326 - abc_logger - INFO - Current fitness average: 307.9213007407745
+2018-09-13 20:24:56,329 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,329 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,329 - abc_logger - INFO - Current fitness average: 873.2433403388068
+2018-09-13 20:24:56,340 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,341 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,341 - abc_logger - INFO - Current fitness average: 475.971883338419
+2018-09-13 20:24:56,344 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,345 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,345 - abc_logger - INFO - Current fitness average: 532.9784374293179
+2018-09-13 20:24:56,348 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,349 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,349 - abc_logger - INFO - Current fitness average: 558.5307655033697
+2018-09-13 20:24:56,354 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,355 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,355 - abc_logger - INFO - Current fitness average: 332.1954099850234
+2018-09-13 20:24:56,357 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,358 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,358 - abc_logger - INFO - Current fitness average: 295.5222628245376
+2018-09-13 20:24:56,361 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,362 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,363 - abc_logger - INFO - Current fitness average: 467.39325896805315
+2018-09-13 20:24:56,365 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,365 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,366 - abc_logger - INFO - Current fitness average: 372.8770948089922
+2018-09-13 20:24:56,368 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,368 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,369 - abc_logger - INFO - Current fitness average: 443.4941275059366
+2018-09-13 20:24:56,371 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,371 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,372 - abc_logger - INFO - Current fitness average: 375.9518468557792
+2018-09-13 20:24:56,374 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,374 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,375 - abc_logger - INFO - Current fitness average: 474.32002869427725
+2018-09-13 20:24:56,377 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,377 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,378 - abc_logger - INFO - Current fitness average: 713.7229735233126
+2018-09-13 20:24:56,380 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,381 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,381 - abc_logger - INFO - Current fitness average: 449.0141773454289
+2018-09-13 20:24:56,383 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,383 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,384 - abc_logger - INFO - Current fitness average: 356.66746624744025
+2018-09-13 20:24:56,386 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,386 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,386 - abc_logger - INFO - Current fitness average: 231.36594786165696
+2018-09-13 20:24:56,389 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,389 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,390 - abc_logger - INFO - Current fitness average: 831.2628904478865
+2018-09-13 20:24:56,393 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,393 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,393 - abc_logger - INFO - Current fitness average: 595.7062295534845
+2018-09-13 20:24:56,396 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,396 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,397 - abc_logger - INFO - Current fitness average: 557.856540847776
+2018-09-13 20:24:56,402 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,402 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,403 - abc_logger - INFO - Current fitness average: 341.4869563193217
+2018-09-13 20:24:56,406 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,407 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,407 - abc_logger - INFO - Current fitness average: 475.09299833799224
+2018-09-13 20:24:56,410 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,411 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,411 - abc_logger - INFO - Current fitness average: 465.6235494789045
+2018-09-13 20:24:56,413 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,413 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,414 - abc_logger - INFO - Current fitness average: 286.96074742033613
+2018-09-13 20:24:56,418 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,418 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,418 - abc_logger - INFO - Current fitness average: 476.83232149554794
+2018-09-13 20:24:56,421 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,421 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,421 - abc_logger - INFO - Current fitness average: 362.41185970463107
+2018-09-13 20:24:56,424 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,424 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,424 - abc_logger - INFO - Current fitness average: 211.15303805540754
+2018-09-13 20:24:56,427 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,428 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,428 - abc_logger - INFO - Current fitness average: 381.61271844507144
+2018-09-13 20:24:56,431 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,431 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,431 - abc_logger - INFO - Current fitness average: 380.4460434516675
+2018-09-13 20:24:56,452 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,452 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,453 - abc_logger - INFO - Current fitness average: 415.4735866815487
+2018-09-13 20:24:56,455 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,455 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,456 - abc_logger - INFO - Current fitness average: 343.7609781718496
+2018-09-13 20:24:56,458 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,458 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,458 - abc_logger - INFO - Current fitness average: 257.8708331564246
+2018-09-13 20:24:56,461 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,461 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,462 - abc_logger - INFO - Current fitness average: 365.18419978749284
+2018-09-13 20:24:56,463 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,464 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,464 - abc_logger - INFO - Current fitness average: 161.26815015089383
+2018-09-13 20:24:56,469 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,469 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,470 - abc_logger - INFO - Current fitness average: 672.4211784853424
+2018-09-13 20:24:56,473 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,473 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,474 - abc_logger - INFO - Current fitness average: 505.132895113328
+2018-09-13 20:24:56,477 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,477 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,478 - abc_logger - INFO - Current fitness average: 401.3096141262792
+2018-09-13 20:24:56,481 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,481 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,482 - abc_logger - INFO - Current fitness average: 383.3503028026162
+2018-09-13 20:24:56,484 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,484 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,484 - abc_logger - INFO - Current fitness average: 431.68036758445675
+2018-09-13 20:24:56,487 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,487 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,488 - abc_logger - INFO - Current fitness average: 421.15606918959924
+2018-09-13 20:24:56,490 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,490 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,490 - abc_logger - INFO - Current fitness average: 304.14989024087475
+2018-09-13 20:24:56,492 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,493 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,494 - abc_logger - INFO - Current fitness average: 474.6907944904881
+2018-09-13 20:24:56,496 - abc_logger - INFO - Best score: 19.56301814544323
+2018-09-13 20:24:56,496 - abc_logger - INFO - Best value: [23, 48, 51.82866988295852, 1.0816989568138036]
+2018-09-13 20:24:56,496 - abc_logger - INFO - Current fitness average: 405.6386076458802
+2018-09-13 20:24:56,499 - abc_logger - INFO - Best score update to score: 7.637183535534419 | values: [4, 61, 0.8070866475698324, 43.19587812465837] 
+2018-09-13 20:24:56,499 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,500 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,500 - abc_logger - INFO - Current fitness average: 321.24195885994703
+2018-09-13 20:24:56,502 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,502 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,503 - abc_logger - INFO - Current fitness average: 367.94431560250314
+2018-09-13 20:24:56,504 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,505 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,505 - abc_logger - INFO - Current fitness average: 140.4965595249084
+2018-09-13 20:24:56,508 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,508 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,509 - abc_logger - INFO - Current fitness average: 443.24212132606476
+2018-09-13 20:24:56,512 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,512 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,512 - abc_logger - INFO - Current fitness average: 568.8752579661722
+2018-09-13 20:24:56,515 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,515 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,515 - abc_logger - INFO - Current fitness average: 783.5222477040885
+2018-09-13 20:24:56,518 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,518 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,518 - abc_logger - INFO - Current fitness average: 412.711800029791
+2018-09-13 20:24:56,522 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,522 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,522 - abc_logger - INFO - Current fitness average: 274.1048456946943
+2018-09-13 20:24:56,524 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,524 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,525 - abc_logger - INFO - Current fitness average: 608.0598332171171
+2018-09-13 20:24:56,529 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,529 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,530 - abc_logger - INFO - Current fitness average: 483.14161296246436
+2018-09-13 20:24:56,532 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,532 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,533 - abc_logger - INFO - Current fitness average: 299.7724815187091
+2018-09-13 20:24:56,535 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,536 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,536 - abc_logger - INFO - Current fitness average: 125.64378246378226
+2018-09-13 20:24:56,540 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,540 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,540 - abc_logger - INFO - Current fitness average: 320.6433788749006
+2018-09-13 20:24:56,543 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,543 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,544 - abc_logger - INFO - Current fitness average: 403.80296853175975
+2018-09-13 20:24:56,546 - abc_logger - INFO - Best score: 7.637183535534419
+2018-09-13 20:24:56,547 - abc_logger - INFO - Best value: [4, 61, 0.8070866475698324, 43.19587812465837]
+2018-09-13 20:24:56,547 - abc_logger - INFO - Current fitness average: 305.8140409011918
+2018-09-13 20:24:56,550 - abc_logger - INFO - Best score update to score: 7.141383370752983 | values: [4, 73, 7.950719125521999, 4.698772027969767] 
+2018-09-13 20:24:56,551 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,551 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,551 - abc_logger - INFO - Current fitness average: 193.21101760846364
+2018-09-13 20:24:56,554 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,555 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,555 - abc_logger - INFO - Current fitness average: 234.70653558758136
+2018-09-13 20:24:56,557 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,558 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,559 - abc_logger - INFO - Current fitness average: 197.40938014236227
+2018-09-13 20:24:56,562 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,562 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,563 - abc_logger - INFO - Current fitness average: 113.62470059134058
+2018-09-13 20:24:56,571 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,571 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,572 - abc_logger - INFO - Current fitness average: 576.9006036137108
+2018-09-13 20:24:56,574 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,574 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,575 - abc_logger - INFO - Current fitness average: 539.4218853501791
+2018-09-13 20:24:56,578 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,578 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,579 - abc_logger - INFO - Current fitness average: 551.5337894015903
+2018-09-13 20:24:56,582 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,582 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,583 - abc_logger - INFO - Current fitness average: 624.7059860213126
+2018-09-13 20:24:56,585 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,585 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,585 - abc_logger - INFO - Current fitness average: 354.3405196912731
+2018-09-13 20:24:56,588 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,588 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,589 - abc_logger - INFO - Current fitness average: 324.4889998217266
+2018-09-13 20:24:56,591 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,591 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,592 - abc_logger - INFO - Current fitness average: 422.78363366900174
+2018-09-13 20:24:56,594 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,595 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,595 - abc_logger - INFO - Current fitness average: 498.7268125983179
+2018-09-13 20:24:56,597 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,598 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,598 - abc_logger - INFO - Current fitness average: 383.7002602821358
+2018-09-13 20:24:56,600 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,601 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,601 - abc_logger - INFO - Current fitness average: 426.6881420034726
+2018-09-13 20:24:56,603 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,603 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,604 - abc_logger - INFO - Current fitness average: 341.9668181746021
+2018-09-13 20:24:56,605 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,606 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,606 - abc_logger - INFO - Current fitness average: 322.96726120881465
+2018-09-13 20:24:56,608 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,609 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,610 - abc_logger - INFO - Current fitness average: 337.8561567725954
+2018-09-13 20:24:56,612 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,613 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,613 - abc_logger - INFO - Current fitness average: 259.54628199356245
+2018-09-13 20:24:56,615 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,616 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,617 - abc_logger - INFO - Current fitness average: 490.8432661447117
+2018-09-13 20:24:56,619 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,619 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,619 - abc_logger - INFO - Current fitness average: 464.3566387009355
+2018-09-13 20:24:56,622 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,622 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,622 - abc_logger - INFO - Current fitness average: 518.5753917144071
+2018-09-13 20:24:56,624 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,624 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,625 - abc_logger - INFO - Current fitness average: 332.9675461211802
+2018-09-13 20:24:56,627 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,628 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,628 - abc_logger - INFO - Current fitness average: 243.77708910373346
+2018-09-13 20:24:56,630 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,631 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,631 - abc_logger - INFO - Current fitness average: 385.7992852653847
+2018-09-13 20:24:56,634 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,634 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,635 - abc_logger - INFO - Current fitness average: 297.7647108404359
+2018-09-13 20:24:56,637 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,637 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,638 - abc_logger - INFO - Current fitness average: 355.19372379878956
+2018-09-13 20:24:56,639 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,640 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,640 - abc_logger - INFO - Current fitness average: 302.37010675007895
+2018-09-13 20:24:56,643 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,643 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,644 - abc_logger - INFO - Current fitness average: 395.76801868906614
+2018-09-13 20:24:56,645 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,646 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,646 - abc_logger - INFO - Current fitness average: 176.18833222085476
+2018-09-13 20:24:56,649 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,649 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,649 - abc_logger - INFO - Current fitness average: 355.5711439545181
+2018-09-13 20:24:56,652 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,652 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,652 - abc_logger - INFO - Current fitness average: 243.92417507615562
+2018-09-13 20:24:56,655 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,655 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,655 - abc_logger - INFO - Current fitness average: 274.34653200632704
+2018-09-13 20:24:56,658 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,659 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,659 - abc_logger - INFO - Current fitness average: 161.88927352281152
+2018-09-13 20:24:56,660 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,661 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,661 - abc_logger - INFO - Current fitness average: 361.84811141263134
+2018-09-13 20:24:56,670 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,670 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,671 - abc_logger - INFO - Current fitness average: 247.802525445452
+2018-09-13 20:24:56,673 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,673 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,673 - abc_logger - INFO - Current fitness average: 190.50010558801674
+2018-09-13 20:24:56,675 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,675 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,676 - abc_logger - INFO - Current fitness average: 335.45625871079056
+2018-09-13 20:24:56,679 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,679 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,679 - abc_logger - INFO - Current fitness average: 233.30758129397654
+2018-09-13 20:24:56,681 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,681 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,682 - abc_logger - INFO - Current fitness average: 146.6434175529432
+2018-09-13 20:24:56,685 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,685 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,685 - abc_logger - INFO - Current fitness average: 394.22372455856765
+2018-09-13 20:24:56,687 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,688 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,689 - abc_logger - INFO - Current fitness average: 142.68646745600492
+2018-09-13 20:24:56,691 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,691 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,692 - abc_logger - INFO - Current fitness average: 126.59158382579733
+2018-09-13 20:24:56,694 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,694 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,695 - abc_logger - INFO - Current fitness average: 210.4551241266173
+2018-09-13 20:24:56,698 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,698 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,698 - abc_logger - INFO - Current fitness average: 351.3110158281525
+2018-09-13 20:24:56,701 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,701 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,701 - abc_logger - INFO - Current fitness average: 132.7101522376652
+2018-09-13 20:24:56,703 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,704 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,704 - abc_logger - INFO - Current fitness average: 280.0906798129421
+2018-09-13 20:24:56,706 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,706 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,706 - abc_logger - INFO - Current fitness average: 206.22435062876784
+2018-09-13 20:24:56,708 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,708 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,709 - abc_logger - INFO - Current fitness average: 150.13436713476736
+2018-09-13 20:24:56,711 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,711 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,711 - abc_logger - INFO - Current fitness average: 220.7052188974123
+2018-09-13 20:24:56,713 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,713 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,714 - abc_logger - INFO - Current fitness average: 63.559877977453844
+2018-09-13 20:24:56,720 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,720 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,721 - abc_logger - INFO - Current fitness average: 1345.6591971022963
+2018-09-13 20:24:56,725 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,726 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,726 - abc_logger - INFO - Current fitness average: 1230.7177825102249
+2018-09-13 20:24:56,730 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,731 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,731 - abc_logger - INFO - Current fitness average: 376.82272835985844
+2018-09-13 20:24:56,734 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,734 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,735 - abc_logger - INFO - Current fitness average: 636.0395898925277
+2018-09-13 20:24:56,737 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,737 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,737 - abc_logger - INFO - Current fitness average: 327.5993110924536
+2018-09-13 20:24:56,740 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,740 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,740 - abc_logger - INFO - Current fitness average: 757.2881141918515
+2018-09-13 20:24:56,743 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,743 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,744 - abc_logger - INFO - Current fitness average: 550.4857897912933
+2018-09-13 20:24:56,746 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,747 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,747 - abc_logger - INFO - Current fitness average: 366.0569284174947
+2018-09-13 20:24:56,750 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,750 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,751 - abc_logger - INFO - Current fitness average: 423.1073465376614
+2018-09-13 20:24:56,753 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,753 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,754 - abc_logger - INFO - Current fitness average: 246.18172142674044
+2018-09-13 20:24:56,756 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,756 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,757 - abc_logger - INFO - Current fitness average: 358.7132550404768
+2018-09-13 20:24:56,759 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,759 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,760 - abc_logger - INFO - Current fitness average: 532.3630458816915
+2018-09-13 20:24:56,762 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,763 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,763 - abc_logger - INFO - Current fitness average: 459.9941074497635
+2018-09-13 20:24:56,766 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,766 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,767 - abc_logger - INFO - Current fitness average: 418.9233109907358
+2018-09-13 20:24:56,769 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,769 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,769 - abc_logger - INFO - Current fitness average: 297.44881944417847
+2018-09-13 20:24:56,772 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,772 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,772 - abc_logger - INFO - Current fitness average: 223.98455737216133
+2018-09-13 20:24:56,812 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,812 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,813 - abc_logger - INFO - Current fitness average: 438.5635661452479
+2018-09-13 20:24:56,816 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,816 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,817 - abc_logger - INFO - Current fitness average: 236.52707612083927
+2018-09-13 20:24:56,819 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,819 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,819 - abc_logger - INFO - Current fitness average: 228.70670423441396
+2018-09-13 20:24:56,822 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,823 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,823 - abc_logger - INFO - Current fitness average: 458.6436093007276
+2018-09-13 20:24:56,825 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,825 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,825 - abc_logger - INFO - Current fitness average: 248.97013809732877
+2018-09-13 20:24:56,828 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,828 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,828 - abc_logger - INFO - Current fitness average: 290.9990077106207
+2018-09-13 20:24:56,832 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,832 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,833 - abc_logger - INFO - Current fitness average: 285.4983309827758
+2018-09-13 20:24:56,835 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,835 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,835 - abc_logger - INFO - Current fitness average: 194.72807539179212
+2018-09-13 20:24:56,837 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,837 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,838 - abc_logger - INFO - Current fitness average: 418.75805299521664
+2018-09-13 20:24:56,840 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,840 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,840 - abc_logger - INFO - Current fitness average: 290.39957835106156
+2018-09-13 20:24:56,842 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,842 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,843 - abc_logger - INFO - Current fitness average: 467.80161422844634
+2018-09-13 20:24:56,845 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,845 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,845 - abc_logger - INFO - Current fitness average: 437.4018445131873
+2018-09-13 20:24:56,847 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,847 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,848 - abc_logger - INFO - Current fitness average: 316.0201218437858
+2018-09-13 20:24:56,850 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,850 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,851 - abc_logger - INFO - Current fitness average: 242.9526995828461
+2018-09-13 20:24:56,853 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,853 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,854 - abc_logger - INFO - Current fitness average: 224.02283572607448
+2018-09-13 20:24:56,856 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,856 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,857 - abc_logger - INFO - Current fitness average: 392.1266161836466
+2018-09-13 20:24:56,860 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,860 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,861 - abc_logger - INFO - Current fitness average: 450.0177184368744
+2018-09-13 20:24:56,863 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,863 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,864 - abc_logger - INFO - Current fitness average: 191.12866568253833
+2018-09-13 20:24:56,867 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,867 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,867 - abc_logger - INFO - Current fitness average: 186.11985945042588
+2018-09-13 20:24:56,869 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,870 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,870 - abc_logger - INFO - Current fitness average: 331.8152079439284
+2018-09-13 20:24:56,872 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,872 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,873 - abc_logger - INFO - Current fitness average: 285.38922374377637
+2018-09-13 20:24:56,875 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,875 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,875 - abc_logger - INFO - Current fitness average: 118.85938467019832
+2018-09-13 20:24:56,879 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,880 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,880 - abc_logger - INFO - Current fitness average: 741.4569445002059
+2018-09-13 20:24:56,883 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,883 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,884 - abc_logger - INFO - Current fitness average: 813.8450875709069
+2018-09-13 20:24:56,886 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,887 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,887 - abc_logger - INFO - Current fitness average: 580.314419364707
+2018-09-13 20:24:56,889 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,890 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,890 - abc_logger - INFO - Current fitness average: 311.2621166628237
+2018-09-13 20:24:56,893 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,893 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,894 - abc_logger - INFO - Current fitness average: 352.3278229944442
+2018-09-13 20:24:56,896 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,896 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,897 - abc_logger - INFO - Current fitness average: 627.8246509200764
+2018-09-13 20:24:56,900 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,900 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,900 - abc_logger - INFO - Current fitness average: 365.60744013960874
+2018-09-13 20:24:56,903 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,903 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,904 - abc_logger - INFO - Current fitness average: 524.4707037817525
+2018-09-13 20:24:56,906 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,906 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,906 - abc_logger - INFO - Current fitness average: 422.95478544943137
+2018-09-13 20:24:56,909 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,909 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,909 - abc_logger - INFO - Current fitness average: 310.9061721431901
+2018-09-13 20:24:56,911 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,912 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,912 - abc_logger - INFO - Current fitness average: 317.3069208291297
+2018-09-13 20:24:56,914 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,914 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,915 - abc_logger - INFO - Current fitness average: 288.46031113209204
+2018-09-13 20:24:56,917 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,917 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,918 - abc_logger - INFO - Current fitness average: 208.95833891770087
+2018-09-13 20:24:56,920 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,921 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,922 - abc_logger - INFO - Current fitness average: 473.2178585354102
+2018-09-13 20:24:56,924 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,924 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,925 - abc_logger - INFO - Current fitness average: 220.00962225392612
+2018-09-13 20:24:56,928 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,928 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,929 - abc_logger - INFO - Current fitness average: 341.6753658640711
+2018-09-13 20:24:56,931 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,931 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,932 - abc_logger - INFO - Current fitness average: 437.21670956640787
+2018-09-13 20:24:56,934 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,934 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,934 - abc_logger - INFO - Current fitness average: 318.44860913018886
+2018-09-13 20:24:56,936 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,936 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,937 - abc_logger - INFO - Current fitness average: 255.61360387994347
+2018-09-13 20:24:56,939 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,939 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,939 - abc_logger - INFO - Current fitness average: 319.5108376502461
+2018-09-13 20:24:56,941 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,942 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,942 - abc_logger - INFO - Current fitness average: 136.5236921112733
+2018-09-13 20:24:56,944 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,944 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,945 - abc_logger - INFO - Current fitness average: 621.0604301848552
+2018-09-13 20:24:56,947 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,947 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,947 - abc_logger - INFO - Current fitness average: 226.43645670980627
+2018-09-13 20:24:56,949 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,950 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,950 - abc_logger - INFO - Current fitness average: 438.5612546186195
+2018-09-13 20:24:56,952 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,953 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,953 - abc_logger - INFO - Current fitness average: 306.1587830930963
+2018-09-13 20:24:56,955 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,955 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,956 - abc_logger - INFO - Current fitness average: 413.5492753912292
+2018-09-13 20:24:56,958 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,958 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,958 - abc_logger - INFO - Current fitness average: 168.20054568640725
+2018-09-13 20:24:56,960 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,961 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,961 - abc_logger - INFO - Current fitness average: 219.1784826608326
+2018-09-13 20:24:56,963 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,963 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,964 - abc_logger - INFO - Current fitness average: 186.69820874128607
+2018-09-13 20:24:56,966 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,966 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,967 - abc_logger - INFO - Current fitness average: 146.8290441961507
+2018-09-13 20:24:56,969 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,969 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,969 - abc_logger - INFO - Current fitness average: 181.32422299807865
+2018-09-13 20:24:56,971 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,971 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,971 - abc_logger - INFO - Current fitness average: 55.165394949776754
+2018-09-13 20:24:56,976 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,976 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,977 - abc_logger - INFO - Current fitness average: 1318.1946390091325
+2018-09-13 20:24:56,980 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,981 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,981 - abc_logger - INFO - Current fitness average: 733.7930436548321
+2018-09-13 20:24:56,984 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,984 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,985 - abc_logger - INFO - Current fitness average: 639.3504038197507
+2018-09-13 20:24:56,988 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:56,988 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:56,989 - abc_logger - INFO - Current fitness average: 374.65587620497377
+2018-09-13 20:24:57,000 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:57,000 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:57,001 - abc_logger - INFO - Current fitness average: 634.0047387831719
+2018-09-13 20:24:57,003 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:57,004 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:57,004 - abc_logger - INFO - Current fitness average: 310.10437908600267
+2018-09-13 20:24:57,007 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:57,007 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:57,007 - abc_logger - INFO - Current fitness average: 402.339005574228
+2018-09-13 20:24:57,010 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:57,010 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:57,011 - abc_logger - INFO - Current fitness average: 432.3080510605877
+2018-09-13 20:24:57,013 - abc_logger - INFO - Best score: 7.141383370752983
+2018-09-13 20:24:57,013 - abc_logger - INFO - Best value: [4, 73, 7.950719125521999, 4.698772027969767]
+2018-09-13 20:24:57,013 - abc_logger - INFO - Current fitness average: 559.3543929970064
