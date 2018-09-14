@@ -56,7 +56,6 @@ class ABC:
             else:
                 self.__onlooker.best_employers[i].score = self.__fitness_fxn(positions)
                 self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
-
         if self.__processes > 0:
             for i in range(len(modified_bees)):
 
