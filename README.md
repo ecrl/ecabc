@@ -112,11 +112,13 @@ abc = ABC(fitness_fxn=idealDayTest,
           file_logging=True
          )
 abc.create_employers()
-while not abc.get_best_performer()[0] and abc.get_best_performer()[0] > 2:
-    abc.save_settings('{}/settings.json'.format(os.getcwd())) 
-    abc.calc_average() # Calculate the average of all the bees to have a reference point for which ones are performing poorly/well
-    abc.check_positions() # Check the current positions for all the bees, group together the good ones, replace poorly performing onese
-    abc.calc_new_positions() # Apply a value function to move well performing bees to a more optimal route 
+while True:
+    abc.save_settings('{}/settings.json'.format(os.getcwd()))
+    abc.calc_average()
+    abc.calc_new_positions()
+    abc.check_positions()
+    if (abc.get_best_performer()[0] < 2):
+        break
 print("execution time = {}".format(time.time() - start))
 ```
 
