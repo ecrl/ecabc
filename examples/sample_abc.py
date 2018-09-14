@@ -33,11 +33,9 @@ abc = ABC(fitness_fxn=idealDayTest,
           file_logging=True
          )
 abc.create_employers()
-while True:
+while not abc.get_best_performer()[0] and abc.get_best_performer()[0] > 2:
     abc.save_settings('{}/settings.json'.format(os.getcwd()))
-    abc.calc_new_positions()
     abc.calc_average()
+    abc.calc_new_positions()
     abc.check_positions()
-    if abc.get_best_performer()[0] < 3:
-        break
 print("execution time = {}".format(time.time() - start))
