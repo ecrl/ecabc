@@ -58,7 +58,6 @@ class ABC:
                 self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
         if self.__processes > 0:
             for i in range(len(modified_bees)):
-
                 modified_bees[i].score = modified_bees[i].score.get()
                 self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
     
@@ -181,4 +180,11 @@ class ABC:
             raise RuntimeWarning("Need to create employers")
         elif not self.__settings:
             self.__settings = Settings(self.__value_ranges, 50)
+
+    ### Some miscellaneous cleanup
+    def __del__(self):
+        if self.__processes > 0:
+            self.__logger.debug("Object being destroyed, joining and closing pool")
+            self.__pool.join()
+            self.__pool.close()
     
