@@ -68,7 +68,7 @@ The artificial bee colony can take a mulitude of parameters.
 
 The artificial bee colony also utilizes a variety to methods to toggle certain settings.
 - **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
-- **import_settings**: Accepts a json file by name. If the file exists, the artificial bee colony will import and use these settings.
+- **import_settings**: Accepts a json file by name. If the file exists, the artificial bee colony will import and use these settings, then return True. If the file doesn't exist, an error message will be logged, settings will be set to default, and the function will return False.
 - **save_settings**: Accepts a json file name. If the file exists, the artificial bee colony settings will be saved to this file.
 
 # 2.0.0 Update
