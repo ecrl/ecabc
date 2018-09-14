@@ -33,7 +33,8 @@ class ABC:
         self.__fitness_fxn = fitness_fxn
         self.__onlooker = Bee('onlooker')
         self.__processes = processes
-        self.__pool = Pool(processes)
+        if processes > 0:
+            self.__pool = Pool(processes)
         self.__saving = None
         self.__settings = None
         self.__employers = []
@@ -198,13 +199,3 @@ class ABC:
             raise RuntimeWarning("Need to create employers")
         elif not self.__settings:
             self.__settings = Settings(self.__value_ranges, 50)
-
-    def __del__(self):
-        '''
-        Class destructor
-        '''
-        if self.__processes > 0:
-            self.__logger.debug("Object being destroyed, joining and closing pool")
-            self.__pool.join()
-            self.__pool.close()
-    
