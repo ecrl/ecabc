@@ -116,9 +116,11 @@ class ABC:
     def import_settings(self, filename):
         try:
             self.__settings.import_settings(filename)
+            return True
         except FileNotFoundError:
             self.__logger.error("file: {} not found, continuing with default settings")
-            ### TODO ###
+            self.__settings = Settings(self.__value_ranges, 50)
+            return False
 
     ### Save all current settings/scores
     def save_settings(self, filename):
