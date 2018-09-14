@@ -59,40 +59,65 @@ Additional package dependencies (Numpy) will be installed during the ECabc insta
 To update your version of ECabc to the latest release version, use "**pip install --upgrade ecabc**".
 
 # Usage
-
 The artificial bee colony can take a mulitude of parameters.
-- **endValue**: The target fitness score you would like your values to produce in order to terminate program
-- **iterationAmount**: The amount of iterations you would like the program to undergo before terminating. An iteration is one cycle of assinging values to N location for N many employer bees.
-- **amountOfEmployer**: The amount of employer bees the artificial colony will contain, each containing its own set of value and fitness scores correlating to the values. The more bees, the longer each iteration will take, however the less iterations your program will hypothetically need to arrive at a target min/max value.
-- **file_logging**: Accepts a boolean value. If set to true, will log for abc. This can be quite exepensive. If your fitness function is trivial, this will add an unecessary amount of time to reach target goal. You should instead just output to console.
+- **value_ranges**: Your value ranges. Values must be passed as a list of tuples with a **type/(min_value, max_value)** pairing. See the example file for more details.
+- **fitness_fxn**: The user defined function that will be used to generate the cost of each employer bee's values.
+- **file_logging**: Accepts a boolean value. If set to true, will log for abc. This **can** be quite exepensive. If your fitness function is trivial, this will add an unecessary amount of time to reach target goal. You should instead just output to console. This is set to false by default.
 - **print_level**: Accepts logging.DEBUG/INFO/WARN/ERROR/FATAL or None. This will print out log information to the console, and is less costly compared to saving logs to a file. If set to None, won't output to console. Defaults to logging.INFO.
-- **filename**: Accepts the name of a file which you wish to save your settings and scores. Setting this to None will avoid creating a save file. If you have a settings file which matches the file you specified, the settings and scores from the settings file in your directory will be imported
-- **import**: True if you'd wish to import from the filename given, false if you'd like to create a new settings file. Defaults to false.
 - **processes**: Decide how many processes you'd like to have running at a time. A process will run the fitness function once per iteration. Processes run in parallel, and thus the more processes you utilize, the more fitness functions can run concurrently, cutting program run time significantly. If your fitness function takes 5 seconds to execute. Utilizing 50 bees, and 5 processes, calculating the values for all bees will take 50 seconds, rather than 250. Be mindful that this will increase CPU usage heavily, and you should be careful with how many processes you allow a time, to avoid a crash or computer freeze. **If your fitness function is trivial, set processes to 0. Process spawning is expensive, and only worth it for costly fitness functions.** Defaults to 5.
 
 The artificial bee colony also utilizes a variety to methods to toggle certain settings.
 - **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
+- **import_settings**: Accepts a json file by name. If the file exists, the artificial bee colony will import and use these settings.
+- **save_settings**: Accepts a json file name. If the file exists, the artificial bee colony settings will be saved to this file.
+
+# 2.0.0 Update
+Update 2.0.0 changed ecabc quite a bit. In order to ensure code mantainability, in addition allowing the users to have more control, we have un-automated the run process in place of 3/4 methods the user must now call to use the abc properly. Employer bees are not automatically created for you anymore. The runABC() method has been removed as well. Below is an example of how to properly use the abc in the easiest way possible.
 
 # Example
 
 ```python
-from ecabc.abc import ABC
+'''
+Simple sample script to demonstrate how to use the artificial bee colony, this script is a simple example, which is just
+used to demonstrate how the program works.
 
-def fitnessTest(values):  # Fitness function that will be passed to the abc
-    fit = 0
-    for val in values:
-        fit+=val
-    return fit
-  
-values = [('float', (0,100)), ('float', (0,100)), ('float',(0,100)), ('float', (0, 10000))]  # Value type/ranges that will be passed to the abc
-abc = ABC(fitnessFunction=fitnessTest, 
-          valueRanges=values, 
-          amountOfEmployers=50, # Defaults to 50
-          endValue=50           # Or iterationAmount
+If an ideal day is 70 degrees, with 37.5% humidity. The fitness functions takes four values and tests how 'ideal' they are.
+The first two values input will be added to see how hot the day is, and the second two values will be multiplied to see how much
+humidity there is. The resulting values will be compared to 70 degrees, and 37.5% humidity to determine how ideal the day those 
+values produce is. 
+
+The goal is to have the first two values added up to as close to 70 as possible, while the second two values multiply out to as 
+close to 37.5 as possible.
+'''
+
+from eabc import *
+import os
+import time
+
+def idealDayTest(values):  # Fitness function that will be passed to the abc
+    temperature = values[0] + values[1]       # Calcuate the day's temperature
+    humidity = values[2] * values[3]          # Calculate the day's humidity
+    
+    cost_temperature = abs(70 - temperature)  # Check how close the daily temperature to 70
+    cost_humidity = abs(37.5 - humidity)      # Check how close the humidity is to 37.5
+
+    return cost_temperature + cost_humidity   # This will be the cost of your fitness function generated by the values
+
+         # First value      # Second Value     # Third Value      # Fourth Value
+values = [('int', (0,100)), ('int', (0,100)), ('float',(0,100)), ('float', (0, 100))]
+
+start = time.time()
+abc = ABC(fitness_fxn=idealDayTest, 
+          value_ranges=values, 
+          file_logging=True
          )
-
-abc.minimize(False)         
-abc.runABC() # Run the artificial bee colony
+abc.create_employers()
+while not abc.get_best_performer()[0] and abc.get_best_performer()[0] > 2:
+    abc.save_settings('{}/settings.json'.format(os.getcwd())) 
+    abc.calc_average() # Calculate the average of all the bees to have a reference point for which ones are performing poorly/well
+    abc.check_positions() # Check the current positions for all the bees, group together the good ones, replace poorly performing onese
+    abc.calc_new_positions() # Apply a value function to move well performing bees to a more optimal route 
+print("execution time = {}".format(time.time() - start))
 ```
 
 
