@@ -146,6 +146,8 @@ class ABC:
                     bee.score = self.__fitness_fxn(bee.values)
                     if self.__settings.update(bee.score, bee.values):
                         self.__logger.info("Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                else:
+                    self.__onlooker.best_employers.append(bee)
 
     def get_best_performer(self):
         return self.__settings.get_best()
