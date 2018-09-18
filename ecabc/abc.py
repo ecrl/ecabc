@@ -99,7 +99,7 @@ class ABC:
     
     def calc_average(self):
         '''
-        Calculate the average of all bees' cost
+        Calculate the average of bee cost. Will also update the best score
         '''
         self.__verify_ready()
         self.__average_score = 0
@@ -116,7 +116,8 @@ class ABC:
     def check_positions(self):
         '''
         Check the fitness cost of every bee to the average. If below average, assign that bee a new random
-        set of values. Additionally, group together well performing bees.
+        set of values. Additionally, group together well performing bees. If score is better than current 
+        best, set is as current best
         '''
         self.__verify_ready()
         self.__onlooker.best_employers = []
