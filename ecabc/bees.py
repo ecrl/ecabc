@@ -9,6 +9,7 @@
 #
 
 import numpy as np
+from random import randint
 
 ### Bee object, employers contain value/fitness
 class Bee:
@@ -25,13 +26,12 @@ class Bee:
 
     ### Onlooker bee function, create a new set of positions
     def calculate_positions(self, first_bee, second_bee, value_types):
-        new_values = []
-        curr_value = 0
-        for i in range(len(value_types)):
-            curr_value = self.__value_function(first_bee.values[i], second_bee.values[i])
-            if value_types[i] == 'int':
-                curr_value = int(curr_value)
-            new_values.append(curr_value)
+        new_values = first_bee.values
+        index = randint(0, len(first_bee.values)-1)
+        value = self.__value_function(first_bee.values[index], second_bee.values[index])
+        if value_types[index] == 'int':
+            value = int(value)
+        new_values[index] = value
         return new_values
 
     #### Employer bee function, get fitness score for a given set of values

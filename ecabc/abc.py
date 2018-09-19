@@ -69,10 +69,10 @@ class ABC:
         Calculate new positions for well performing bees. Each bee that has performed better then
         average is combined with another well performing bee to move to a more optimal location. A 
         location is a combination of values, the more optimal, the better that set of values will 
-        perform given the fitness function.
+        perform given the fitness function. If the new position performs better than the bee's current
+        position, the bee will move to the new location
         '''
         self.__verify_ready()
-        modified_bees = []
         for i in range(len(self.__onlooker.best_employers)):
             valueTypes = [t[0] for t in self.__settings._valueRanges]
             secondBee = randint(0, len(self.__onlooker.best_employers) -1)
@@ -80,21 +80,10 @@ class ABC:
             while (secondBee == i):
                 secondBee = randint(0, len(self.__onlooker.best_employers) -1)
             positions = self.__onlooker.calculate_positions(self.__onlooker.best_employers[i], self.__onlooker.best_employers[secondBee], valueTypes)
-            self.__onlooker.best_employers[i].score = positions
-            # If multi processing
-            if self.__processes > 0:
-                try:
-                    self.__onlooker.best_employers[i].score = self.__pool.apply_async(self.__fitness_fxn, [positions])
-                    modified_bees.append(self.__onlooker.best_employers[i])
-                except Exception as e:
-                    raise e
-            # No multi processing
-            else:
-                self.__onlooker.best_employers[i].score = self.__fitness_fxn(positions)
-                self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
-        if self.__processes > 0:
-            for i in range(len(modified_bees)):
-                modified_bees[i].score = modified_bees[i].score.get()
+            new_score = self.__fitness_fxn(positions)
+            if self.__is_better(new_score, self.__onlooker.best_employers[i].score):
+                self.__onlooker.best_employers[i].values = positions
+                self.__onlooker.best_employers[i].score = new_score
                 self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
     
     def calc_average(self):
@@ -171,6 +160,10 @@ class ABC:
     def __below_average(self, bee):
         return (self.__settings._minimize == True and bee.score  > self.__average_score) or\
                (self.__settings._minimize == False and bee.score < self.__average_score)
+    
+    def __is_better(self, first_score, comparison):
+        return (self.__settings._minimize == True and first_score  > comparison) or\
+               (self.__settings._minimize == False and first_score < comparison)
 
     def __gen_random_values(self):
         '''
