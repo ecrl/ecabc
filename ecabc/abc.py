@@ -162,8 +162,8 @@ class ABC:
                (self.__settings._minimize == False and bee.score < self.__average_score)
     
     def __is_better(self, first_score, comparison):
-        return (self.__settings._minimize == True and first_score  > comparison) or\
-               (self.__settings._minimize == False and first_score < comparison)
+        return (self.__settings._minimize == True and first_score  < comparison) or\
+               (self.__settings._minimize == False and first_score > comparison)
 
     def __gen_random_values(self):
         '''
