@@ -11,7 +11,7 @@
 import sys as sys
 from random import randint
 import numpy as np
-import logging
+from colorlogging import ColorLogger
 from multiprocessing import Pool
 
 # artificial bee colony packages
@@ -27,8 +27,8 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, value_ranges, fitness_fxn, print_level=logging.INFO, file_logging=False, processes=5):
-        self.__logger = Logger(print_level, file_logging, 'abc_logger')
+    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disabled', processes=5):
+        self.__logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self.__value_ranges = value_ranges
         self.__fitness_fxn = fitness_fxn
         self.__onlooker = Bee('onlooker')
@@ -54,7 +54,7 @@ class ABC:
             for i in range(num_employers):
                 try:
                     self.__employers[i].score = self.__employers[i].score.get()
-                    self.__logger.debug("Bee number {} created".format(i+1))
+                    self.__logger.log('debug', "Bee number {} created".format(i+1))
                 except Exception as e:
                     raise e
         # No multiprocessing
@@ -62,7 +62,7 @@ class ABC:
             for i in range(num_employers):
                 self.__employers.append(Bee('employer', self.__gen_random_values()))
                 self.__employers[i].score = self.__fitness_fxn(self.__employers[i].values)
-                self.__logger.debug("Bee number {} created".format(i+1))
+                self.__logger.log('debug', "Bee number {} created".format(i+1))
      
     def calc_new_positions(self):
         '''
@@ -84,7 +84,7 @@ class ABC:
             if self.__is_better(new_score, self.__onlooker.best_employers[i].score):
                 self.__onlooker.best_employers[i].values = positions
                 self.__onlooker.best_employers[i].score = new_score
-                self.__logger.debug("Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
+                self.__logger.log('debug', "Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
     
     def calc_average(self):
         '''
@@ -96,7 +96,7 @@ class ABC:
             self.__average_score += employer.score
             # While iterating through employers, look for the best fitness score/value pairing
             if self.__settings.update(employer.score, employer.values):
-                self.__logger.info("Best score update to score: {} | values: {}".format(employer.score, employer.values)) 
+                self.__logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values)) 
         self.__average_score /= len(self.__employers)
     
     def get_average(self):
@@ -125,7 +125,7 @@ class ABC:
                 try:
                     bee.score = bee.score.get()
                     if self.__settings.update(bee.score, bee.values):
-                        self.__logger.info("Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                        self.__logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
                 except Exception as e:
                     raise e
         # No multiprocessing
@@ -135,7 +135,7 @@ class ABC:
                     bee.values = self.__gen_random_values()
                     bee.score = self.__fitness_fxn(bee.values)
                     if self.__settings.update(bee.score, bee.values):
-                        self.__logger.info("Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                        self.__logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
                 else:
                     self.__onlooker.best_employers.append(bee)
 
@@ -147,7 +147,7 @@ class ABC:
             self.__settings.import_settings(filename)
             return True
         except FileNotFoundError:
-            self.__logger.error("file: {} not found, continuing with default settings")
+            self.__logger.log('error', "file: {} not found, continuing with default settings")
             self.__settings = Settings(self.__value_ranges, 50)
             return False
 
@@ -171,7 +171,7 @@ class ABC:
         '''
         values = []
         if self.__settings._valueRanges == None:
-            self.__logger.fatal("must set the type/range of possible values")
+            self.__logger.log('fata', "must set the type/range of possible values")
             raise RuntimeError("must set the type/range of possible values")
         else:
             # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
@@ -181,7 +181,7 @@ class ABC:
                 elif t[0] == 'float':
                     values.append(np.random.uniform(t[1][0], t[1][1]))
                 else:
-                    self.__logger.fatal("value type must be either an 'int' or a 'float'")
+                    self.__logger.log('fata', "value type must be either an 'int' or a 'float'")
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
@@ -191,7 +191,7 @@ class ABC:
         errors during execution
         '''
         if len(self.__employers) == 0 and creating == False:
-            self.__logger.fatal("Need to create employers")
+            self.__logger.log('fatal', "Need to create employers")
             raise RuntimeWarning("Need to create employers")
         elif not self.__settings:
             self.__settings = Settings(self.__value_ranges, 50)
