@@ -17,7 +17,6 @@ from multiprocessing import Pool
 # artificial bee colony packages
 from ecabc.bees import Bee
 from ecabc.settings import Settings
-from ecabc.logger import Logger
 
 class ABC:
     
