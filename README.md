@@ -109,7 +109,8 @@ values = [('int', (0,100)), ('int', (0,100)), ('float',(0,100)), ('float', (0, 1
 start = time.time()
 abc = ABC(fitness_fxn=idealDayTest, 
           value_ranges=values, 
-          file_logging=True
+          print_level='warn',
+          file_level='debug'
          )
 abc.create_employers()
 while True:
