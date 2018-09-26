@@ -1,3 +1,6 @@
+**NOTE. THIS VERSION OF ECABC IS DEPRECATED. VERSIONS 2.0.0 WILL BRING VARIOUS QUALITY OF LIFE AND ALGORITHM CHANGES THAT WILL IMPROVE THE EASE OF USE AND EFFICIENCY OF THIS SOFTWARE. VERSIONS 2.0.0 CAN BE TRACKED IN THE 2.0.0 BRANCH.**
+
+
 [![UML Energy & Combustion Research Laboratory](http://faculty.uml.edu/Hunter_Mack/uploads/9/7/1/3/97138798/1481826668_2.png)](http://faculty.uml.edu/Hunter_Mack/)
 
 # ECabc : Feature tuning program 
