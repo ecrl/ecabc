@@ -3,7 +3,7 @@
 #
 #  ecabc/abc.py
 #  v.2.0.0
-#  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
+#  Developed in 2018 by Sanskriti Sharma <Sanskriti_Sharma@student.uml.edu> and Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This class stores the settings for the the bee colony
 #
