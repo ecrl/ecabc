@@ -36,8 +36,8 @@ abc.create_employers()
 while True:
     abc.save_settings('{}/settings.json'.format(os.getcwd()))
     abc.calc_average()
-    abc.calc_new_positions()
-    abc.check_positions()
     if (abc.get_best_performer()[0] < 2):
         break
+    abc.calc_new_positions()
+    abc.check_positions()
 print("execution time = {}".format(time.time() - start))
