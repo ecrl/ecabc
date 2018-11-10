@@ -39,6 +39,5 @@ while True:
     abc.calc_new_positions()
     abc.check_positions()
     if (abc.get_best_performer()[0] < 2):
-        print("Best performer {}".format(abc.get_best_performer()))
         break
 print("execution time = {}".format(time.time() - start))
