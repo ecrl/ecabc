@@ -15,8 +15,9 @@ from colorlogging import ColorLogger
 from multiprocessing import Pool
 
 # artificial bee colony packages
-from ecabc.bees import Bee
+from ecabc.bees import *
 from ecabc.settings import Settings
+
 
 class ABC:
     
@@ -26,11 +27,11 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disabled', processes=5):
+    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disable', processes=5):
         self.__logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self.__value_ranges = value_ranges
         self.__fitness_fxn = fitness_fxn
-        self.__onlooker = Bee('onlooker')
+        self.__onlooker = OnlookerBee()
         self.__processes = processes
         if processes > 0:
             self.__pool = Pool(processes)
@@ -48,7 +49,7 @@ class ABC:
         # If multiprocessing
         if self.__processes > 0:
             for i in range(num_employers):
-                self.__employers.append(Bee('employer', self.__gen_random_values()))
+                self.__employers.append(EmployerBee(self.__gen_random_values()))
                 self.__employers[i].score = self.__pool.apply_async(self.__fitness_fxn, [self.__employers[i].values])
             for i in range(num_employers):
                 try:
@@ -59,7 +60,7 @@ class ABC:
         # No multiprocessing
         else:
             for i in range(num_employers):
-                self.__employers.append(Bee('employer', self.__gen_random_values()))
+                self.__employers.append(EmployerBee(self.__gen_random_values()))
                 self.__employers[i].score = self.__fitness_fxn(self.__employers[i].values)
                 self.__logger.log('debug', "Bee number {} created".format(i+1))
      
@@ -72,18 +73,22 @@ class ABC:
         position, the bee will move to the new location
         '''
         self.__verify_ready()
+        probability = np.random.uniform(0,1)
+        self.__logger.log('debug', "probability is {}".format(probability))
         for i in range(len(self.__onlooker.best_employers)):
-            valueTypes = [t[0] for t in self.__settings._valueRanges]
-            secondBee = randint(0, len(self.__onlooker.best_employers) -1)
-            # Avoid both bees being the same
-            while (secondBee == i):
+            self.__onlooker.best_employers[i].calculate_probability(self.__average_score)
+            if self.__onlooker.best_employers[i].probability >= probability:
+                valueTypes = [t[0] for t in self.__settings._valueRanges]
                 secondBee = randint(0, len(self.__onlooker.best_employers) -1)
-            positions = self.__onlooker.calculate_positions(self.__onlooker.best_employers[i], self.__onlooker.best_employers[secondBee], valueTypes)
-            new_score = self.__fitness_fxn(positions)
-            if self.__is_better(new_score, self.__onlooker.best_employers[i].score):
-                self.__onlooker.best_employers[i].values = positions
-                self.__onlooker.best_employers[i].score = new_score
-                self.__logger.log('debug', "Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
+                # Avoid both bees being the same
+                while (secondBee == i):
+                    secondBee = randint(0, len(self.__onlooker.best_employers) -1)
+                positions = self.__onlooker.calculate_positions(self.__onlooker.best_employers[i], self.__onlooker.best_employers[secondBee], valueTypes)
+                new_score = self.__fitness_fxn(positions)
+                if self.__is_better(new_score, self.__onlooker.best_employers[i].score):
+                    self.__onlooker.best_employers[i].values = positions
+                    self.__onlooker.best_employers[i].score = new_score
+                    self.__logger.log('debug', "Assigned new position to {}/{}".format(i+1, len(self.__onlooker.best_employers)))
     
     def calc_average(self):
         '''
@@ -97,6 +102,9 @@ class ABC:
             if self.__settings.update(employer.score, employer.values):
                 self.__logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values)) 
         self.__average_score /= len(self.__employers)
+
+        # Now calculate each bee's probability
+        self.__gen_probability_values()
     
     def get_average(self):
         return self.__average_score
@@ -139,6 +147,9 @@ class ABC:
                     self.__onlooker.best_employers.append(bee)
 
     def get_best_performer(self):
+        '''
+        Get the best performing bee
+        '''
         return self.__settings.get_best()
 
     def import_settings(self, filename):
@@ -184,6 +195,10 @@ class ABC:
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
+    def __gen_probability_values(self):
+        for employer in self.__employers:
+            employer.calculate_probability
+
     def __verify_ready(self, creating=False):
         '''
         Some cleanup, ensures that everything is set up properly to avoid random 
@@ -194,3 +209,4 @@ class ABC:
             raise RuntimeWarning("Need to create employers")
         elif not self.__settings:
             self.__settings = Settings(self.__value_ranges, 50)
+
