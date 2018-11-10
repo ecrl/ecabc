@@ -11,7 +11,7 @@ The goal is to have the first two values added up to as close to 70 as possible,
 close to 37.5 as possible.
 '''
 
-from ecabc.abc import *
+from eabc import *
 import os
 import time
 
@@ -30,7 +30,7 @@ values = [('int', (0,100)), ('int', (0,100)), ('float',(0,100)), ('float', (0, 1
 start = time.time()
 abc = ABC(fitness_fxn=idealDayTest, 
           value_ranges=values, 
-          file_logging=True
+          processes=5
          )
 abc.create_employers()
 while True:
