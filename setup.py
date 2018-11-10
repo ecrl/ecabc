@@ -9,5 +9,5 @@ author = 'Hernan Gelaf-Romer',
 author_email = 'Hernan_Gelafromer@student.uml.edu',
 license = 'MIT',
 packages = ['ecabc'],
-install_requires = ["numpy", "ColorLogger"],
+install_requires = ["numpy", "ColorLogging"],
 zip_safe = False)
