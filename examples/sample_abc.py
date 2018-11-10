@@ -11,7 +11,7 @@ The goal is to have the first two values added up to as close to 70 as possible,
 close to 37.5 as possible.
 '''
 
-from eabc import *
+from ecabc.abc import *
 import os
 import time
 
