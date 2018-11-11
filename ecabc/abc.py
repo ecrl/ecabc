@@ -76,7 +76,6 @@ class ABC:
         probability = np.random.uniform(0,1)
         self.__logger.log('debug', "probability is {}".format(probability))
         for i in range(len(self.__onlooker.best_employers)):
-            self.__onlooker.best_employers[i].calculate_probability(self.__average_score)
             if self.__onlooker.best_employers[i].probability >= probability:
                 valueTypes = [t[0] for t in self.__settings._valueRanges]
                 secondBee = randint(0, len(self.__onlooker.best_employers) -1)
@@ -203,7 +202,7 @@ class ABC:
 
     def __gen_probability_values(self):
         for employer in self.__employers:
-            employer.calculate_probability
+            employer.calculate_probability(self.__average_score)
 
     def __verify_ready(self, creating=False):
         '''
