@@ -153,8 +153,14 @@ class ABC:
         return self.__settings.get_best()
 
     def import_settings(self, filename):
+        '''
+        Import settings from a JSON file
+        '''
+        if not self.__settings:
+            self.__settings = Settings([],0, filename)
         try:
             self.__settings.import_settings(filename)
+            self.__logger.log('debug', "Imported settings from file: ".format(filename))
             return True
         except FileNotFoundError:
             self.__logger.log('error', "file: {} not found, continuing with default settings")
@@ -181,7 +187,7 @@ class ABC:
         '''
         values = []
         if self.__settings._valueRanges == None:
-            self.__logger.log('fata', "must set the type/range of possible values")
+            self.__logger.log('fatal', "must set the type/range of possible values")
             raise RuntimeError("must set the type/range of possible values")
         else:
             # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
@@ -191,7 +197,7 @@ class ABC:
                 elif t[0] == 'float':
                     values.append(np.random.uniform(t[1][0], t[1][1]))
                 else:
-                    self.__logger.log('fata', "value type must be either an 'int' or a 'float'")
+                    self.__logger.log('fatal', "value type must be either an 'int' or a 'float'")
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
