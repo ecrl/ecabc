@@ -1,4 +1,3 @@
 import ecabc.abc
 import ecabc.bees
-import ecabc.settings
 __version__ = '2.0.0'
