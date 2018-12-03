@@ -2,46 +2,68 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/bees.py
-#  v.1.1.1.dev2
+#  v.2.0.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program defines the bee objects created in the artificial bee colony
 #
 
-# artificial bee colony program import
-from ecabc.helper_functions import valueFunction
+import numpy as np
+from random import randint
 
-### Bee object, employers contain value/fitness
-class Bee:
+class EmployerBee:
+
+    '''
+    Class which stores individual employer bee information. A probability it will get picked, a score
+    and the values that pertain to the score
+    '''
     
-    def __init__(self, beeType, values=[]):
-        self.beeType = beeType
-        # Only onlooker bees should store best performing employers
-        if beeType == 'onlooker':
-            self.bestEmployers = []
-        # Only the employer bees should store values/fitness scores
-        elif beeType == "employer":               
-            self.values = values            
-            self.currFitnessScore = None
+    def __init__(self, values=[]):              
+        self.values = values            
+        self.score = None
+        self.probability = 0
+        self.failed_trials = 0
 
-    ### Onlooker bee function, create a new set of positions
-    def getPosition(self, beeList, firstBee, secondBee, fitnessFunction, valueTypes):
-        newValues = []
-        currValue = 0
-        for i in range(len(valueTypes)):
-            currValue = valueFunction(beeList[firstBee].values[i], beeList[secondBee].values[i])
-            if valueTypes[i] == 'int':
-                currValue = int(currValue)
-            newValues.append(currValue)
-        beeList[firstBee].getFitnessScore(newValues, fitnessFunction)
+    def calculate_probability(self, fitness_average):
+        '''
+        Calculate probability based on a given fitness average
+        '''
+        self.probability = self.score / fitness_average
 
-    #### Employer bee function, get fitness score for a given set of values
-    def getFitnessScore(self, values, fitnessFunction):
-        if self.beeType != "employer":
-            raise RuntimeError("Cannot get fitness score on a non-employer bee")
-        else:
-            # Your fitness function must take a certain set of values that you would like to optimize
-            fitnessScore = fitnessFunction(values)  
-            if self.currFitnessScore == None or fitnessScore < self.currFitnessScore:
-                self.value = values
-                self.currFitnessScore = fitnessScore
+    def get_fitness_score(self, values, fitness_function):
+        '''
+        Get fitness score for a given set of values
+        '''
+        score = fitness_function(values)  
+        if self.score == None or score < self.score:
+            self.value = values
+            self.score = score
+
+class OnlookerBee:
+    '''
+    Class to store best performing bees, and also
+    calculate positions for any given bees
+    '''
+
+    def __init__(self):
+        self.best_employers = []
+    
+    def calculate_positions(self, first_bee, second_bee, value_types):
+        '''
+        Calculate the positions when merging two bees
+        '''
+        new_values = first_bee.values
+        index = randint(0, len(first_bee.values)-1)
+        value = self.__value_function(first_bee.values[index], second_bee.values[index])
+        if value_types[index] == 'int':
+            value = int(value)
+        new_values[index] = value
+        return new_values
+
+    def __value_function(self, a, b):  
+        '''
+        Algorithm used to merge the same value type from two
+        different bees
+        '''
+        activationNum = np.random.uniform(-1, 1)
+        return a + abs(activationNum * (a - b))

@@ -2,158 +2,318 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.1.1.1.dev2
+#  v.2.0.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
 #
 
-# 3rd party packages (open src.)
 import sys as sys
+import os.path
+import json
 from random import randint
+import numpy as np
+from colorlogging import ColorLogger
+from multiprocessing import Pool
 
 # artificial bee colony packages
-from ecabc.bees import Bee
-from ecabc.helper_functions import generateRandomValues, saveScore, blockPrint, enablePrint
+from ecabc.bees import *
 
-### Artificial bee colony object, which contains multiple bee objects ###
+
 class ABC:
+    
+    '''
+    ABC object: Manages employer and onlooker bees to optimize a set of generic values 
+    given a generic user defined fitness function. Handles data transfer and manipulation 
+    between bees.
+    '''
 
-    def __init__(self, valueRanges, fitnessFunction=None, endValue = None, iterationAmount = None, amountOfEmployers = 50, filename = 'scores.txt'):
-        if endValue == None and iterationAmount == None:
-            raise ValueError("must select either an iterationAmount or and endValue")
-        if fitnessFunction == None:
-            raise ValueError("must pass a fitness function")
-        print("***INITIALIZING ABC***")
-        self.filename = filename                # Name of file where the scores will be stored
-        self.iterationCount = 0
-        self.valueRanges = valueRanges
-        self.fitnessFunction = fitnessFunction
-        self.employers = []
-        self.bestValues = []                    # Store the values that are currently performing the best
-        self.onlooker = Bee('onlooker')
-        self.bestFitnessScore = None            # Store the current best Fitness Score
-        self.fitnessAverage = 0
-        self.endValue = endValue
-        self.iterationAmount = iterationAmount
-        self.mm = 'min'
-        self.printProjectFeedback = True
-        # Initialize employer bees, assign them values/fitness scores
-        self.createEmployerBees(amountOfEmployers)
-        print("***DONE INITIALIZING***")
-     
-    ### Assign a new position to the given bee
-    def assignNewPositions(self, firstBee):
-        valueTypes = [t[0] for t in self.valueRanges]
-        secondBee = randint(0, len(self.employers) -1)
-        # Avoid both bees being the same
-        while (secondBee == firstBee):
-            secondBee = randint(0, len(self.onlooker.bestEmployers) -1)
-        self.onlooker.getPosition(self.employers, firstBee, secondBee, self.fitnessFunction, valueTypes)
+    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disable', processes=5):
+        self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
+        self._value_ranges = value_ranges
+        self._num_employers = 50
+        self._best_values = []
+        self._best_score = None
+        self._minimize = True
+        self._fitness_fxn = fitness_fxn
+        self._onlooker = OnlookerBee()
+        self._processes = processes
+        self._to_modify = []
+        self._limit = 10
+        self._processes = processes
+        self._employers = []
+
+    @property 
+    def minimize(self):
+        return self._minimize
+
+    @minimize.setter
+    def minmize(self, minimize):
+        self._minimize = minimize
+        self._logger.log('debug', "Minimize set to {}".format(minimize))
+
+    @property
+    def num_employers(self):
+        return self._num_employers
     
-    ### Collect the average fitness score across all employers
-    def getFitnessAverage(self):
-        self.fitnessAverage = 0
-        for employer in self.employers:
-            self.fitnessAverage += employer.currFitnessScore
-            # While iterating through employers, look for the best fitness score/value pairing
-            if self.isBetterThanCurrBest(employer):
-                self.bestFitnessScore = employer.currFitnessScore
-                self.bestValues = employer.values  
-        self.fitnessAverage /= len(self.employers)
-    
-    ### Check if new position is better than current position held by a bee
-    def checkNewPositions(self, bee):
-        # Update the bee's fitness/value pair if the new location is better
-        if self.isWorseThanAverage(bee):
-            bee.values = generateRandomValues(self.valueRanges)
-            bee.currFitnessScore = self.fitnessFunction(bee.values)
+    @num_employers.setter
+    def num_employers(self, num_employers):
+        self._num_employers = num_employers
+        self._logger.log('debug', "Number of employers set to {}".format(num_employers))
+
+    @property 
+    def processes(self):
+        return self._processes
+
+    @processes.setter
+    def processes(self, processes):
+        self._processes = processes
+        self._logger.log('debug', "Number of processes set to {}".format(processes))
+
+    @property
+    def value_ranges(self):
+        return self._value_ranges
+
+    @value_ranges.setter
+    def value_ranges(self, value_ranges):
+        self._value_ranges = value_ranges
+        self._logger.log('debug', "Value ranges set to {}".format(value_ranges))
+
+    @property
+    def best_performer(self):
+        '''
+        Return a tuple (best_score, best_values)
+        '''
+        return (self._best_score, self._best_values)
+
+    @property
+    def limit(self):
+        ''' 
+        Get the maximum amount of times a bee can perform below average
+        before completely abandoning its current food source and seeking 
+        a randomly generated one
+        '''
+        return self._limit
+
+    @limit.setter
+    def limit(self, limit):
+        '''
+        Set the maximum amoutn of times a bee can perform below average
+        before completely bandoning its current food source and seeking 
+        a randomly generate done
+        '''
+        self._limit = limit
+
+    def create_employers(self):
+        '''
+        Generate a set of employer bees. This method must be called in order to generate a set
+        of usable employers bees. Other methods depend on this.
+        '''
+        self.__verify_ready(True)
+        # If multiprocessing
+        if self._processes > 0:
+            pool = Pool(self._processes)
+            for i in range(self._num_employers):
+                self._employers.append(EmployerBee(self.__gen_random_values()))
+                self._employers[i].score = pool.apply_async(self._fitness_fxn, [self._employers[i].values])
+            for i in range(self._num_employers):
+                try:
+                    self._employers[i].score = self._employers[i].score.get()
+                    self._logger.log('debug', "Bee number {} created".format(i+1))
+                except Exception as e:
+                    raise e
+            pool.close()
+            pool.join()
+        # No multiprocessing
         else:
-            # Assign the well performing bees to the onlooker
-            self.onlooker.bestEmployers.append(bee)
+            for i in range(self._num_employers):
+                self._employers.append(EmployerBee(self.__gen_random_values()))
+                self._employers[i].score = self._fitness_fxn(self._employers[i].values)
+                self._logger.log('debug', "Bee number {} created".format(i+1))
+     
+    def calc_new_positions(self):
+        '''
+        Calculate new positions for well performing bees. Each bee that has performed better then
+        average is combined with another well performing bee to move to a more optimal location. A 
+        location is a combination of values, the more optimal, the better that set of values will 
+        perform given the fitness function. If the new position performs better than the bee's current
+        position, the bee will move to the new location
+        '''
+        self.__verify_ready()
+        probability = np.random.uniform(0,1)
+        for i in range(len(self._onlooker.best_employers)):
+            if self._onlooker.best_employers[i].probability >= probability:
+                new_values = self.__merge_bee(i)
+                if self.__is_better(new_values[0], self._onlooker.best_employers[i].score):
+                    self._onlooker.best_employers[i].score = new_values[0]
+                    self._onlooker.best_employers[i].values = new_values[1]
+                    self._logger.log('debug', "Assigned new position to {}/{}".format(i + 1, len(self._onlooker.best_employers)))
+        for i in range(len(self._to_modify)):
+            new_values = self.__merge_bee(i)
+            self._to_modify[i].score = new_values[0]
+            self._to_modify[i].values = new_values[1]
 
-    ### If termination depends on a target value, check to see if it has been reached
-    def checkIfDone(self, count):
-        keepGoing = True
-        if self.endValue != None:
-            for employer in self.employers:
-                    if self.betterThanEndValue(employer):
-                        print("Fitness score =", employer.currFitnessScore)
-                        print("Values =", employer.values)
-                        keepGoing = False
-        elif count >= self.iterationAmount:
-            keepGoing = False
-        return keepGoing
+
+    def calc_average(self):
+        '''
+        Calculate the average of bee cost. Will also update the best score
+        '''
+        self.__verify_ready()
+        self._average_score = 0
+        for employer in self._employers:
+            self._average_score += employer.score
+            # While iterating through employers, look for the best fitness score/value pairing
+            if self.__update(employer.score, employer.values):
+                self._logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values)) 
+        self._average_score /= len(self._employers)
+
+        # Now calculate each bee's probability
+        self.__gen_probability_values()
     
-    ### Create employer bees
-    def createEmployerBees(self, amountOfEmployers):
-        for i in range(amountOfEmployers):
-            sys.stdout.flush()
-            sys.stdout.write("Creating bee number: %d \r" % (i + 1))
-            self.employers.append(Bee('employer', generateRandomValues(self.valueRanges)))
-            self.employers[i].currFitnessScore = self.fitnessFunction(self.employers[i].values)
+    def get_average(self):
+        return self._average_score
     
-    ### Specify whether the artificial bee colony will maximize or minimize the fitness cost
-    def specifyMinOrMax(self, mm):
-        if (mm == 'max'):
-            self.mm = 'max'
-        
-    ### Return whether the bee has a fitness score worse than the average
-    def isWorseThanAverage(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore  > self.fitnessAverage) or\
-               (self.mm == 'max' and bee.currFitnessScore < self.fitnessAverage)
+    def check_positions(self):
+        '''
+        Check the fitness cost of every bee to the average. If below average, and that bee has been reassigned
+        a food source more than the allowed amount, assign that bee a new random set of values. Additionally, group 
+        together well performing bees. If score is better than current best, set is as current best
+        '''
+        self.__verify_ready()
+        self._onlooker.best_employers = []
+        self._to_modify = []
+        # If multi processing
+        if self._processes > 0:
+            pool = Pool(self._processes)
+            modified_bees = []
+            for bee in self._employers:
+                if self.__below_average(bee):
+                    if bee.failed_trials >= self._limit:
+                        bee.values = self.__gen_random_values()
+                        bee.score = pool.apply_async(self._fitness_fxn, [bee.values])
+                        bee.failed_trials = 0
+                        modified_bees.append(bee)
+                    else:
+                        # Try to find a better value for the bee
+                        bee.failed_trials += 1
+                        self._to_modify.append(bee)
+                else:
+                    # Assign the well performing bees to the onlooker
+                    self._onlooker.best_employers.append(bee)
+            for bee in modified_bees:
+                try:
+                    bee.score = bee.score.get()
+                    self._logger.log('debug', "Generated new random bee score")
+                    if self.__update(bee.score, bee.values):
+                        self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                except Exception as e:
+                    raise e
+            pool.close()
+            pool.join()
+        # No multiprocessing
+        else:
+            for bee in self._employers:
+                if self.__below_average(bee):
+                    if bee.failed_trials >= self._limit:
+                        bee.values = self.__gen_random_values()
+                        bee.score = self._fitness_fxn(bee.values)
+                        bee.failed_trials = 0
+                        if self.__update(bee.score, bee.values):
+                            self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                    else:
+                        bee.failed_trials += 1
+                        self._to_modify.append(bee)
+                else:
+                    self._onlooker.best_employers.append(bee)
+
+    def import_settings(self, filename):
+        '''
+        Import settings from a JSON file
+        '''
+        if not os.path.isfile(filename):
+            self._logger.log('error', "file: {} not found, continuing with default settings".format(filename))
+            raise FileNotFoundError('could not open setting file')
+        else:
+            with open(filename, 'r') as jsonFile:
+                data = json.load(jsonFile)
+                self._value_ranges = data['valueRanges']
+                self._best_values = data['best_values']
+                self._minimize = data['minimize']
+                self._num_employers = data['num_employers']
+                self._best_score = data['best_score']
+
+    def save_settings(self, filename):
+        data = dict()
+        data['valueRanges'] = self._value_ranges
+        data['best_values'] = self._best_values
+        data['minimize'] = self._minimize
+        data['num_employers'] = self._num_employers
+        data['best_score'] = self._best_score
+        with open(filename, 'w') as outfile:
+            json.dump(data, outfile, indent=4, sort_keys=True)
+
+    def __merge_bee(self, bee_index):
+        valueTypes = [t[0] for t in self._value_ranges]
+        secondBee = randint(0, len(self._onlooker.best_employers) - 1)
+        # Avoid both bees being the same
+        while (secondBee == bee_index):
+            secondBee = randint(0, len(self._onlooker.best_employers) - 1)
+        positions = self._onlooker.calculate_positions(self._onlooker.best_employers[bee_index],
+            self._onlooker.best_employers[secondBee], valueTypes)
+        new_score = self._fitness_fxn(positions)
+        return (new_score, positions)
+
+    def __below_average(self, bee):
+        return (self._minimize == True and bee.score  > self._average_score) or\
+               (self._minimize == False and bee.score < self._average_score)
     
-    ### Return whether the bee's fitness score hits the specified end value
-    def betterThanEndValue(self, bee):
-        return (self.mm == 'min' and bee.currFitnessScore <= self.endValue) or\
-               (self.mm == 'max' and bee.currFitnessScore >= self.endValue)
+    def __is_better(self, first_score, comparison):
+        return (self._minimize == True and first_score  < comparison) or\
+               (self._minimize == False and first_score > comparison)
 
-    ### Return whether a bee's fitness average is better than the current best fitness score
-    def isBetterThanCurrBest(self, bee):
-        return self.bestFitnessScore == None or (self.mm == 'min' and bee.currFitnessScore < self.bestFitnessScore) or\
-               (self.mm == 'max' and bee.currFitnessScore > self.bestFitnessScore)
+    def __update(self, score, values):
+        if self._minimize: 
+            if self._best_score == None or score < self._best_score:
+                self._best_score = score
+                self._best_values = values
+                return True
+        elif not self._minimize:
+            if self._best_score == None or score > self._best_score:
+                self._best_score = score
+                self._best_values = values
+                return True
+        return False
 
-    ### Decide whether print statements will occur
-    def printInfo(self, yn):
-        self.printProjectFeedback = yn
-            
-    ### Run the artificial bee colony
-    def runABC(self):
-        running = True
-        
-        if self.printProjectFeedback == False:
-            blockPrint()
+    def __gen_random_values(self):
+        '''
+        Generate a random list of values based on the allowed value ranges
+        '''
+        values = []
+        if self._value_ranges == None:
+            self._logger.log('fatal', "must set the type/range of possible values")
+            raise RuntimeError("must set the type/range of possible values")
+        else:
+            # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
+            for t in self._value_ranges:  
+                if t[0] == 'int':
+                    values.append(randint(t[1][0], t[1][1]))
+                elif t[0] == 'float':
+                    values.append(np.random.uniform(t[1][0], t[1][1]))
+                else:
+                    self._logger.log('fatal', "value type must be either an 'int' or a 'float'")
+                    raise RuntimeError("value type must be either an 'int' or a 'float'")
+        return values
 
-        while True:
-            self.onlooker.bestEmployers.clear()
-            print("Assigning new positions")
-            for i in range(len(self.onlooker.bestEmployers)):
-                sys.stdout.flush()
-                sys.stdout.write('At bee number: %d \r' % (i+1))
-                self.assignNewPositions(i)
-            print("Getting fitness average")
-            self.getFitnessAverage()
-            print("Checking if done")
-            running = self.checkIfDone(self.iterationCount)
-            if running == False and self.endValue != None:
-                saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
-                break
-            print("Current fitness average:", self.fitnessAverage)
-            print("Checking new positions, assigning random positions to bad ones")
-            for employer in self.employers:
-                self.checkNewPositions(employer)
-            print("Best score:", self.bestFitnessScore)
-            print("Best value:", self.bestValues)
-            if self.iterationAmount != None:
-                print("Iteration {} / {}".format(self.iterationCount, self.iterationAmount))
-            if running == False:
-                saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
-                break
-            saveScore(self.bestFitnessScore, self.bestValues, self.iterationCount, self.filename)
-            self.iterationCount+=1
-        
-        # Return control of stdout to the user
-        if self.printProjectFeedback == False:
-            enablePrint()
+    def __gen_probability_values(self):
+        for employer in self._employers:
+            employer.calculate_probability(self._average_score)
 
-        return self.bestValues
+    def __verify_ready(self, creating=False):
+        '''
+        Some cleanup, ensures that everything is set up properly to avoid random 
+        errors during execution
+        '''
+        if len(self._employers) == 0 and creating == False:
+            self._logger.log('fatal', "Need to create employers")
+            raise RuntimeWarning("Need to create employers")
+
