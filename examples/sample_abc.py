@@ -38,7 +38,7 @@ if __name__ == '__main__':
     while True:
         abc.save_settings('{}/settings.json'.format(os.getcwd()))
         abc.calc_average()
-        if (abc.get_best_performer()[0] < 2):
+        if (getattr(abc, 'best_performer')[0] < 2):
             break
         abc.calc_new_positions()
         abc.check_positions()
