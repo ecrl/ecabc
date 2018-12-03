@@ -22,6 +22,7 @@ class EmployerBee:
         self.values = values            
         self.score = None
         self.probability = 0
+        self.failed_trials = 0
 
     def calculate_probability(self, fitness_average):
         '''
