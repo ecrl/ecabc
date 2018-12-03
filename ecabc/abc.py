@@ -168,7 +168,7 @@ class ABC:
         self._average_score /= len(self._employers)
 
         # Now calculate each bee's probability
-        self._gen_probability_values()
+        self.__gen_probability_values()
     
     def get_average(self):
         return self._average_score
@@ -299,7 +299,7 @@ class ABC:
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
-    def _gen_probability_values(self):
+    def __gen_probability_values(self):
         for employer in self._employers:
             employer.calculate_probability(self._average_score)
 
