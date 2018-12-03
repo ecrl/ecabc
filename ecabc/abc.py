@@ -191,6 +191,7 @@ class ABC:
                     if bee.failed_trials >= self._limit:
                         bee.values = self.__gen_random_values()
                         bee.score = pool.apply_async(self._fitness_fxn, [bee.values])
+                        bee.failed_trials = 0
                         modified_bees.append(bee)
                     else:
                         # Try to find a better value for the bee
@@ -199,7 +200,6 @@ class ABC:
                 else:
                     # Assign the well performing bees to the onlooker
                     self._onlooker.best_employers.append(bee)
-                    bee.failed_trials = 0
             for bee in modified_bees:
                 try:
                     bee.score = bee.score.get()
@@ -214,10 +214,15 @@ class ABC:
         else:
             for bee in self._employers:
                 if self.__below_average(bee):
-                    bee.values = self.__gen_random_values()
-                    bee.score = self._fitness_fxn(bee.values)
-                    if self.__update(bee.score, bee.values):
-                        self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                    if bee.failed_trials >= self._limit:
+                        bee.values = self.__gen_random_values()
+                        bee.score = self._fitness_fxn(bee.values)
+                        bee.failed_trials = 0
+                        if self.__update(bee.score, bee.values):
+                            self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                    else:
+                        bee.failed_trials += 1
+                        self._to_modify.append(bee)
                 else:
                     self._onlooker.best_employers.append(bee)
 
