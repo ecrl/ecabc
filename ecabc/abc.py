@@ -239,10 +239,7 @@ class ABC:
     def __merge_bee(self, bee_index):
         valueTypes = [t[0] for t in self._value_ranges]
         secondBee = randint(0, len(self._onlooker.best_employers) - 1)
-        # Avoid both bees being the same
-        while (secondBee == bee_index):
-            secondBee = randint(0, len(self._onlooker.best_employers) - 1)
-        positions = self._onlooker.calculate_positions(self._onlooker.best_employers[bee_index],
+        positions = self._onlooker.calculate_positions(self._to_modify[bee_index],
             self._onlooker.best_employers[secondBee], valueTypes)
         new_score = self._fitness_fxn(positions)
         return (new_score, positions)
