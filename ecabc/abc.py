@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.0.0
+#  v.2.0.1
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -39,7 +39,7 @@ class ABC:
         self._onlooker = OnlookerBee()
         self._processes = processes
         self._to_modify = []
-        self._limit = 10
+        self._limit = 20
         self._processes = processes
         self._employers = []
 
@@ -141,23 +141,22 @@ class ABC:
         '''
         self.__verify_ready()
         probability = np.random.uniform(0,1)
-        for i in range(len(self._onlooker.best_employers)):
-            if self._onlooker.best_employers[i].probability >= probability:
-                new_values = self.__merge_bee(i)
-                if self.__is_better(new_values[0], self._onlooker.best_employers[i].score):
-                    self._onlooker.best_employers[i].score = new_values[0]
-                    self._onlooker.best_employers[i].values = new_values[1]
-                    self._logger.log('debug', "Assigned new position to {}/{}".format(i + 1, len(self._onlooker.best_employers)))
         for i in range(len(self._to_modify)):
-            new_values = self.__merge_bee(i)
-            self._to_modify[i].score = new_values[0]
-            self._to_modify[i].values = new_values[1]
-
+            if self._to_modify[i].probability >= probability:
+                new_values = self.__merge_bee(i)
+                if self.__is_better(self._to_modify[i].score, new_values[0]):
+                    self._to_modify[i].failed_trials += 1
+                else:
+                    self._to_modify[i].score = new_values[0]
+                    self._to_modify[i].values = new_values[1]
+                    self._to_modify[i].failed_trials = 0
+                    self._logger.log('debug', "Bee assigned to new merged position")
 
     def calc_average(self):
         '''
         Calculate the average of bee cost. Will also update the best score
         '''
+        self._logger.log('debug', "calculating average")
         self.__verify_ready()
         self._average_score = 0
         for employer in self._employers:
@@ -169,9 +168,6 @@ class ABC:
 
         # Now calculate each bee's probability
         self.__gen_probability_values()
-    
-    def get_average(self):
-        return self._average_score
     
     def check_positions(self):
         '''
@@ -187,44 +183,32 @@ class ABC:
             pool = Pool(self._processes)
             modified_bees = []
             for bee in self._employers:
-                if self.__below_average(bee):
-                    if bee.failed_trials >= self._limit:
-                        bee.values = self.__gen_random_values()
+                if bee.failed_trials >= self._limit:
+                    bee.values = self.__gen_random_values()
+                    # Check whether multiprocessing is enabled
+                    if self._processes > 0:
                         bee.score = pool.apply_async(self._fitness_fxn, [bee.values])
-                        bee.failed_trials = 0
-                        modified_bees.append(bee)
                     else:
-                        # Try to find a better value for the bee
-                        bee.failed_trials += 1
-                        self._to_modify.append(bee)
+                        bee.score = self._fitness_fxn(bee.values)
+                    bee.failed_trials = 0
+                    modified_bees.append(bee)
                 else:
                     # Assign the well performing bees to the onlooker
-                    self._onlooker.best_employers.append(bee)
-            for bee in modified_bees:
-                try:
-                    bee.score = bee.score.get()
-                    self._logger.log('debug', "Generated new random bee score")
-                    if self.__update(bee.score, bee.values):
-                        self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
-                except Exception as e:
-                    raise e
-            pool.close()
-            pool.join()
-        # No multiprocessing
-        else:
-            for bee in self._employers:
-                if self.__below_average(bee):
-                    if bee.failed_trials >= self._limit:
-                        bee.values = self.__gen_random_values()
-                        bee.score = self._fitness_fxn(bee.values)
-                        bee.failed_trials = 0
+                    if not self.__below_average(bee):
+                        self._onlooker.best_employers.append(bee)
+                    self._to_modify.append(bee)
+            # Wait for all the bee values to be calculated if multiprocessing is enabled
+            if self._processes > 0:
+                for bee in modified_bees:
+                    try:
+                        bee.score = bee.score.get()
+                        self._logger.log('debug', "Generated new random bee score")
                         if self.__update(bee.score, bee.values):
                             self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
-                    else:
-                        bee.failed_trials += 1
-                        self._to_modify.append(bee)
-                else:
-                    self._onlooker.best_employers.append(bee)
+                    except Exception as e:
+                        raise e
+                pool.close()
+                pool.join()
 
     def import_settings(self, filename):
         '''
