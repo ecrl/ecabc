@@ -88,8 +88,7 @@ if __name__ == '__main__':
 
     start = time.time()
     abc = ABC(fitness_fxn=idealDayTest, 
-            value_ranges=values, 
-            file_logging=True
+            value_ranges=values
             )
     abc.create_employers()
     while True:
@@ -97,7 +96,7 @@ if __name__ == '__main__':
         abc.calc_average()
         abc.calc_new_positions()
         abc.check_positions()
-        if (abc.get_best_performer()[0] < 2):
+        if (getattr(abc, 'best_performer')[0] < 2):
             break
     print("execution time = {}".format(time.time() - start))
 ```
