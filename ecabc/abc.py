@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.0.1
+#  v.2.0.3
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -42,6 +42,10 @@ class ABC:
         self._limit = 20
         self._processes = processes
         self._employers = []
+        if processes > 0:
+            self._pool = Pool(processes)
+        else:
+            self._pool = None
 
     @property 
     def minimize(self):
@@ -67,7 +71,15 @@ class ABC:
 
     @processes.setter
     def processes(self, processes):
+        if self._processes > 0:
+            self._pool.join()
+            self._pool.close()
+
         self._processes = processes
+        if self._processes > 0:
+            self._pool = Pool(processes)
+        else:
+            self._pool = None
         self._logger.log('debug', "Number of processes set to {}".format(processes))
 
     @property
@@ -111,25 +123,20 @@ class ABC:
         '''
         self.__verify_ready(True)
         # If multiprocessing
+        for _ in range(self._num_employers):
+            employer = EmployerBee(self.__gen_random_values())
+            if self._processes > 0:
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values])
+            else:
+                employer.score = self._fitness_fxn(employer.values)
+            self._employers.append(employer)
         if self._processes > 0:
-            pool = Pool(self._processes)
-            for i in range(self._num_employers):
-                self._employers.append(EmployerBee(self.__gen_random_values()))
-                self._employers[i].score = pool.apply_async(self._fitness_fxn, [self._employers[i].values])
-            for i in range(self._num_employers):
+            for i, employer in enumerate(self._employers):
                 try:
-                    self._employers[i].score = self._employers[i].score.get()
-                    self._logger.log('debug', "Bee number {} created".format(i+1))
+                    employer.score = employer.score.get()
+                    self._logger.log('debug', "Bee number {} created".format(i + 1))
                 except Exception as e:
                     raise e
-            pool.close()
-            pool.join()
-        # No multiprocessing
-        else:
-            for i in range(self._num_employers):
-                self._employers.append(EmployerBee(self.__gen_random_values()))
-                self._employers[i].score = self._fitness_fxn(self._employers[i].values)
-                self._logger.log('debug', "Bee number {} created".format(i+1))
      
     def calc_new_positions(self):
         '''
@@ -141,15 +148,15 @@ class ABC:
         '''
         self.__verify_ready()
         probability = np.random.uniform(0,1)
-        for i in range(len(self._to_modify)):
-            if self._to_modify[i].probability >= probability:
+        for i, bee in enumerate(self._to_modify):
+            if bee.probability >= probability:
                 new_values = self.__merge_bee(i)
-                if self.__is_better(self._to_modify[i].score, new_values[0]):
-                    self._to_modify[i].failed_trials += 1
+                if self.__is_better(bee.score, new_values[0]):
+                    bee.failed_trials += 1
                 else:
-                    self._to_modify[i].score = new_values[0]
-                    self._to_modify[i].values = new_values[1]
-                    self._to_modify[i].failed_trials = 0
+                    bee.score = new_values[0]
+                    bee.values = new_values[1]
+                    bee.failed_trials = 0
                     self._logger.log('debug', "Bee assigned to new merged position")
 
     def calc_average(self):
@@ -178,37 +185,33 @@ class ABC:
         self.__verify_ready()
         self._onlooker.best_employers = []
         self._to_modify = []
-        # If multi processing
-        if self._processes > 0:
-            pool = Pool(self._processes)
-            modified_bees = []
-            for bee in self._employers:
-                if bee.failed_trials >= self._limit:
-                    bee.values = self.__gen_random_values()
-                    # Check whether multiprocessing is enabled
-                    if self._processes > 0:
-                        bee.score = pool.apply_async(self._fitness_fxn, [bee.values])
-                    else:
-                        bee.score = self._fitness_fxn(bee.values)
-                    bee.failed_trials = 0
-                    modified_bees.append(bee)
+        modified_bees = []
+
+        for bee in self._employers:
+            if bee.failed_trials >= self._limit:
+                bee.values = self.__gen_random_values()
+                # Check whether multiprocessing is enabled
+                if self._processes > 0:
+                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values])
                 else:
-                    # Assign the well performing bees to the onlooker
-                    if not self.__below_average(bee):
-                        self._onlooker.best_employers.append(bee)
-                    self._to_modify.append(bee)
-            # Wait for all the bee values to be calculated if multiprocessing is enabled
-            if self._processes > 0:
-                for bee in modified_bees:
-                    try:
-                        bee.score = bee.score.get()
-                        self._logger.log('debug', "Generated new random bee score")
-                        if self.__update(bee.score, bee.values):
-                            self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
-                    except Exception as e:
-                        raise e
-                pool.close()
-                pool.join()
+                    bee.score = self._fitness_fxn(bee.values)
+                bee.failed_trials = 0
+                modified_bees.append(bee)
+            else:
+                # Assign the well performing bees to the onlooker
+                if not self.__below_average(bee):
+                    self._onlooker.best_employers.append(bee)
+                self._to_modify.append(bee)
+        # Wait for all the bee values to be calculated if multiprocessing is enabled
+        if self._processes > 0:
+            for bee in modified_bees:
+                try:
+                    bee.score = bee.score.get()
+                    self._logger.log('debug', "Generated new random bee score")
+                    if self.__update(bee.score, bee.values):
+                        self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
+                except Exception as e:
+                    raise e
 
     def import_settings(self, filename):
         '''
@@ -271,7 +274,7 @@ class ABC:
         '''
         values = []
         if self._value_ranges == None:
-            self._logger.log('fatal', "must set the type/range of possible values")
+            self._logger.log('crit', "must set the type/range of possible values")
             raise RuntimeError("must set the type/range of possible values")
         else:
             # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
@@ -281,7 +284,7 @@ class ABC:
                 elif t[0] == 'float':
                     values.append(np.random.uniform(t[1][0], t[1][1]))
                 else:
-                    self._logger.log('fatal', "value type must be either an 'int' or a 'float'")
+                    self._logger.log('crit', "value type must be either an 'int' or a 'float'")
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
 
@@ -295,6 +298,6 @@ class ABC:
         errors during execution
         '''
         if len(self._employers) == 0 and creating == False:
-            self._logger.log('fatal', "Need to create employers")
+            self._logger.log('crit', "Need to create employers")
             raise RuntimeWarning("Need to create employers")
 
