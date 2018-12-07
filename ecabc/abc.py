@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.0.4
+#  v.2.1.0
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -17,7 +17,7 @@ from colorlogging import ColorLogger
 from multiprocessing import Pool
 
 # artificial bee colony packages
-from ecabc.bees import *
+from ecabc.bees import OnlookerBee, EmployerBee
 
 
 class ABC:
@@ -48,6 +48,9 @@ class ABC:
         else:
             self._pool = None
 
+        if not callable(self._fitness_fxn):
+            raise ValueError('submitted *fitness_fxn* is not callable')
+
     @property
     def args(self):
         '''
@@ -57,8 +60,8 @@ class ABC:
     
     @args.setter
     def args(self, args):
-        self._logger.log('debug', "Args set to {}".format(args))
         self._args = args
+        self._logger.log('debug', "Args set to {}".format(args))
 
     @property 
     def minimize(self):
