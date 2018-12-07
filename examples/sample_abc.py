@@ -15,7 +15,7 @@ from ecabc.abc import *
 import os
 import time
 
-def idealDayTest(values):  # Fitness function that will be passed to the abc
+def idealDayTest(values, args=None):  # Fitness function that will be passed to the abc
     temperature = values[0] + values[1]       # Calcuate the day's temperature
     humidity = values[2] * values[3]          # Calculate the day's humidity
     
@@ -31,8 +31,7 @@ if __name__ == '__main__':
 
     start = time.time()
     abc = ABC(fitness_fxn=idealDayTest, 
-            value_ranges=values, 
-            processes=5
+            value_ranges=values
             )
     abc.create_employers()
     while True:
