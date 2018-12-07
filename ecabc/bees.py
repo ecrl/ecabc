@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/bees.py
-#  v.2.0.3
+#  v.2.0.4
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program defines the bee objects created in the artificial bee colony
