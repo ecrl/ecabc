@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.0.3
+#  v.2.0.5
 #  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -28,7 +28,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disable', processes=5):
+    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disable', processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = 50
@@ -36,19 +36,36 @@ class ABC:
         self._best_score = None
         self._minimize = True
         self._fitness_fxn = fitness_fxn
-        self._onlooker = OnlookerBee()
+        self.__onlooker = OnlookerBee()
         self._processes = processes
         self._to_modify = []
         self._limit = 20
         self._processes = processes
         self._employers = []
-        if processes > 0:
+        self._args = {}
+        if processes > 1:
             self._pool = Pool(processes)
         else:
             self._pool = None
 
+    @property
+    def args(self):
+        '''
+        Arguments that will be passed to the fitness function at runtime
+        '''
+        return self._args
+    
+    @args.setter
+    def args(self, args):
+        self._logger.log('debug', "Args set to {}".format(args))
+        self._args = args
+
     @property 
     def minimize(self):
+        '''
+        Boolean value that describes whether the bee colony is minimizing 
+        or maximizing the generic fitness function
+        '''
         return self._minimize
 
     @minimize.setter
@@ -67,16 +84,21 @@ class ABC:
 
     @property 
     def processes(self):
+        '''
+        Value which indicates how many processes are allowed to be a spawned 
+        for various methods/calculations at a time. If the number is less than 1, 
+        multiprocessing will be disabled and the program will run everything synchroniously
+        '''
         return self._processes
 
     @processes.setter
     def processes(self, processes):
-        if self._processes > 0:
+        if self._processes > 1:
             self._pool.join()
             self._pool.close()
 
         self._processes = processes
-        if self._processes > 0:
+        if self._processes > 1:
             self._pool = Pool(processes)
         else:
             self._pool = None
@@ -99,6 +121,13 @@ class ABC:
         return (self._best_score, self._best_values)
 
     @property
+    def best_employers(self):
+        '''
+        Return a list of best performing employer bees
+        '''
+        return self.__onlooker.best_employers
+
+    @property
     def limit(self):
         ''' 
         Get the maximum amount of times a bee can perform below average
@@ -110,7 +139,7 @@ class ABC:
     @limit.setter
     def limit(self, limit):
         '''
-        Set the maximum amoutn of times a bee can perform below average
+        Set the maximum amount of times a bee can perform below average
         before completely bandoning its current food source and seeking 
         a randomly generate done
         '''
@@ -123,14 +152,15 @@ class ABC:
         '''
         self.__verify_ready(True)
         # If multiprocessing
-        for _ in range(self._num_employers):
+        for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
-            if self._processes > 0:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values])
+            if self._processes > 1:
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
             else:
-                employer.score = self._fitness_fxn(employer.values)
+                employer.score = self._fitness_fxn(employer.values, self._args)
+                self._logger.log('debug', "Bee number {} created".format(i + 1))
             self._employers.append(employer)
-        if self._processes > 0:
+        if self._processes > 1:
             for i, employer in enumerate(self._employers):
                 try:
                     employer.score = employer.score.get()
@@ -183,7 +213,7 @@ class ABC:
         together well performing bees. If score is better than current best, set is as current best
         '''
         self.__verify_ready()
-        self._onlooker.best_employers = []
+        self.__onlooker.best_employers = []
         self._to_modify = []
         modified_bees = []
 
@@ -191,19 +221,19 @@ class ABC:
             if bee.failed_trials >= self._limit:
                 bee.values = self.__gen_random_values()
                 # Check whether multiprocessing is enabled
-                if self._processes > 0:
-                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values])
+                if self._processes > 1:
+                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
                 else:
-                    bee.score = self._fitness_fxn(bee.values)
+                    bee.score = self._fitness_fxn(bee.values, self._args)
                 bee.failed_trials = 0
                 modified_bees.append(bee)
             else:
                 # Assign the well performing bees to the onlooker
                 if not self.__below_average(bee):
-                    self._onlooker.best_employers.append(bee)
+                    self.__onlooker.best_employers.append(bee)
                 self._to_modify.append(bee)
         # Wait for all the bee values to be calculated if multiprocessing is enabled
-        if self._processes > 0:
+        if self._processes > 1:
             for bee in modified_bees:
                 try:
                     bee.score = bee.score.get()
@@ -241,10 +271,10 @@ class ABC:
 
     def __merge_bee(self, bee_index):
         valueTypes = [t[0] for t in self._value_ranges]
-        secondBee = randint(0, len(self._onlooker.best_employers) - 1)
-        positions = self._onlooker.calculate_positions(self._to_modify[bee_index],
-            self._onlooker.best_employers[secondBee], valueTypes)
-        new_score = self._fitness_fxn(positions)
+        secondBee = randint(0, len(self.__onlooker.best_employers) - 1)
+        positions = self.__onlooker.calculate_positions(self._to_modify[bee_index],
+            self.__onlooker.best_employers[secondBee], valueTypes)
+        new_score = self._fitness_fxn(positions, self._args)
         return (new_score, positions)
 
     def __below_average(self, bee):
@@ -300,4 +330,5 @@ class ABC:
         if len(self._employers) == 0 and creating == False:
             self._logger.log('crit', "Need to create employers")
             raise RuntimeWarning("Need to create employers")
+
 
