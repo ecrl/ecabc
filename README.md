@@ -96,7 +96,7 @@ if __name__ == '__main__':
         abc.calc_average()
         abc.calc_new_positions()
         abc.check_positions()
-        if (getattr(abc, 'best_performer')[0] < 2):
+        if (abc.best_performer[0] < 2):
             break
     print("execution time = {}".format(time.time() - start))
 ```
