@@ -43,6 +43,7 @@ The artificial bee colony can take a mulitude of parameters.
 - **print_level**: Accepts logging.DEBUG/INFO/WARN/ERROR/CRITICAL or disable. This will print out log information to the console, and is less costly compared to saving logs to a file. If set to disable, won't output to console. Defaults to logging.INFO.
 - **processes**: Decide how many processes you'd like to have running at a time. A process will run the fitness function once per iteration. Processes run in parallel, and thus the more processes you utilize, the more fitness functions can run concurrently, cutting program run time significantly. If your fitness function takes 5 seconds to execute. Utilizing 50 bees, and 5 processes, calculating the values for all bees will take 50 seconds, rather than 250. Be mindful that this will increase CPU usage heavily, and you should be careful with how many processes you allow a time, to avoid a crash or computer freeze. **If your fitness function is trivial, set processes to 0. Process spawning is expensive, and only worth it for costly fitness functions.** Defaults to 5.
 - **limit**: The maximum amount of times a bee will attempt to find a new food source before abandoning it's current food source for a new random one. A bee will compare food sources around it's own a 'limit' amount of times, before replacing its food source with a completely random one if not of these searches are better than where it currently is. This helps to avoid stagnation. This defaults to 20.
+- **args**: Any additional arguments that your fitness function must take outside of the values given in value_ranges. This defaults to None. You must ensure that your fitness function takes a paramter args (which will be set to None if you don't have any additional args).
 
 The artificial bee colony also utilizes a variety to methods to toggle certain settings.
 - **minimize**: If set to true, the bee colony will minimize the fitness function, otherwise it will maximize it.
@@ -72,7 +73,7 @@ from eabc import *
 import os
 import time
 
-def idealDayTest(values):  # Fitness function that will be passed to the abc
+def idealDayTest(values, args=None):          # Fitness function that will be passed to the abc
     temperature = values[0] + values[1]       # Calcuate the day's temperature
     humidity = values[2] * values[3]          # Calculate the day's humidity
     
