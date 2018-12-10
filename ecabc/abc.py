@@ -52,18 +52,22 @@ class ABC:
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
     
-    def add_argument(self, arg):
+    def add_argument(self, arg_name, arg_value):
         '''
         Add an argument that will be processes by the fitness 
         function. Doing this after you have initiliazed the abc
         employers and have started running the abc may produce 
-        some weird results
+        some weird results\n
+
+        Args:\n
+        arg_name: The keyword name of your argument\n
+        arg_value: The value of the given argument
         '''
         if len(self._employers) > 0:
             self._logger.log('warn', 'Adding an argument after the employers have been created')
         if self._args is None:
-            self._args = []
-        self._args.append(arg)
+            self._args = {}
+        self._args[arg_name] = arg_value
 
     def add_value(self, value_type, value_min, value_max):
         '''
@@ -186,7 +190,7 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], dict(args=self._args))
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
             else:
                 employer.score = self._fitness_fxn(employer.values, self._args)
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
@@ -280,7 +284,7 @@ class ABC:
                 bee.values = self.__gen_random_values()
                 # Check whether multiprocessing is enabled
                 if self._processes > 1:
-                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], dict(args=self._args))
+                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
                 else:
                     bee.score = self._fitness_fxn(bee.values, self._args)
                 bee.failed_trials = 0
