@@ -296,8 +296,8 @@ class ABC:
         '''
         Merge bee at self._to_modify[bee_index] with a well
         performing bee. Should not be called by user. Method 
-        cannot be self.__merge_bee to ensure that is pickled
-        when multiprocessing is enabled
+        cannot be self.__merge_bee to ensure that the method
+        is pickled when multiprocessing is enabled
         '''
         valueTypes = [t[0] for t in self._value_ranges]
         secondBee = randint(0, len(self.__onlooker.best_employers) - 1)
