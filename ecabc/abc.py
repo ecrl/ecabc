@@ -154,7 +154,6 @@ class ABC:
         of usable employers bees. Other methods depend on this.
         '''
         self.__verify_ready(True)
-        # If multiprocessing
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
@@ -196,6 +195,10 @@ class ABC:
                         self._logger.log('debug', "Bee assigned to new merged position")
 
     def __multiprocessed_calc_new_positions(self):
+        '''
+        Calculate new positions for employers in a multiprocessed
+        fashion
+        '''
         modified_bees = {}
         probability = np.random.uniform(0, 1)
         for i, bee in enumerate(self._to_modify):
@@ -314,14 +317,26 @@ class ABC:
         return (new_score, positions)
 
     def __below_average(self, bee):
+        ''' 
+        Return whether the given bee has a fitness score that is
+        below the average compared to all the other employers
+        '''
         return (self._minimize == True and bee.score  > self._average_score) or\
                (self._minimize == False and bee.score < self._average_score)
     
     def __is_better(self, first_score, comparison):
+        '''
+        Return true if the first score is better than the second
+        score, false if not
+        '''
         return (self._minimize == True and first_score  < comparison) or\
                (self._minimize == False and first_score > comparison)
 
     def __update(self, score, values):
+        '''
+        Update the best score and values if the given 
+        score is better than the current best score
+        '''
         if self._minimize: 
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
@@ -355,6 +370,11 @@ class ABC:
         return values
 
     def __gen_probability_values(self):
+        '''
+        Calculate probability that an employer will get 
+        picked to be merged with another employer bee. This
+        probability will be calculated for all employers
+        ''' 
         for employer in self._employers:
             employer.calculate_probability(self._average_score)
 
