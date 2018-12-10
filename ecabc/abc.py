@@ -278,17 +278,24 @@ class ABC:
                 data = json.load(jsonFile)
                 self._value_ranges = data['valueRanges']
                 self._best_values = data['best_values']
-                self._minimize = data['minimize']
-                self._num_employers = data['num_employers']
+                self.minimize = data['minimize']
+                self.num_employers = data['num_employers']
                 self._best_score = data['best_score']
+                self.limit = data['limit']
+                self.processes = data['processes']
 
     def save_settings(self, filename):
+        '''
+        Save settings to a JSON file
+        '''
         data = dict()
         data['valueRanges'] = self._value_ranges
         data['best_values'] = self._best_values
         data['minimize'] = self._minimize
         data['num_employers'] = self._num_employers
         data['best_score'] = self._best_score
+        data['limit'] = self._limit
+        data['processes'] = self._processes
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
