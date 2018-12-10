@@ -28,7 +28,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=4):
+    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=4, args=None):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = 50
@@ -42,7 +42,7 @@ class ABC:
         self._limit = 20
         self._processes = processes
         self._employers = []
-        self._args = {}
+        self._args = args
         if processes > 1:
             self._pool = Pool(processes)
         else:
@@ -51,7 +51,7 @@ class ABC:
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
     
-    def add_argument(self, arg_name, arg_value):
+    def add_argument(self, arg):
         '''
         Add an argument that will be processes by the fitness 
         function. Doing this after you have initiliazed the abc
@@ -60,7 +60,9 @@ class ABC:
         '''
         if len(self._employers) > 0:
             self._logger.log('warn', 'Adding an argument after the employers have been created')
-        self._args[arg_name] = arg_value
+        if self._args is None:
+            self._args = []
+        self._args.append(arg)
 
     def add_value(self, value_type, value_min, value_max):
         '''
@@ -183,7 +185,7 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], dict(args=self._args))
             else:
                 employer.score = self._fitness_fxn(employer.values, self._args)
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
@@ -274,7 +276,7 @@ class ABC:
                 bee.values = self.__gen_random_values()
                 # Check whether multiprocessing is enabled
                 if self._processes > 1:
-                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
+                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], dict(args=self._args))
                 else:
                     bee.score = self._fitness_fxn(bee.values, self._args)
                 bee.failed_trials = 0
