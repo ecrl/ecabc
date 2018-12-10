@@ -43,6 +43,7 @@ class ABC:
         self._processes = processes
         self._employers = []
         self._args = args
+        self._average_score = 0
         if processes > 1:
             self._pool = Pool(processes)
         else:
@@ -233,14 +234,17 @@ class ABC:
             if bee.probability >= probability:
                 modified_bees[bee] = self._pool.apply_async(self._merge_bee, [i])
         for bee, values in modified_bees.items():
-            new_values = values.get()
-            if self.__is_better(bee.score, new_values[0]):
-                bee.failed_trials += 1
-            else:
-                bee.score = new_values[0]
-                bee.values = new_values[1]
-                bee.failed_trials = 0
-                self._logger.log('debug', "Bee assigned to new merged position")
+            try:
+                new_values = values.get()
+                if self.__is_better(bee.score, new_values[0]):
+                    bee.failed_trials += 1
+                else:
+                    bee.score = new_values[0]
+                    bee.values = new_values[1]
+                    bee.failed_trials = 0
+                    self._logger.log('debug', "Bee assigned to new merged position")
+            except Exception as e:
+                raise e
 
 
     def calc_average(self):
