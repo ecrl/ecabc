@@ -28,7 +28,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, value_ranges, fitness_fxn, print_level='info', file_logging='disable', processes=4):
+    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = 50
@@ -50,6 +50,32 @@ class ABC:
 
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
+    
+    def add_argument(self, arg_name, arg_value):
+        '''
+        Add an argument that will be processes by the fitness 
+        function. Doing this after you have initiliazed the abc
+        employers and have started running the abc may produce 
+        some weird results
+        '''
+        if len(self._employers) > 0:
+            self._logger.log('warn', 'Adding an argument after the employers have been created')
+        self._args[arg_name] = arg_value
+
+    def add_value(self, value_type, value_min, value_max):
+        '''
+        Add another value that will be factored into the calculation
+        of the bee's fitness. Calling this after the abc has run for 
+        a few iterations may produce wonky results\n
+        Args:\n
+        value_type: Either of type 'int' or type 'float'\n
+        value_min: Minimum numerical value\n
+        value_max: Maximum numerical value\n
+        '''
+        if len(self._employers) > 0:
+            self._logger.log('warn', 'Adding a value after employers have been created')
+        value = (value_type,  (value_min, value_max))
+        self._value_ranges.append(value)
 
     @property
     def args(self):
@@ -383,6 +409,9 @@ class ABC:
         Some cleanup, ensures that everything is set up properly to avoid random 
         errors during execution
         '''
+        if len(self._value_ranges) == 0:
+            self._logger.log('crit', 'Attribute value_ranges must have at least one value')
+            raise RuntimeWarning('Attribute value_ranges must have at least one value')
         if len(self._employers) == 0 and creating == False:
             self._logger.log('crit', "Need to create employers")
             raise RuntimeWarning("Need to create employers")
