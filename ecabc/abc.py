@@ -180,17 +180,37 @@ class ABC:
         position, the bee will move to the new location
         '''
         self.__verify_ready()
-        probability = np.random.uniform(0,1)
+        if self._processes > 1:
+            self.__multiprocessed_calc_new_positions()
+        else:
+            probability = np.random.uniform(0,1)
+            for i, bee in enumerate(self._to_modify):
+                if bee.probability >= probability:
+                    new_values = self._merge_bee(i)
+                    if self.__is_better(bee.score, new_values[0]):
+                        bee.failed_trials += 1
+                    else:
+                        bee.score = new_values[0]
+                        bee.values = new_values[1]
+                        bee.failed_trials = 0
+                        self._logger.log('debug', "Bee assigned to new merged position")
+
+    def __multiprocessed_calc_new_positions(self):
+        modified_bees = {}
+        probability = np.random.uniform(0, 1)
         for i, bee in enumerate(self._to_modify):
             if bee.probability >= probability:
-                new_values = self.__merge_bee(i)
-                if self.__is_better(bee.score, new_values[0]):
-                    bee.failed_trials += 1
-                else:
-                    bee.score = new_values[0]
-                    bee.values = new_values[1]
-                    bee.failed_trials = 0
-                    self._logger.log('debug', "Bee assigned to new merged position")
+                modified_bees[bee] = self._pool.apply_async(self._merge_bee, [i])
+        for bee, values in modified_bees.items():
+            new_values = values.get()
+            if self.__is_better(bee.score, new_values[0]):
+                bee.failed_trials += 1
+            else:
+                bee.score = new_values[0]
+                bee.values = new_values[1]
+                bee.failed_trials = 0
+                self._logger.log('debug', "Bee assigned to new merged position")
+
 
     def calc_average(self):
         '''
@@ -272,7 +292,13 @@ class ABC:
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
-    def __merge_bee(self, bee_index):
+    def _merge_bee(self, bee_index):
+        '''
+        Merge bee at self._to_modify[bee_index] with a well
+        performing bee. Should not be called by user. Method 
+        cannot be self.__merge_bee to ensure that is pickled
+        when multiprocessing is enabled
+        '''
         valueTypes = [t[0] for t in self._value_ranges]
         secondBee = randint(0, len(self.__onlooker.best_employers) - 1)
         positions = self.__onlooker.calculate_positions(self._to_modify[bee_index],
@@ -333,5 +359,15 @@ class ABC:
         if len(self._employers) == 0 and creating == False:
             self._logger.log('crit', "Need to create employers")
             raise RuntimeWarning("Need to create employers")
+
+    def __getstate__(self):
+        '''
+        Returns appropriate dictionary for correctly
+        pickling the ABC object in case of multiprocssing
+        '''
+        state = self.__dict__.copy()
+        del state['_logger']
+        del state['_pool']
+        return state
 
 
