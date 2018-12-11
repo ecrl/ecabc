@@ -21,10 +21,10 @@ from ecabc.bees import OnlookerBee, EmployerBee
 
 
 class ABC:
-    
+
     '''
-    ABC object: Manages employer and onlooker bees to optimize a set of generic values 
-    given a generic user defined fitness function. Handles data transfer and manipulation 
+    ABC object: Manages employer and onlooker bees to optimize a set of generic values
+    given a generic user defined fitness function. Handles data transfer and manipulation
     between bees.
     '''
 
@@ -51,12 +51,12 @@ class ABC:
 
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
-    
+
     def add_argument(self, arg_name, arg_value):
         '''
-        Add an argument that will be processes by the fitness 
+        Add an argument that will be processes by the fitness
         function. Doing this after you have initiliazed the abc
-        employers and have started running the abc may produce 
+        employers and have started running the abc may produce
         some weird results\n
 
         Args:\n
@@ -72,7 +72,7 @@ class ABC:
     def add_value(self, value_type, value_min, value_max):
         '''
         Add another value that will be factored into the calculation
-        of the bee's fitness. Calling this after the abc has run for 
+        of the bee's fitness. Calling this after the abc has run for
         a few iterations may produce wonky results\n
         Args:\n
         value_type: Either of type 'int' or type 'float'\n
@@ -90,16 +90,16 @@ class ABC:
         Arguments that will be passed to the fitness function at runtime
         '''
         return self._args
-    
+
     @args.setter
     def args(self, args):
         self._args = args
         self._logger.log('debug', "Args set to {}".format(args))
 
-    @property 
+    @property
     def minimize(self):
         '''
-        Boolean value that describes whether the bee colony is minimizing 
+        Boolean value that describes whether the bee colony is minimizing
         or maximizing the generic fitness function
         '''
         return self._minimize
@@ -112,17 +112,17 @@ class ABC:
     @property
     def num_employers(self):
         return self._num_employers
-    
+
     @num_employers.setter
     def num_employers(self, num_employers):
         self._num_employers = num_employers
         self._logger.log('debug', "Number of employers set to {}".format(num_employers))
 
-    @property 
+    @property
     def processes(self):
         '''
-        Value which indicates how many processes are allowed to be a spawned 
-        for various methods/calculations at a time. If the number is less than 1, 
+        Value which indicates how many processes are allowed to be a spawned
+        for various methods/calculations at a time. If the number is less than 1,
         multiprocessing will be disabled and the program will run everything synchroniously
         '''
         return self._processes
@@ -139,6 +139,13 @@ class ABC:
         else:
             self._pool = None
         self._logger.log('debug', "Number of processes set to {}".format(processes))
+
+    def infer_process_count(self):
+        '''
+        Set the amount of processes that will be used to
+        the amount of cores that your cpu has
+        '''
+        self.processes = multiprocssing.cpu_count()
 
     @property
     def value_ranges(self):
@@ -165,9 +172,9 @@ class ABC:
 
     @property
     def limit(self):
-        ''' 
+        '''
         Get the maximum amount of times a bee can perform below average
-        before completely abandoning its current food source and seeking 
+        before completely abandoning its current food source and seeking
         a randomly generated one
         '''
         return self._limit
@@ -176,7 +183,7 @@ class ABC:
     def limit(self, limit):
         '''
         Set the maximum amount of times a bee can perform below average
-        before completely bandoning its current food source and seeking 
+        before completely bandoning its current food source and seeking
         a randomly generate done
         '''
         self._limit = limit
@@ -202,12 +209,12 @@ class ABC:
                     self._logger.log('debug', "Bee number {} created".format(i + 1))
                 except Exception as e:
                     raise e
-     
+
     def calc_new_positions(self):
         '''
         Calculate new positions for well performing bees. Each bee that has performed better then
-        average is combined with another well performing bee to move to a more optimal location. A 
-        location is a combination of values, the more optimal, the better that set of values will 
+        average is combined with another well performing bee to move to a more optimal location. A
+        location is a combination of values, the more optimal, the better that set of values will
         perform given the fitness function. If the new position performs better than the bee's current
         position, the bee will move to the new location
         '''
@@ -262,16 +269,16 @@ class ABC:
             self._average_score += employer.score
             # While iterating through employers, look for the best fitness score/value pairing
             if self.__update(employer.score, employer.values):
-                self._logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values)) 
+                self._logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values))
         self._average_score /= len(self._employers)
 
         # Now calculate each bee's probability
         self.__gen_probability_values()
-    
+
     def check_positions(self):
         '''
         Check the fitness cost of every bee to the average. If below average, and that bee has been reassigned
-        a food source more than the allowed amount, assign that bee a new random set of values. Additionally, group 
+        a food source more than the allowed amount, assign that bee a new random set of values. Additionally, group
         together well performing bees. If score is better than current best, set is as current best
         '''
         self.__verify_ready()
@@ -341,7 +348,7 @@ class ABC:
     def _merge_bee(self, bee_index):
         '''
         Merge bee at self._to_modify[bee_index] with a well
-        performing bee. Should not be called by user. Method 
+        performing bee. Should not be called by user. Method
         cannot be self.__merge_bee to ensure that the method
         is pickled when multiprocessing is enabled
         '''
@@ -353,13 +360,13 @@ class ABC:
         return (new_score, positions)
 
     def __below_average(self, bee):
-        ''' 
+        '''
         Return whether the given bee has a fitness score that is
         below the average compared to all the other employers
         '''
         return (self._minimize == True and bee.score  > self._average_score) or\
                (self._minimize == False and bee.score < self._average_score)
-    
+
     def __is_better(self, first_score, comparison):
         '''
         Return true if the first score is better than the second
@@ -370,10 +377,10 @@ class ABC:
 
     def __update(self, score, values):
         '''
-        Update the best score and values if the given 
+        Update the best score and values if the given
         score is better than the current best score
         '''
-        if self._minimize: 
+        if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
                 self._best_values = values
@@ -395,7 +402,7 @@ class ABC:
             raise RuntimeError("must set the type/range of possible values")
         else:
             # t[0] contains the type of the value, t[1] contains a tuple (min_value, max_value)
-            for t in self._value_ranges:  
+            for t in self._value_ranges:
                 if t[0] == 'int':
                     values.append(randint(t[1][0], t[1][1]))
                 elif t[0] == 'float':
@@ -407,16 +414,16 @@ class ABC:
 
     def __gen_probability_values(self):
         '''
-        Calculate probability that an employer will get 
+        Calculate probability that an employer will get
         picked to be merged with another employer bee. This
         probability will be calculated for all employers
-        ''' 
+        '''
         for employer in self._employers:
             employer.calculate_probability(self._average_score)
 
     def __verify_ready(self, creating=False):
         '''
-        Some cleanup, ensures that everything is set up properly to avoid random 
+        Some cleanup, ensures that everything is set up properly to avoid random
         errors during execution
         '''
         if len(self._value_ranges) == 0:
@@ -435,5 +442,3 @@ class ABC:
         del state['_logger']
         del state['_pool']
         return state
-
-
