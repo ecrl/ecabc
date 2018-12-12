@@ -145,7 +145,7 @@ class ABC:
         Set the amount of processes that will be used to
         the amount of cores that your cpu has
         '''
-        self.processes = multiprocssing.cpu_count()
+        self.processes = multiprocessing.cpu_count()
 
     @property
     def value_ranges(self):
