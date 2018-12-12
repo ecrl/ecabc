@@ -15,6 +15,7 @@ from random import randint
 import numpy as np
 from colorlogging import ColorLogger
 from multiprocessing import Pool
+import multiprocessing
 
 # artificial bee colony packages
 from ecabc.bees import OnlookerBee, EmployerBee
