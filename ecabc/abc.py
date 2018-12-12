@@ -131,8 +131,8 @@ class ABC:
     @processes.setter
     def processes(self, processes):
         if self._processes > 1:
-            self._pool.join()
             self._pool.close()
+            self._pool.join()
 
         self._processes = processes
         if self._processes > 1:
