@@ -94,9 +94,7 @@ if __name__ == '__main__':
     abc.create_employers()
     while True:
         abc.save_settings('{}/settings.json'.format(os.getcwd()))
-        abc.calc_average()
-        abc.calc_new_positions()
-        abc.check_positions()
+        abc.run_iteration()
         if (abc.best_performer[0] < 2):
             break
     print("execution time = {}".format(time.time() - start))
