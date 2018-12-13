@@ -193,6 +193,17 @@ class ABC:
         '''
         self._limit = limit
 
+    def run_iteration(self):
+        '''
+        Run a single iteration of the bee colony. This will produce fitness scores
+        for each bee, merge bees based on probabilities, and calculate new positions for
+        bees if necessary. At the end of this method, the best_perforder attribute may 
+        or may not have been updated if a better food source was found
+        '''
+        self.calc_average()
+        self.calc_new_positions()
+        self.check_positions()
+
     def create_employers(self):
         '''
         Generate a set of employer bees. This method must be called in order to generate a set
