@@ -54,15 +54,9 @@ class OnlookerBee:
         '''
         new_values = first_bee.values
         index = randint(0, len(first_bee.values)-1)
-        value = self.__value_function(first_bee.values[index], second_bee.values[index])
+        value = first_bee.values[index] + abs(np.random.uniform(-1, 1) \
+                * (first_bee.values[index] - second_bee.values[index]))
         if value_types[index] == 'int':
             value = int(value)
         new_values[index] = value
         return new_values
-
-    def __value_function(self, a, b):  
-        '''
-        Algorithm used to merge the same value type from two
-        different bees
-        '''
-        return a + abs(np.random.uniform(-1, 1) * (a - b))
