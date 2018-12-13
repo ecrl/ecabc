@@ -51,7 +51,7 @@ The artificial bee colony also utilizes a variety to methods to toggle certain s
 - **save_settings**: Accepts a json file name. If the file exists, the artificial bee colony settings will be saved to this file.
 
 # 2.0.0 Update
-Update 2.0.0 changed ecabc quite a bit. In order to ensure code mantainability, in addition allowing the users to have more control, we have un-automated the run process in place of 3/4 methods the user must now call to use the abc properly. Employer bees are not automatically created for you anymore. The runABC() method has been removed as well. Below is an example of how to properly use the abc in the easiest way possible.
+Update 2.0.0 changed ecabc quite a bit. We have given more control to the user by making the program no longer self terminating. Instead the user can utilize the run_iteration method to run the abc, and surround it with a necessary loop in order to ensure the abc is working to their liking. An example of the abc in action can be seen in the code snippet below.
 
 # Example
 
