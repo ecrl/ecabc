@@ -65,5 +65,4 @@ class OnlookerBee:
         Algorithm used to merge the same value type from two
         different bees
         '''
-        activationNum = np.random.uniform(-1, 1)
-        return a + abs(activationNum * (a - b))
+        return a + abs(np.random.uniform(-1, 1) * (a - b))
