@@ -200,9 +200,9 @@ class ABC:
         bees if necessary. At the end of this method, the best_perforder attribute may 
         or may not have been updated if a better food source was found
         '''
-        self.calc_average()
-        self.calc_new_positions()
-        self.check_positions()
+        self._calc_average()
+        self._calc_new_positions()
+        self._check_positions()
 
     def create_employers(self):
         '''
@@ -226,7 +226,7 @@ class ABC:
                 except Exception as e:
                     raise e
 
-    def calc_new_positions(self):
+    def _calc_new_positions(self):
         '''
         Calculate new positions for well performing bees. Each bee that has performed better then
         average is combined with another well performing bee to move to a more optimal location. A
@@ -274,7 +274,7 @@ class ABC:
                 raise e
 
 
-    def calc_average(self):
+    def _calc_average(self):
         '''
         Calculate the average of bee cost. Will also update the best score
         '''
@@ -291,7 +291,7 @@ class ABC:
         # Now calculate each bee's probability
         self.__gen_probability_values()
 
-    def check_positions(self):
+    def _check_positions(self):
         '''
         Check the fitness cost of every bee to the average. If below average, and that bee has been reassigned
         a food source more than the allowed amount, assign that bee a new random set of values. Additionally, group
