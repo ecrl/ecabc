@@ -55,7 +55,7 @@ class ABC:
 
     def add_argument(self, arg_name, arg_value):
         '''
-        Add an argument that will be processes by the fitness
+        Add an argument that will be processed by the fitness
         function. Doing this after you have initiliazed the abc
         employers and have started running the abc may produce
         some weird results\n
