@@ -3,7 +3,7 @@
 #
 #  ecabc/abc.py
 #  v.2.1.0
-#  Developed in 2018 by Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
+#  Developed in 2018 by Sanskriti Sharma <sanskriti_sharma@student.uml.edu> & Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
 #
