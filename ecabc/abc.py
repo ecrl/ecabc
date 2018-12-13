@@ -144,9 +144,13 @@ class ABC:
     def infer_process_count(self):
         '''
         Set the amount of processes that will be used to
-        the amount of cores that your cpu has
+        the amount of CPU's in your system 
         '''
-        self.processes = multiprocessing.cpu_count()
+        try:
+            self.processes = multiprocessing.cpu_count()
+        except NotImplementedError:
+            self._logger.log('error', "Could not get cpu count, setting amount of processes back to 4")
+            self.processes = 4
 
     @property
     def value_ranges(self):
