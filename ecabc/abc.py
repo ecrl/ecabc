@@ -213,7 +213,7 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values, self._args])
             else:
                 employer.score = self._fitness_fxn(employer.values, self._args)
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
