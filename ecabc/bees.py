@@ -61,12 +61,9 @@ class OnlookerBee:
         max_value = value_ranges[index][1][1]
         value = first_bee.values[index] + abs(np.random.uniform(-1, 1) \
                 * (first_bee.values[index] - second_bee.values[index]))
-        if value_types[index] == 'int':
-            value = int(value)
-        if value > max_value:
-            value = max_value
-        if value < min_value:
-            value = min_value
+        if value_types[index] == 'int': value = int(value)
+        if value > max_value: value = max_value
+        if value < min_value: value = min_value
             
         new_values[index] = value
         return new_values
