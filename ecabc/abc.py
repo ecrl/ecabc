@@ -370,8 +370,11 @@ class ABC:
         '''
         valueTypes = [t[0] for t in self._value_ranges]
         secondBee = randint(0, len(self.__onlooker.best_employers) - 1)
+        # Avoid both bees being the same
+        while (self._to_modify[bee_index].id == self.__onlooker.best_employers[secondBee].id):
+            secondBee = randint(0, len(self.__onlooker.best_employers) -1)
         positions = self.__onlooker.calculate_positions(self._to_modify[bee_index],
-            self.__onlooker.best_employers[secondBee], valueTypes)
+            self.__onlooker.best_employers[secondBee], valueTypes, self._value_ranges)
         new_score = self._fitness_fxn(positions, **self._args)
         return (new_score, positions)
 

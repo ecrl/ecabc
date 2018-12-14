@@ -11,6 +11,8 @@
 import numpy as np
 from random import randint
 
+import uuid
+
 class EmployerBee:
 
     '''
@@ -23,6 +25,7 @@ class EmployerBee:
         self.score = None
         self.probability = 0
         self.failed_trials = 0
+        self.id = uuid.uuid4()
 
     def calculate_probability(self, fitness_average):
         '''
@@ -48,15 +51,22 @@ class OnlookerBee:
     def __init__(self):
         self.best_employers = []
     
-    def calculate_positions(self, first_bee, second_bee, value_types):
+    def calculate_positions(self, first_bee, second_bee, value_types, value_ranges):
         '''
         Calculate the positions when merging two bees
         '''
         new_values = first_bee.values
         index = randint(0, len(first_bee.values)-1)
+        min_value = value_ranges[index][1][0]
+        max_value = value_ranges[index][1][1]
         value = first_bee.values[index] + abs(np.random.uniform(-1, 1) \
                 * (first_bee.values[index] - second_bee.values[index]))
         if value_types[index] == 'int':
             value = int(value)
+        if value > max_value:
+            value = max_value
+        if value < min_value:
+            value = min_value
+            
         new_values[index] = value
         return new_values
