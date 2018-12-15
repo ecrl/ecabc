@@ -116,8 +116,12 @@ class ABC:
 
     @num_employers.setter
     def num_employers(self, num_employers):
-        self._num_employers = num_employers
-        self._logger.log('debug', "Number of employers set to {}".format(num_employers))
+        if self._num_employers < 10:
+            self._logger.log('warn', "Cannot set num_employers to < 10, setting to 10")
+            self._num_employers = 10
+        else:
+            self._num_employers = num_employers
+            self._logger.log('debug', "Number of employers set to {}".format(num_employers))
 
     @property
     def processes(self):
