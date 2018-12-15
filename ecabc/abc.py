@@ -116,7 +116,7 @@ class ABC:
 
     @num_employers.setter
     def num_employers(self, num_employers):
-        if self._num_employers < 10:
+        if num_employers < 10:
             self._logger.log('warn', "Cannot set num_employers to < 10, setting to 10")
             self._num_employers = 10
         else:
