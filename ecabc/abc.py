@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.1.0
+#  v.2.1.1
 #  Developed in 2018 by Sanskriti Sharma <sanskriti_sharma@student.uml.edu> & Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -106,7 +106,7 @@ class ABC:
         return self._minimize
 
     @minimize.setter
-    def minmize(self, minimize):
+    def minimize(self, minimize):
         self._minimize = minimize
         self._logger.log('debug', "Minimize set to {}".format(minimize))
 
@@ -338,15 +338,20 @@ class ABC:
         '''
         if not os.path.isfile(filename):
             self._logger.log('error', "file: {} not found, continuing with default settings".format(filename))
-            raise FileNotFoundError('could not open setting file')
         else:
             with open(filename, 'r') as jsonFile:
                 data = json.load(jsonFile)
                 self._value_ranges = data['valueRanges']
                 self._best_values = data['best_values']
-                self.minimize = data['minimize']
+                self._best_values = []
+                for index, value in enumerate(data['best_values']):
+                    if self._value_ranges[index] == 'int':
+                        self._best_values.append(int(value))
+                    else:
+                        self._best_values.append(float(value))
+                self.minimize = data['minimize']              
                 self.num_employers = data['num_employers']
-                self._best_score = data['best_score']
+                self._best_score = float(data['best_score'])
                 self.limit = data['limit']
                 self.processes = data['processes']
 
@@ -356,10 +361,10 @@ class ABC:
         '''
         data = dict()
         data['valueRanges'] = self._value_ranges
-        data['best_values'] = self._best_values
+        data['best_values'] = [str(value) for value in self._best_values]
         data['minimize'] = self._minimize
         data['num_employers'] = self._num_employers
-        data['best_score'] = self._best_score
+        data['best_score'] = str(self._best_score)
         data['limit'] = self._limit
         data['processes'] = self._processes
         with open(filename, 'w') as outfile:
