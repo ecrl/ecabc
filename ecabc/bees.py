@@ -38,9 +38,10 @@ class EmployerBee:
         Get fitness score for a given set of values
         '''
         score = fitness_function(values)
-        if self.score == None or score < self.score:
-            self.value = values
-            self.score = score
+        if score >= 0:
+            self.score = 1/(score+1)
+        else:
+            self.score = 1 + abs (score)
 
 class OnlookerBee:
     '''
