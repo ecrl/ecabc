@@ -19,25 +19,25 @@ class EmployerBee:
     Class which stores individual employer bee information. A probability it will get picked, a score
     and the values that pertain to the score
     '''
-    
-    def __init__(self, values=[]):              
-        self.values = values            
+
+    def __init__(self, values=[]):
+        self.values = values
         self.score = None
         self.probability = 0
         self.failed_trials = 0
         self.id = uuid.uuid4()
 
-    def calculate_probability(self, fitness_average):
+    def calculate_probability(self, fitness_total):
         '''
         Calculate probability based on a given fitness average
         '''
-        self.probability = self.score / fitness_average
+        self.probability = self.score / fitness_total
 
     def get_fitness_score(self, values, fitness_function):
         '''
         Get fitness score for a given set of values
         '''
-        score = fitness_function(values)  
+        score = fitness_function(values)
         if self.score == None or score < self.score:
             self.value = values
             self.score = score
@@ -50,7 +50,7 @@ class OnlookerBee:
 
     def __init__(self):
         self.best_employers = []
-    
+
     def calculate_positions(self, first_bee, second_bee, value_types, value_ranges):
         '''
         Calculate the positions when merging two bees
@@ -64,6 +64,6 @@ class OnlookerBee:
         if value_types[index] == 'int': value = int(value)
         if value > max_value: value = max_value
         if value < min_value: value = min_value
-            
+
         new_values[index] = value
         return new_values

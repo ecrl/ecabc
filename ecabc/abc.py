@@ -45,6 +45,7 @@ class ABC:
         self._employers = []
         self._args = args
         self._average_score = 0
+        self._total_score = 0
         if processes > 1:
             self._pool = Pool(processes)
         else:
@@ -148,7 +149,7 @@ class ABC:
     def infer_process_count(self):
         '''
         Set the amount of processes that will be used to
-        the amount of CPU's in your system 
+        the amount of CPU's in your system
         '''
         try:
             self.processes = multiprocessing.cpu_count()
@@ -201,7 +202,7 @@ class ABC:
         '''
         Run a single iteration of the bee colony. This will produce fitness scores
         for each bee, merge bees based on probabilities, and calculate new positions for
-        bees if necessary. At the end of this method, the best_perforder attribute may 
+        bees if necessary. At the end of this method, the best_perforder attribute may
         or may not have been updated if a better food source was found
         '''
         self._calc_average()
@@ -280,17 +281,18 @@ class ABC:
 
     def _calc_average(self):
         '''
-        Calculate the average of bee cost. Will also update the best score
+        Calculate the average of bee cost. Will also update the best score and
+        keep track of total score for probability
         '''
         self._logger.log('debug', "calculating average")
         self.__verify_ready()
-        self._average_score = 0
+        self._total_score = 0
         for employer in self._employers:
-            self._average_score += employer.score
+            self._total_score += employer.score
             # While iterating through employers, look for the best fitness score/value pairing
             if self.__update(employer.score, employer.values):
                 self._logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values))
-        self._average_score /= len(self._employers)
+        self._average_score = self._total_score/len(self._employers)
 
         # Now calculate each bee's probability
         self.__gen_probability_values()
@@ -349,7 +351,7 @@ class ABC:
                         self._best_values.append(int(value))
                     else:
                         self._best_values.append(float(value))
-                self.minimize = data['minimize']              
+                self.minimize = data['minimize']
                 self.num_employers = data['num_employers']
                 self._best_score = float(data['best_score'])
                 self.limit = data['limit']
@@ -447,7 +449,7 @@ class ABC:
         probability will be calculated for all employers
         '''
         for employer in self._employers:
-            employer.calculate_probability(self._average_score)
+            employer.calculate_probability(self._total_score)
 
     def __verify_ready(self, creating=False):
         '''
