@@ -1,7 +1,7 @@
 [![UML Energy & Combustion Research Laboratory](http://faculty.uml.edu/Hunter_Mack/uploads/9/7/1/3/97138798/1481826668_2.png)](http://faculty.uml.edu/Hunter_Mack/)
 
 # ECabc : Feature tuning program 
-[![GitHub version](https://badge.fury.io/gh/ECRL%2Fecabc.svg)](https://badge.fury.io/gh/ECRL%2Fecabc)
+[![GitHub version](https://badge.fury.io/gh/ECRL%2FECabc.svg)](https://badge.fury.io/gh/ECRL%2FECabc)
 [![PyPI version](https://badge.fury.io/py/ecabc.svg)](https://badge.fury.io/py/ecabc)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ECRL/ecabc/blob/master/LICENSE)
 
