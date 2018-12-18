@@ -206,8 +206,8 @@ class ABC:
         or may not have been updated if a better food source was found
         '''
         self._calc_average()
-        self._calc_new_positions()
         self._check_positions()
+        self._calc_new_positions()
 
     def create_employers(self):
         '''
