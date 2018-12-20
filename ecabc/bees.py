@@ -33,15 +33,14 @@ class EmployerBee:
         '''
         self.probability = self.score / fitness_total
 
-    def get_fitness_score(self, values, fitness_function):
+    def get_fitness_score(self, score):
         '''
         Get fitness score for a given set of values
         '''
-        score = fitness_function(values)
         if score >= 0:
-            self.score = 1/(score+1)
+            return 1/(score+1)
         else:
-            self.score = 1 + abs (score)
+            return 1 + abs (score)
 
 class OnlookerBee:
     '''

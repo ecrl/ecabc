@@ -206,8 +206,8 @@ class ABC:
         or may not have been updated if a better food source was found
         '''
         self._calc_average()
-        self._check_positions()
         self._calc_new_positions()
+        self._check_positions()
 
     def create_employers(self):
         '''
@@ -218,9 +218,12 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employer.score = get_fitness_score(score)
+                'fix multiprocessing'
             else:
-                employer.score = self._fitness_fxn(employer.values, **self._args)
+                score = self._fitness_fxn(employer.values, **self._args)
+                employer.score = get_fitness_score(score)
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
             self._employers.append(employer)
         if self._processes > 1:
@@ -281,8 +284,7 @@ class ABC:
 
     def _calc_average(self):
         '''
-        Calculate the average of bee cost. Will also update the best score and
-        keep track of total score for probability
+        Calculate the average of bee cost. Will also update the best score and keep track of total score for probabili
         '''
         self._logger.log('debug', "calculating average")
         self.__verify_ready()
