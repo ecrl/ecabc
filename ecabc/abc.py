@@ -43,6 +43,8 @@ class ABC:
         self._limit = 20
         self._processes = processes
         self._employers = []
+        if args is None:
+            args = {}
         self._args = args
         self._average_score = 0
         if processes > 1:
