@@ -10,7 +10,10 @@
 
 import sys as sys
 import os.path
-import json
+try:
+    import ujson as json
+except:
+    import json
 from random import randint
 import numpy as np
 from colorlogging import ColorLogger
