@@ -23,9 +23,11 @@ class EmployerBee:
     def __init__(self, values=[]):
         self.values = values
         self.score = None
+        self.unsaved_error = None
         self.probability = 0
         self.failed_trials = 0
         self.id = uuid.uuid4()
+        self.error = None
 
     def calculate_probability(self, fitness_total):
         '''
@@ -33,14 +35,15 @@ class EmployerBee:
         '''
         self.probability = self.score / fitness_total
 
-    def get_fitness_score(self, score):
+    def get_fitness_score(self, fitness_fxn, **args):
         '''
         Get fitness score for a given set of values
         '''
-        if score >= 0:
-            return 1/(score+1)
+        self.error = fitness_fxn(self.values, **args)
+        if self.error >= 0:
+            return 1/(self.error+1)
         else:
-            return 1 + abs (score)
+            return 1 + abs (self.error)
 
 class OnlookerBee:
     '''
@@ -51,19 +54,14 @@ class OnlookerBee:
     def __init__(self):
         self.best_employers = []
 
-    def calculate_positions(self, first_bee, second_bee, value_types, value_ranges):
+    def calculate_positions(self, first_bee_val, second_bee_val, value_range):
         '''
         Calculate the positions when merging two bees
         '''
-        new_values = first_bee.values
-        index = randint(0, len(first_bee.values)-1)
-        min_value = value_ranges[index][1][0]
-        max_value = value_ranges[index][1][1]
-        value = first_bee.values[index] + abs(np.random.uniform(-1, 1) \
-                * (first_bee.values[index] - second_bee.values[index]))
-        if value_types[index] == 'int': value = int(value)
-        if value > max_value: value = max_value
-        if value < min_value: value = min_value
+        value = first_bee_val + np.random.uniform(-1, 1) \
+                * (first_bee_val - second_bee_val)
+        if value_range[0] == 'int': value = int(value)
+        if value > value_range[1][1]: value = value_range[1][1] 
+        if value < value_range[1][0]: value = value_range[1][0]
 
-        new_values[index] = value
-        return new_values
+        return value
