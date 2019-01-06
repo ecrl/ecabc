@@ -8,7 +8,7 @@
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
 #
 
-import sys as sys
+import sys as sy
 import os.path
 import json
 from random import randint
@@ -16,6 +16,7 @@ import numpy as np
 from colorlogging import ColorLogger
 from multiprocessing import Pool
 import multiprocessing
+import pickle
 
 # artificial bee colony packages
 from ecabc.bees import OnlookerBee, EmployerBee
@@ -29,23 +30,21 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=4, args=None):
+    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=1, args=None):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
-        self._num_employers = 50
+        self._num_employers = 5
         self._best_values = []
         self._best_score = None
-        self._minimize = True
+        self._minimize = False #minimizes score not error
         self._fitness_fxn = fitness_fxn
         self.__onlooker = OnlookerBee()
         self._processes = processes
-        self._to_modify = []
         self._limit = 20
-        self._processes = processes
         self._employers = []
         self._args = args
-        self._average_score = 0
         self._total_score = 0
+        self._cycle_number = 0
         if processes > 1:
             self._pool = Pool(processes)
         else:
@@ -205,8 +204,9 @@ class ABC:
         bees if necessary. At the end of this method, the best_perforder attribute may
         or may not have been updated if a better food source was found
         '''
-        self._calc_average()
-        self._calc_new_positions()
+        self._employer_phase()
+        self._calc_total()
+        self._onlooker_phase()
         self._check_positions()
 
     def create_employers(self):
@@ -218,12 +218,10 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes > 1:
-                score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
-                employer.score = get_fitness_score(score)
-                'fix multiprocessing'
+                print(self.args)
+                employer.score = self._pool.apply_async(employer.get_fitness_score, (self._fitness_fxn,),[employer.values])
             else:
-                score = self._fitness_fxn(employer.values, **self._args)
-                employer.score = get_fitness_score(score)
+                employer.score = employer.get_fitness_score(self._fitness_fxn, employer.values)
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
             self._employers.append(employer)
         if self._processes > 1:
@@ -234,7 +232,21 @@ class ABC:
                 except Exception as e:
                     raise e
 
-    def _calc_new_positions(self):
+    def _employer_phase(self):
+        for bee in self._employers:
+            self._move_bee(bee)
+
+    def _move_bee(self,bee):
+        new_values = self._merge_bee(bee)
+        if self.__is_better(bee.score, new_values[0]):
+            bee.failed_trials += 1
+        else:
+            bee.score = new_values[0]
+            bee.values = new_values[1]
+            bee.failed_trials = 0
+            self._logger.log('debug', "Bee assigned to new merged position")
+
+    def _onlooker_phase(self):
         '''
         Calculate new positions for well performing bees. Each bee that has performed better then
         average is combined with another well performing bee to move to a more optimal location. A
@@ -244,28 +256,22 @@ class ABC:
         '''
         self.__verify_ready()
         if self._processes > 1:
-            self.__multiprocessed_calc_new_positions()
+            self.__multiprocessed_onlooker_phase()
         else:
             probability = np.random.uniform(0,1)
-            for i, bee in enumerate(self._to_modify):
-                if bee.probability >= probability:
-                    new_values = self._merge_bee(i)
-                    if self.__is_better(bee.score, new_values[0]):
-                        bee.failed_trials += 1
-                    else:
-                        bee.score = new_values[0]
-                        bee.values = new_values[1]
-                        bee.failed_trials = 0
-                        self._logger.log('debug', "Bee assigned to new merged position")
+            for bee in enumerate(self._employers):
+                if bee[1].probability >= probability:
+                    self._move_bee(bee[1])
+                    
 
-    def __multiprocessed_calc_new_positions(self):
+    def __multiprocessed_onlooker_phase(self):
         '''
         Calculate new positions for employers in a multiprocessed
         fashion
         '''
         modified_bees = {}
         probability = np.random.uniform(0, 1)
-        for i, bee in enumerate(self._to_modify):
+        for i, bee in enumerate(self._employers):
             if bee.probability >= probability:
                 modified_bees[bee] = self._pool.apply_async(self._merge_bee, [i])
         for bee, values in modified_bees.items():
@@ -282,7 +288,7 @@ class ABC:
                 raise e
 
 
-    def _calc_average(self):
+    def _calc_total(self):
         '''
         Calculate the average of bee cost. Will also update the best score and keep track of total score for probabili
         '''
@@ -294,7 +300,6 @@ class ABC:
             # While iterating through employers, look for the best fitness score/value pairing
             if self.__update(employer.score, employer.values):
                 self._logger.log('info', "Best score update to score: {} | values: {}".format(employer.score, employer.values))
-        self._average_score = self._total_score/len(self._employers)
 
         # Now calculate each bee's probability
         self.__gen_probability_values()
@@ -307,7 +312,6 @@ class ABC:
         '''
         self.__verify_ready()
         self.__onlooker.best_employers = []
-        self._to_modify = []
         modified_bees = []
 
         for bee in self._employers:
@@ -315,16 +319,11 @@ class ABC:
                 bee.values = self.__gen_random_values()
                 # Check whether multiprocessing is enabled
                 if self._processes > 1:
-                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
+                    bee.score = self._pool.apply_async(bee.get_fitness_score, self._fitness_fxn, **self._args) 
                 else:
-                    bee.score = self._fitness_fxn(bee.values, **self._args)
+                    bee.score = bee.get_fitness_score(self._fitness_fxn, bee.values)
                 bee.failed_trials = 0
-                modified_bees.append(bee)
-            else:
-                # Assign the well performing bees to the onlooker
-                if not self.__below_average(bee):
-                    self.__onlooker.best_employers.append(bee)
-                self._to_modify.append(bee)
+
         # Wait for all the bee values to be calculated if multiprocessing is enabled
         if self._processes > 1:
             for bee in modified_bees:
@@ -374,48 +373,46 @@ class ABC:
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
-    def _merge_bee(self, bee_index):
+    def _merge_bee(self, bee):
         '''
         Merge bee at self._to_modify[bee_index] with a well
         performing bee. Should not be called by user. Method
         cannot be self.__merge_bee to ensure that the method
         is pickled when multiprocessing is enabled
         '''
-        valueTypes = [t[0] for t in self._value_ranges]
-        secondBee = randint(0, len(self.__onlooker.best_employers) - 1)
+        # choose random dimension
+        random_dimension = randint(0, len(self._value_ranges) - 1)
+        # choose random 2nd bee
+        second_bee = randint(0, self._num_employers-1)
         # Avoid both bees being the same
-        while (self._to_modify[bee_index].id == self.__onlooker.best_employers[secondBee].id):
-            secondBee = randint(0, len(self.__onlooker.best_employers) -1)
-        positions = self.__onlooker.calculate_positions(self._to_modify[bee_index],
-            self.__onlooker.best_employers[secondBee], valueTypes, self._value_ranges)
-        new_score = self._fitness_fxn(positions, **self._args)
-        return (new_score, positions)
+        while (bee.id == self._employers[second_bee].id):
+            second_bee = randint(0, self._num_employers -1)
+        # bee[dimension] = bee[dimension] + rand(-1, 1) * (rand_bee[dimension] - bee[dimension])
+        bee.values[random_dimension] = self.__onlooker.calculate_positions(bee.values[random_dimension],
+            self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
+        fitness_score = bee.get_fitness_score(self._fitness_fxn, bee.values)
+        return (fitness_score, bee.values)
 
-    def __below_average(self, bee):
-        '''
-        Return whether the given bee has a fitness score that is
-        below the average compared to all the other employers
-        '''
-        return (self._minimize == True and bee.score  > self._average_score) or\
-               (self._minimize == False and bee.score < self._average_score)
 
     def __is_better(self, first_score, comparison):
         '''
         Return true if the first score is better than the second
         score, false if not
         '''
-        return (self._minimize == True and first_score  < comparison) or\
-               (self._minimize == False and first_score > comparison)
+        return (self._minimize == True and first_score  > comparison) or\
+               (self._minimize == False and first_score < comparison)
 
     def __update(self, score, values):
         '''
         Update the best score and values if the given
         score is better than the current best score
         '''
+        print("update: " + str(score) + ", " + str(self._best_score))
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
                 self._best_values = values
+                print("best values: " + str(self._best_values))
                 return True
         elif not self._minimize:
             if self._best_score == None or score > self._best_score:
