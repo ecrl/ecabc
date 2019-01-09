@@ -2,7 +2,6 @@
 
 # ECabc : Feature tuning program 
 [![GitHub version](https://badge.fury.io/gh/ECRL%2FECabc.svg)](https://badge.fury.io/gh/ECRL%2FECabc)
-[![PyPI version](https://badge.fury.io/py/ecabc.svg)](https://badge.fury.io/py/ecabc)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ECRL/ecabc/blob/master/LICENSE)
 
 **ECabc** is a generic, small scale feature tuning program that works with any **fitness function**, and **value set**. An **employer bee** is an object which stores a set of values, and a fitness score that correlates to that value, which are both passed by the user. The **onlooker bee** will create a new set of random values, which will then be assigned to a poorly performing employer bee as a replacement. 
