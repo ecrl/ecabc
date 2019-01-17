@@ -23,7 +23,6 @@ class EmployerBee:
     def __init__(self, values=[]):
         self.values = values
         self.score = None
-        self.unsaved_error = None
         self.probability = 0
         self.failed_trials = 0
         self.id = uuid.uuid4()

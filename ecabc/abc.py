@@ -31,7 +31,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='debug', file_logging='disable', processes=1, args=None):
+    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=1, args=None):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = 5
@@ -396,14 +396,15 @@ class ABC:
         Return true if the first score is better than the second
         score, false if not
         '''
-        return (self._minimize == True and first_score  < comparison) or\
-               (self._minimize == False and first_score > comparison)
+        return (self._minimize == True and first_score  > comparison) or\
+               (self._minimize == False and first_score < comparison)
 
     def __update(self, score, values, error):
         '''
         Update the best score and values if the given
         score is better than the current best score
         '''
+        print("update: " + str(score) + ", " + str(self._best_score))
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
