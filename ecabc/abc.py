@@ -14,8 +14,6 @@ import json
 from random import randint
 import numpy as np
 from colorlogging import ColorLogger
-from multiprocessing import Pool
-import multiprocessing
 import pickle
 from copy import deepcopy
 
@@ -31,7 +29,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', processes=1, args=None):
+    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', args=None):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = 5
@@ -41,16 +39,11 @@ class ABC:
         self._minimize = False #minimizes score not error
         self._fitness_fxn = fitness_fxn
         self.__onlooker = OnlookerBee()
-        self._processes = processes
         self._limit = 20
         self._employers = []
         self._args = args
         self._total_score = 0
         self._cycle_number = 0
-        if processes > 1:
-            self._pool = Pool(processes)
-        else:
-            self._pool = None
 
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
@@ -126,39 +119,6 @@ class ABC:
             self._logger.log('debug', "Number of employers set to {}".format(num_employers))
 
     @property
-    def processes(self):
-        '''
-        Value which indicates how many processes are allowed to be a spawned
-        for various methods/calculations at a time. If the number is less than 1,
-        multiprocessing will be disabled and the program will run everything synchroniously
-        '''
-        return self._processes
-
-    @processes.setter
-    def processes(self, processes):
-        if self._processes > 1:
-            self._pool.close()
-            self._pool.join()
-
-        self._processes = processes
-        if self._processes > 1:
-            self._pool = Pool(processes)
-        else:
-            self._pool = None
-        self._logger.log('debug', "Number of processes set to {}".format(processes))
-
-    def infer_process_count(self):
-        '''
-        Set the amount of processes that will be used to
-        the amount of CPU's in your system
-        '''
-        try:
-            self.processes = multiprocessing.cpu_count()
-        except NotImplementedError:
-            self._logger.log('error', "Could not get cpu count, setting amount of processes back to 4")
-            self.processes = 4
-
-    @property
     def value_ranges(self):
         return self._value_ranges
 
@@ -219,21 +179,10 @@ class ABC:
         self.__verify_ready(True)
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
-            if self._processes > 1:
-                print(self.args)
-                employer.score = self._pool.apply_async(employer.get_fitness_score, (self._fitness_fxn,),[employer.values])
-            else:
-                employer.score = employer.get_fitness_score(self._fitness_fxn, **self._args)
-                self._logger.log('debug', "Bee number {} created".format(i + 1))
+            employer.score = employer.get_fitness_score(self._fitness_fxn, **self._args)
+            self._logger.log('debug', "Bee number {} created".format(i + 1))
             self._employers.append(employer)
             self.__update(employer.score, employer.values, employer.error)
-        if self._processes > 1:
-            for i, employer in enumerate(self._employers):
-                try:
-                    employer.score = employer.score.get()
-                    self._logger.log('debug', "Bee number {} created".format(i + 1))
-                except Exception as e:
-                    raise e
 
     def _employer_phase(self):
         self._logger.log('debug',"Employer bee phase")
@@ -261,29 +210,10 @@ class ABC:
         '''
         self.__verify_ready()
         self._logger.log('debug',"Onlooker bee phase")
-        if self._processes > 1:
-            modified_bees = {}
-            probability = np.random.uniform(0, 1)
-            for i, bee in enumerate(self._employers):
-                if bee.probability >= probability:
-                    modified_bees[bee] = self._pool.apply_async(self._merge_bee, [i])
-            for bee, values in modified_bees.items():
-                try:
-                    new_values = values.get()
-                    if self.__is_better(bee.score, new_values[0]):
-                        bee.failed_trials += 1
-                    else:
-                        bee.score = new_values[0]
-                        bee.values = new_values[1]
-                        bee.failed_trials = 0
-                        self._logger.log('debug', "Bee assigned to new merged position")
-                except Exception as e:
-                    raise e
-        else:
-            for bee in enumerate(self._employers):
-                chosen_bee = np.random.choice(self._employers, p = [e.probability for e in self._employers])
-                self._move_bee(chosen_bee)
-                self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
+        for bee in enumerate(self._employers):
+            chosen_bee = np.random.choice(self._employers, p = [e.probability for e in self._employers])
+            self._move_bee(chosen_bee)
+            self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
                     
     def _calc_total(self):
         '''
@@ -312,24 +242,10 @@ class ABC:
         for bee in self._employers:
             if bee.failed_trials >= self._limit:
                 bee.values = self.__gen_random_values()
-                # Check whether multiprocessing is enabled
-                if self._processes > 1:
-                    bee.score = self._pool.apply_async(bee.get_fitness_score, self._fitness_fxn, **self._args) 
-                else:
-                    bee.score = bee.get_fitness_score(self._fitness_fxn, **self._args)
-                    self.__update(bee.score, bee.values, bee.error)
+                bee.score = bee.get_fitness_score(self._fitness_fxn, **self._args)
+                self.__update(bee.score, bee.values, bee.error)
                 bee.failed_trials = 0
 
-        # Wait for all the bee values to be calculated if multiprocessing is enabled
-        if self._processes > 1:
-            for bee in modified_bees:
-                try:
-                    bee.score = bee.score.get()
-                    self._logger.log('debug', "Generated new random bee score")
-                    if self.__update(bee.score, bee.values):
-                        self._logger.log('info', "Best score update to score: {} | values: {} ".format(bee.score, bee.values))
-                except Exception as e:
-                    raise e
 
     def import_settings(self, filename):
         '''
@@ -352,7 +268,6 @@ class ABC:
                 self.num_employers = data['num_employers']
                 self._best_score = float(data['best_score'])
                 self.limit = data['limit']
-                self.processes = data['processes']
 
     def save_settings(self, filename):
         '''
@@ -365,7 +280,6 @@ class ABC:
         data['num_employers'] = self._num_employers
         data['best_score'] = str(self._best_score)
         data['limit'] = self._limit
-        data['processes'] = self._processes
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
