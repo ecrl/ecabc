@@ -117,6 +117,8 @@ class ABC:
         else:
             self._num_employers = num_employers
             self._logger.log('debug', "Number of employers set to {}".format(num_employers))
+        self._limit = num_employers * len(self._value_ranges)
+        self._logger.log('info','Limit . is {} ({} * {})'.format(self._limit, num_employers, len(self._value_ranges)))
 
     @property
     def value_ranges(self):
@@ -183,6 +185,7 @@ class ABC:
             self._logger.log('debug', "Bee number {} created".format(i + 1))
             self._employers.append(employer)
             self.__update(employer.score, employer.values, employer.error)
+        self._logger.log('debug','Employer creation complete')
 
     def _employer_phase(self):
         self._logger.log('debug',"Employer bee phase")
@@ -238,13 +241,18 @@ class ABC:
         together well performing bees. If score is better than current best, set is as current best
         '''
         self.__verify_ready()
+        most_trials = 0
 
         for bee in self._employers:
-            if bee.failed_trials >= self._limit:
-                bee.values = self.__gen_random_values()
-                bee.score = bee.get_fitness_score(self._fitness_fxn, **self._args)
-                self.__update(bee.score, bee.values, bee.error)
-                bee.failed_trials = 0
+            if (bee.failed_trials > most_trials):
+                scout = bee
+            if scout is not None:
+                if (scout.failed_trials >= self._limit):
+                    self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
+                    scout.values = self. __gen_random_values()
+                    scout.score = scout.get_fitness_score(self._fitness_fxn, **self._args)
+                    self.__update(scout.score, scout.values, scout.error)
+                    scout.failed_trials = 0
 
 
     def import_settings(self, filename):
@@ -310,26 +318,27 @@ class ABC:
         Return true if the first score is better than the second
         score, false if not
         '''
-        return (self._minimize == True and first_score  > comparison) or\
-               (self._minimize == False and first_score < comparison)
+        return (self._minimize == True and first_score  < comparison) or\
+               (self._minimize == False and first_score > comparison)
 
     def __update(self, score, values, error):
         '''
         Update the best score and values if the given
         score is better than the current best score
         '''
-        print("update: " + str(score) + ", " + str(self._best_score))
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
                 self._best_values = values[:]
                 self._best_error = error
+                self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         elif not self._minimize:
             if self._best_score == None or score > self._best_score:
                 self._best_score = score
                 self._best_values = values[:]
                 self._best_error = error
+                self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         return False
 
