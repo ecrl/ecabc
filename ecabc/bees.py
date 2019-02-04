@@ -28,21 +28,18 @@ class EmployerBee:
         self.id = uuid.uuid4()
         self.error = None
 
+    def update(self, error):
+        self.error = error
+        if self.error >= 0:
+            self.score = 1/(self.error+1)
+        else:
+            self.score = 1 + abs (self.error)
+
     def calculate_probability(self, fitness_total):
         '''
         Calculate probability based on a given fitness average
         '''
-        self.probability = self.score / fitness_total
-
-    def get_fitness_score(self, fitness_fxn, **args):
-        '''
-        Get fitness score for a given set of values
-        '''
-        self.error = fitness_fxn(self.values, **args)
-        if self.error >= 0:
-            return 1/(self.error+1)
-        else:
-            return 1 + abs (self.error)
+        self.probability = self.score / fitness_total        
 
 class OnlookerBee:
     '''
