@@ -30,10 +30,10 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
+    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
-        self._num_employers = 5
+        self._num_employers = num_employers
         self._best_values = []
         self._best_score = None
         self._best_error = None
