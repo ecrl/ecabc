@@ -295,6 +295,7 @@ class ABC:
         self.__verify_ready()
         most_trials = 0
         scouts_modified = []
+        scout = None
         for bee in self._employers:
             if (bee.failed_trials > most_trials):
                 scout = bee
