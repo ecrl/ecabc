@@ -1,16 +1,16 @@
 {
-    "best_error": 0.5902707384446444,
-    "best_score": "0.6288237441745577",
-    "best_values": [
-        "17",
-        "53",
-        "1.0395021009273206",
-        "36.64280303470769"
+    "best_error":0.0000000928,
+    "best_score":"0.9999999071701582",
+    "best_values":[
+        "70",
+        "0",
+        "100",
+        "0.3749999990717015"
     ],
-    "limit": 20,
-    "minimize": false,
-    "num_employers": 50,
-    "valueRanges": [
+    "limit":20,
+    "minimize":false,
+    "num_employers":50,
+    "valueRanges":[
         [
             "int",
             [

@@ -35,10 +35,9 @@ if __name__ == '__main__':
             processes=4
             )
     abc.create_employers()
-    while True:
+    count = 0
+    while count < 10000000000:
         abc.save_settings('{}/settings.json'.format(os.getcwd()))
         abc.run_iteration()
-        if abc.best_performer[2] < 2:
-            abc.save_settings('{}/settings.json'.format(os.getcwd()))
-            break
-    print("execution time = {}".format(time.time() - start))
+        abc.save_settings('{}/settings.json'.format(os.getcwd()))
+    #print("execution time = {}".format(time.time() - start))

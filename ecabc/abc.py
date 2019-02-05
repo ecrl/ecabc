@@ -339,7 +339,7 @@ class ABC:
                         scout.failed_trials = 0
         for scout in scouts_modified:
             try:
-                scout.error = scout.score.get()
+                scout.error = scout.error.get()
                 scout.score = scout.get_score()
                 self.__update(scout.score, scout.values, scout.error)
             except Exception as e:
