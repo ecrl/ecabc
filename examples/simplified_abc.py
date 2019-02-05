@@ -31,13 +31,14 @@ if __name__ == '__main__':
     start = time.time()
     abc = ABC(fitness_fxn=idealDayTest, 
             value_ranges=values,
-            print_level='debug',
-            processes=1
+            print_level='info',
+            processes=4
             )
     abc.create_employers()
     while True:
         abc.save_settings('{}/settings.json'.format(os.getcwd()))
         abc.run_iteration()
-        if abc.best_performer[0] < 2:
+        if abc.best_performer[2] < 2:
+            abc.save_settings('{}/settings.json'.format(os.getcwd()))
             break
     print("execution time = {}".format(time.time() - start))
