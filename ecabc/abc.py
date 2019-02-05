@@ -15,6 +15,7 @@ from random import randint
 import numpy as np
 from colorlogging import ColorLogger
 import pickle
+import multiprocessing
 from copy import deepcopy
 
 # artificial bee colony packages
@@ -29,10 +30,10 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, value_ranges=[], print_level='info', file_logging='disable', args=None):
+    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
-        self._num_employers = 5
+        self._num_employers = num_employers
         self._best_values = []
         self._best_score = None
         self._best_error = None
@@ -44,6 +45,12 @@ class ABC:
         self._args = args
         self._total_score = 0
         self._cycle_number = 0
+        self._processes = processes
+
+        if self._processes > 1:
+            self._pool = multiprocessing.Pool(self._processes)
+        else:
+            self._pool = None
 
         if not callable(self._fitness_fxn):
             raise ValueError('submitted *fitness_fxn* is not callable')
@@ -161,6 +168,39 @@ class ABC:
         '''
         self._limit = limit
 
+    @property
+    def processes(self):
+        '''
+        Value which indicates how many processes are allowed to be a spawned
+        for various methods/calculations at a time. If the number is less than 1,
+        multiprocessing will be disabled and the program will run everything synchroniously
+        '''
+        return self._processes
+
+    @processes.setter
+    def processes(self, processes):
+        if self._processes > 1:
+            self._pool.close()
+            self._pool.join()
+
+        self._processes = processes
+        if self._processes > 1:
+            self._pool = multiprocessing.Pool(processes)
+        else:
+            self._pool = None
+        self._logger.log('debug', "Number of processes set to {}".format(processes))
+
+    def infer_process_count(self):
+        '''
+        Set the amount of processes that will be used to
+        the amount of CPU's in your system 
+        '''
+        try:
+            self.processes = multiprocessing.cpu_count()
+        except NotImplementedError:
+            self._logger.log('error', "Could not get cpu count, setting amount of processes back to 4")
+            self.processes = 4
+
     def run_iteration(self):
         '''
         Run a single iteration of the bee colony. This will produce fitness scores
@@ -179,12 +219,24 @@ class ABC:
         of usable employers bees. Other methods depend on this.
         '''
         self.__verify_ready(True)
+        employers = []
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
-            employer.score = employer.get_fitness_score(self._fitness_fxn, **self._args)
-            self._logger.log('debug', "Bee number {} created".format(i + 1))
+            if self._processes <= 1:
+                employer.update(self._fitness_fxn(employer.values, **self._args))
+                self._logger.log('debug', "Bee number {} created".format(i + 1))
+                self.__update(employer.score, employer.values, employer.error)
+            else:
+                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employers.append(employer)
             self._employers.append(employer)
-            self.__update(employer.score, employer.values, employer.error)
+        for idx, employer in enumerate(employers):
+            try:
+                employer.update(employer.score.get())
+                self._logger.log('debug', "Bee number {} created".format(idx + 1))
+                self.__update(employer.score, employer.values, employer.error)
+            except Exception as e:
+                raise e
         self._logger.log('debug','Employer creation complete')
 
     def _employer_phase(self):
@@ -213,7 +265,7 @@ class ABC:
         '''
         self.__verify_ready()
         self._logger.log('debug',"Onlooker bee phase")
-        for bee in enumerate(self._employers):
+        for _ in self._employers:
             chosen_bee = np.random.choice(self._employers, p = [e.probability for e in self._employers])
             self._move_bee(chosen_bee)
             self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
@@ -242,19 +294,28 @@ class ABC:
         '''
         self.__verify_ready()
         most_trials = 0
+        scouts_modified = []
         scout = None
-        
         for bee in self._employers:
             if (bee.failed_trials > most_trials):
                 scout = bee
-        if scout is not None:
-            if (scout.failed_trials >= self._limit):
-                self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
-                scout.values = self. __gen_random_values()
-                scout.score = scout.get_fitness_score(self._fitness_fxn, **self._args)
+                if scout is not None:
+                    if (scout.failed_trials >= self._limit):
+                        self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
+                        scout.values = self. __gen_random_values()
+                        if self._processes <= 1:
+                            scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
+                            self.__update(scout.score, scout.values, scout.error)
+                        else:
+                            scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
+                            scouts_modified.append(scout)
+                        scout.failed_trials = 0
+        for scout in scouts_modified:
+            try:
+                scout.update(scout.score.get())
                 self.__update(scout.score, scout.values, scout.error)
-                scout.failed_trials = 0
-
+            except Exception as e:
+                raise e
 
     def import_settings(self, filename):
         '''
@@ -310,7 +371,7 @@ class ABC:
         new_bee = deepcopy(bee)
         new_bee.values[random_dimension] = self.__onlooker.calculate_positions(new_bee.values[random_dimension],
             self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
-        fitness_score = new_bee.get_fitness_score(self._fitness_fxn, **self._args)
+        fitness_score = self._fitness_fxn(new_bee.values, **self._args)
         return (fitness_score, new_bee.values, new_bee.error)
 
 
