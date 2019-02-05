@@ -227,16 +227,18 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes <= 1:
-                employer.update(self._fitness_fxn(employer.values, **self._args))
+                employer.error = self._fitness_fxn(employer.values, **self._args)
+                employer.score = employer.get_score()
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
                 self.__update(employer.score, employer.values, employer.error)
             else:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employer.error = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
                 employers.append(employer)
             self._employers.append(employer)
         for idx, employer in enumerate(employers):
             try:
-                employer.update(employer.score.get())
+                employer.error = employer.error.get()
+                employer.score = employer.get_score()
                 self._logger.log('debug', "Bee number {} created".format(idx + 1))
                 self.__update(employer.score, employer.values, employer.error)
             except Exception as e:
@@ -299,6 +301,7 @@ class ABC:
         self.__verify_ready()
         most_trials = 0
         scouts_modified = []
+        scout = None
         for bee in self._employers:
             if (bee.failed_trials > most_trials):
                 scout = bee
@@ -307,15 +310,17 @@ class ABC:
                         self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
                         scout.values = self. __gen_random_values()
                         if self._processes <= 1:
-                            scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
+                            scout.error = self._fitness_fxn(scout.values, **self._args)
+                            scout.score = scout.get_score()
                             self.__update(scout.score, scout.values, scout.error)
                         else:
-                            scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
+                            scout.error = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
                             scouts_modified.append(scout)
                         scout.failed_trials = 0
         for scout in scouts_modified:
             try:
-                scout.update(scout.score.get())
+                scout.error = scout.score.get()
+                scout.score = scout.get_score()
                 self.__update(scout.score, scout.values, scout.error)
             except Exception as e:
                 raise e
@@ -353,6 +358,7 @@ class ABC:
         data['num_employers'] = self._num_employers
         data['best_score'] = str(self._best_score)
         data['limit'] = self._limit
+        data['best_error'] = self._best_error
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
@@ -374,7 +380,7 @@ class ABC:
         new_bee = deepcopy(bee)
         new_bee.values[random_dimension] = self.__onlooker.calculate_positions(new_bee.values[random_dimension],
             self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
-        fitness_score = self._fitness_fxn(new_bee.values, **self._args)
+        fitness_score = new_bee.get_score(self._fitness_fxn(new_bee.values, **self._args))
         return (fitness_score, new_bee.values, new_bee.error)
 
 
@@ -394,14 +400,14 @@ class ABC:
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         elif not self._minimize:
             if self._best_score == None or score > self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True

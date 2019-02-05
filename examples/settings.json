@@ -1,14 +1,15 @@
 {
-    "best_score": "10092.5",
+    "best_error": 0.5902707384446444,
+    "best_score": "0.6288237441745577",
     "best_values": [
-        "100",
-        "100",
-        "100.0",
-        "100"
+        "17",
+        "53",
+        "1.0395021009273206",
+        "36.64280303470769"
     ],
     "limit": 20,
     "minimize": false,
-    "num_employers": 5,
+    "num_employers": 50,
     "valueRanges": [
         [
             "int",

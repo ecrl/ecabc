@@ -28,12 +28,13 @@ class EmployerBee:
         self.id = uuid.uuid4()
         self.error = None
 
-    def update(self, error):
-        self.error = error
+    def get_score(self, error=None):
+        if error is not None:
+            self.error = error
         if self.error >= 0:
-            self.score = 1/(self.error+1)
+            return 1 / (self.error+1)
         else:
-            self.score = 1 + abs (self.error)
+            return 1 + abs(self.error)
 
     def calculate_probability(self, fitness_total):
         '''
