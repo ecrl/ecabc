@@ -242,17 +242,18 @@ class ABC:
         '''
         self.__verify_ready()
         most_trials = 0
-
+        scout = None
+        
         for bee in self._employers:
             if (bee.failed_trials > most_trials):
                 scout = bee
-            if scout is not None:
-                if (scout.failed_trials >= self._limit):
-                    self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
-                    scout.values = self. __gen_random_values()
-                    scout.score = scout.get_fitness_score(self._fitness_fxn, **self._args)
-                    self.__update(scout.score, scout.values, scout.error)
-                    scout.failed_trials = 0
+        if scout is not None:
+            if (scout.failed_trials >= self._limit):
+                self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
+                scout.values = self. __gen_random_values()
+                scout.score = scout.get_fitness_score(self._fitness_fxn, **self._args)
+                self.__update(scout.score, scout.values, scout.error)
+                scout.failed_trials = 0
 
 
     def import_settings(self, filename):
