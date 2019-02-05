@@ -391,14 +391,14 @@ class ABC:
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         elif not self._minimize:
             if self._best_score == None or score > self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
