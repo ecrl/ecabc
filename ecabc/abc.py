@@ -10,13 +10,17 @@
 
 import sys as sy
 import os.path
-import json
 from random import randint
 import numpy as np
 from colorlogging import ColorLogger
 import pickle
 import multiprocessing
 from copy import deepcopy
+
+try:
+    import ujson as json
+except:
+    import json as json
 
 # artificial bee colony packages
 from ecabc.bees import OnlookerBee, EmployerBee
@@ -30,7 +34,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
+    def __init__(self, fitness_fxn, value_ranges=[], num_employers=50, print_level='info', file_logging='disable', args={}, processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = num_employers
