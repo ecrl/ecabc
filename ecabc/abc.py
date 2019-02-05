@@ -247,11 +247,20 @@ class ABC:
 
     def _employer_phase(self):
         self._logger.log('debug',"Employer bee phase")
+        modified = []
         for bee in self._employers:
-            self._move_bee(bee)
+            if self._processes <= 1:
+                new_values = self._merge_bee(bee)
+                self._move_bee(bee, new_values)
+            else:
+                modified.append((
+                    bee, 
+                    self._pool.apply_async(self._merge_bee, [bee])
+                ))
+        for pair in modified:
+            self._move_bee(pair[0], pair[1].get())
 
-    def _move_bee(self,bee):
-        new_values = self._merge_bee(bee)
+    def _move_bee(self, bee, new_values):
         if self.__is_better(bee.score, new_values[0]):
             bee.failed_trials += 1
         else:
@@ -271,10 +280,21 @@ class ABC:
         '''
         self.__verify_ready()
         self._logger.log('debug',"Onlooker bee phase")
+        modified = []
         for _ in self._employers:
             chosen_bee = np.random.choice(self._employers, p = [e.probability for e in self._employers])
-            self._move_bee(chosen_bee)
-            self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
+            if self._processes <= 1:
+                new_values = self._merge_bee(chosen_bee)
+                self._move_bee(chosen_bee, new_values)
+                self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
+            else:
+                modified.append((
+                    chosen_bee,
+                    self._pool.apply_async(self._merge_bee, [chosen_bee])
+                ))
+        for pair in modified:
+            self._move_bee(pair[0], pair[1].get())
+            self.__update(pair[0].score, pair[0].values, pair[0].error)
                     
     def _calc_total(self):
         '''
