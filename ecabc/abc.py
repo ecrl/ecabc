@@ -30,7 +30,7 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
+    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[],num_dimension=6, print_level='info', file_logging='disable', args={}, processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = num_employers
@@ -40,7 +40,7 @@ class ABC:
         self._minimize = False #minimizes score not error
         self._fitness_fxn = fitness_fxn
         self.__onlooker = OnlookerBee()
-        self._limit = 20
+        self._limit = num_employers*num_dimension
         self._employers = []
         self._args = args
         self._total_score = 0
@@ -209,7 +209,7 @@ class ABC:
         or may not have been updated if a better food source was found
         '''
         self._employer_phase()
-        self._calc_total()
+        self._calc_probability()
         self._onlooker_phase()
         self._check_positions()
 
@@ -246,7 +246,7 @@ class ABC:
 
     def _move_bee(self,bee):
         new_values = self._merge_bee(bee)
-        if self.__is_better(bee.score, new_values[0]):
+        if (bee.score < new_values[0]):
             bee.failed_trials += 1
         else:
             bee.values = new_values[1]
@@ -270,7 +270,7 @@ class ABC:
             self._move_bee(chosen_bee)
             self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
                     
-    def _calc_total(self):
+    def _calc_probability(self):
         '''
         Calculate the average of bee cost. Will also update the best score and keep track of total score for probability
         '''
@@ -284,7 +284,8 @@ class ABC:
                 self._logger.log('info', "Best score update to error: {} | score: {} | values: {}".format(employer.error, employer.score, employer.values))
 
         # Now calculate each bee's probability
-        self.__gen_probability_values()
+        for employer in self._employers:
+            employer.calculate_probability(self._total_score)
 
     def _check_positions(self):
         '''
@@ -293,27 +294,22 @@ class ABC:
         together well performing bees. If score is better than current best, set is as current best
         '''
         self.__verify_ready()
-        most_trials = 0
-        scouts_modified = []
-        scout = None
+        bees_modified = []
         for bee in self._employers:
-            if (bee.failed_trials > most_trials):
-                scout = bee
-                if scout is not None:
-                    if (scout.failed_trials >= self._limit):
-                        self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
-                        scout.values = self. __gen_random_values()
-                        if self._processes <= 1:
-                            scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
-                            self.__update(scout.score, scout.values, scout.error)
-                        else:
-                            scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
-                            scouts_modified.append(scout)
-                        scout.failed_trials = 0
-        for scout in scouts_modified:
+            if (bee.failed_trials >= self._limit):
+                self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(bee.error, bee.failed_trials))
+                bee.values = self. __gen_random_values()
+                if self._processes <= 1:
+                    bee.score = bee.update(self._fitness_fxn(bee.values, **self._args))
+                    self.__update(bee.score, bee.values, bee.error)
+                else:
+                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
+                    bees_modified.append(bee)
+                    bee.failed_trials = 0
+        for bee in bees_modified:
             try:
-                scout.update(scout.score.get())
-                self.__update(scout.score, scout.values, scout.error)
+               bee.update(bee.score.get())
+               self.__update(bee.score, bee.values, bee.error)
             except Exception as e:
                 raise e
 
@@ -374,15 +370,6 @@ class ABC:
         fitness_score = self._fitness_fxn(new_bee.values, **self._args)
         return (fitness_score, new_bee.values, new_bee.error)
 
-
-    def __is_better(self, first_score, comparison):
-        '''
-        Return true if the first score is better than the second
-        score, false if not
-        '''
-        return (self._minimize == True and first_score  < comparison) or\
-               (self._minimize == False and first_score > comparison)
-
     def __update(self, score, values, error):
         '''
         Update the best score and values if the given
@@ -423,15 +410,6 @@ class ABC:
                     self._logger.log('crit', "value type must be either an 'int' or a 'float'")
                     raise RuntimeError("value type must be either an 'int' or a 'float'")
         return values
-
-    def __gen_probability_values(self):
-        '''
-        Calculate probability that an employer will get
-        picked to be merged with another employer bee. This
-        probability will be calculated for all employers
-        '''
-        for employer in self._employers:
-            employer.calculate_probability(self._total_score)
 
     def __verify_ready(self, creating=False):
         '''
