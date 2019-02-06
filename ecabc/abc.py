@@ -326,15 +326,17 @@ class ABC:
                 self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(bee.error, bee.failed_trials))
                 bee.values = self. __gen_random_values()
                 if self._processes <= 1:
-                    bee.score = bee.update(self._fitness_fxn(bee.values, **self._args))
+                    bee.error = self._fitness_fxn(bee.values, **self._args)
+                    bee.score = bee.get_score()
                     self.__update(bee.score, bee.values, bee.error)
                 else:
-                    bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
+                    bee.error = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
                     bees_modified.append(bee)
                     bee.failed_trials = 0
         for bee in bees_modified:
             try:
-               bee.update(bee.score.get())
+               bee.error = bee.error.get()
+               bee.score = bee.get_score()
                self.__update(bee.score, bee.values, bee.error)
             except Exception as e:
                 raise e
