@@ -261,7 +261,7 @@ class ABC:
             self._move_bee(pair[0], pair[1].get())
 
     def _move_bee(self, bee, new_values):
-        if self.__is_better(bee.score, new_values[0]):
+        if bee.score > new_values[0]:
             bee.failed_trials += 1
         else:
             bee.values = new_values[1]
