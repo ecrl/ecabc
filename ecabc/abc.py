@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.1.1
+#  v.2.2.0
 #  Developed in 2018 by Sanskriti Sharma <sanskriti_sharma@student.uml.edu> & Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -10,13 +10,17 @@
 
 import sys as sy
 import os.path
-import json
 from random import randint
 import numpy as np
 from colorlogging import ColorLogger
 import pickle
 import multiprocessing
 from copy import deepcopy
+
+try:
+    import ujson as json
+except:
+    import json as json
 
 # artificial bee colony packages
 from ecabc.bees import OnlookerBee, EmployerBee
@@ -223,16 +227,18 @@ class ABC:
         for i in range(self._num_employers):
             employer = EmployerBee(self.__gen_random_values())
             if self._processes <= 1:
-                employer.update(self._fitness_fxn(employer.values, **self._args))
+                employer.error = self._fitness_fxn(employer.values, **self._args)
+                employer.score = employer.get_score()
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
                 self.__update(employer.score, employer.values, employer.error)
             else:
-                employer.score = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
+                employer.error = self._pool.apply_async(self._fitness_fxn, [employer.values], self._args)
                 employers.append(employer)
             self._employers.append(employer)
         for idx, employer in enumerate(employers):
             try:
-                employer.update(employer.score.get())
+                employer.error = employer.error.get()
+                employer.score = employer.get_score()
                 self._logger.log('debug', "Bee number {} created".format(idx + 1))
                 self.__update(employer.score, employer.values, employer.error)
             except Exception as e:
@@ -241,12 +247,21 @@ class ABC:
 
     def _employer_phase(self):
         self._logger.log('debug',"Employer bee phase")
+        modified = []
         for bee in self._employers:
-            self._move_bee(bee)
+            if self._processes <= 1:
+                new_values = self._merge_bee(bee)
+                self._move_bee(bee, new_values)
+            else:
+                modified.append((
+                    bee, 
+                    self._pool.apply_async(self._merge_bee, [bee])
+                ))
+        for pair in modified:
+            self._move_bee(pair[0], pair[1].get())
 
-    def _move_bee(self,bee):
-        new_values = self._merge_bee(bee)
-        if (bee.score < new_values[0]):
+    def _move_bee(self, bee, new_values):
+        if self.__is_better(bee.score, new_values[0]):
             bee.failed_trials += 1
         else:
             bee.values = new_values[1]
@@ -265,10 +280,21 @@ class ABC:
         '''
         self.__verify_ready()
         self._logger.log('debug',"Onlooker bee phase")
+        modified = []
         for _ in self._employers:
             chosen_bee = np.random.choice(self._employers, p = [e.probability for e in self._employers])
-            self._move_bee(chosen_bee)
-            self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
+            if self._processes <= 1:
+                new_values = self._merge_bee(chosen_bee)
+                self._move_bee(chosen_bee, new_values)
+                self.__update(chosen_bee.score, chosen_bee.values, chosen_bee.error)
+            else:
+                modified.append((
+                    chosen_bee,
+                    self._pool.apply_async(self._merge_bee, [chosen_bee])
+                ))
+        for pair in modified:
+            self._move_bee(pair[0], pair[1].get())
+            self.__update(pair[0].score, pair[0].values, pair[0].error)
                     
     def _calc_probability(self):
         '''
@@ -346,6 +372,7 @@ class ABC:
         data['num_employers'] = self._num_employers
         data['best_score'] = str(self._best_score)
         data['limit'] = self._limit
+        data['best_error'] = self._best_error
         with open(filename, 'w') as outfile:
             json.dump(data, outfile, indent=4, sort_keys=True)
 
@@ -367,7 +394,7 @@ class ABC:
         new_bee = deepcopy(bee)
         new_bee.values[random_dimension] = self.__onlooker.calculate_positions(new_bee.values[random_dimension],
             self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
-        fitness_score = self._fitness_fxn(new_bee.values, **self._args)
+        fitness_score = new_bee.get_score(self._fitness_fxn(new_bee.values, **self._args))
         return (fitness_score, new_bee.values, new_bee.error)
 
     def __update(self, score, values, error):
@@ -378,14 +405,14 @@ class ABC:
         if self._minimize:
             if self._best_score == None or score < self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         elif not self._minimize:
             if self._best_score == None or score > self._best_score:
                 self._best_score = score
-                self._best_values = values[:]
+                self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
