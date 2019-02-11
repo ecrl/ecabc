@@ -261,7 +261,7 @@ class ABC:
             self._move_bee(pair[0], pair[1].get())
 
     def _move_bee(self, bee, new_values):
-        if self.__is_better(bee.score, new_values[0]):
+        if bee.score > new_values[0]:
             bee.failed_trials += 1
         else:
             bee.values = new_values[1]
@@ -320,27 +320,25 @@ class ABC:
         together well performing bees. If score is better than current best, set is as current best
         '''
         self.__verify_ready()
-        bees_modified = []
         max_trials = 0
         scout = None
         for bee in self._employers:
             if (bee.failed_trials >= max_trials):
                 max_trials = bee.failed_trials
-                scout = copy.deepcopy(bee)
-                if scout != None and scout.failed_trials > max_trials:
-                    self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(bee.error, bee.failed_trials))
-                    bee.values = self. __gen_random_values()
-                    if self._processes <= 1:
-                        bee.score = bee.update(self._fitness_fxn(bee.values, **self._args))
-                        self.__update(bee.score, bee.values, bee.error)
-                    else:
-                        bee.score = self._pool.apply_async(self._fitness_fxn, [bee.values], self._args)
-                        bees_modified.append(bee)
-                        bee.failed_trials = 0
-            for bee in bees_modified:
+                scout = bee
+        if scout != None and scout.failed_trials > self._limit:
+            self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
+            scout.values = self. __gen_random_values()
+            if self._processes <= 1:
+                scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
+                scout.failed_trials = 0
+                self.__update(scout.score, scout.values, scout.error)
+            else:
+                scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
+                scout.failed_trials = 0
                 try:
-                    bee.update(bee.score.get())
-                    self.__update(bee.score, bee.values, bee.error)
+                    scout.update(scout.score.get())
+                    self.__update(scout.score, scout.values, scout.error)
                 except Exception as e:
                     raise e
 
