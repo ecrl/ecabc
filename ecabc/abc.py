@@ -330,14 +330,14 @@ class ABC:
             self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
             scout.values = self. __gen_random_values()
             if self._processes <= 1:
-                scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
+                scout.score = scout.get_score(self._fitness_fxn(scout.values, **self._args))
                 scout.failed_trials = 0
                 self.__update(scout.score, scout.values, scout.error)
             else:
                 scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
                 scout.failed_trials = 0
                 try:
-                    scout.update(scout.score.get())
+                    scout.get_score(scout.score.get())
                     self.__update(scout.score, scout.values, scout.error)
                 except Exception as e:
                     raise e
