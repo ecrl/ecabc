@@ -44,7 +44,8 @@ class ABC:
         self._minimize = False #minimizes score not error
         self._fitness_fxn = fitness_fxn
         self.__onlooker = OnlookerBee()
-        self._limit = num_employers*num_dimension
+        #self._limit = num_employers*num_dimension
+        self._limit = 2
         self._employers = []
         self._args = args
         self._total_score = 0
@@ -128,7 +129,7 @@ class ABC:
         else:
             self._num_employers = num_employers
             self._logger.log('debug', "Number of employers set to {}".format(num_employers))
-        self._limit = num_employers * len(self._value_ranges)
+        #self._limit = num_employers * len(self._value_ranges)
         self._logger.log('info','Limit . is {} ({} * {})'.format(self._limit, num_employers, len(self._value_ranges)))
 
     @property
@@ -229,6 +230,8 @@ class ABC:
             if self._processes <= 1:
                 employer.error = self._fitness_fxn(employer.values, **self._args)
                 employer.score = employer.get_score()
+                    #if np.isnan(employer.score):
+                    #print ("NAN FOUND " + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
                 self.__update(employer.score, employer.values, employer.error)
             else:
@@ -239,6 +242,8 @@ class ABC:
             try:
                 employer.error = employer.error.get()
                 employer.score = employer.get_score()
+                    #if np.isnan(employer.score):
+                    #print ("NAN FOUND " + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(idx + 1))
                 self.__update(employer.score, employer.values, employer.error)
             except Exception as e:
@@ -330,17 +335,19 @@ class ABC:
             self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
             scout.values = self. __gen_random_values()
             if self._processes <= 1:
-                scout.score = scout.update(self._fitness_fxn(scout.values, **self._args))
-                scout.failed_trials = 0
-                self.__update(scout.score, scout.values, scout.error)
+                scout.score = scout.get_score(self._fitness_fxn(scout.values, **self._args))
             else:
                 scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
-                scout.failed_trials = 0
-                try:
-                    scout.update(scout.score.get())
-                    self.__update(scout.score, scout.values, scout.error)
-                except Exception as e:
-                    raise e
+#if np.isnan(scout.score):
+#               print ("NAN FOUND " + str(scout.error))
+            scout.failed_trials = 0
+            try:
+                scout.score = scout.score.get()
+                scout.get_score()
+                self.__update(scout.score, scout.values, scout.error)
+            except Exception as e:
+                raise e
+            self.__update(scout.score, scout.values, scout.error)
 
     def import_settings(self, filename):
         '''
@@ -398,6 +405,8 @@ class ABC:
         new_bee.values[random_dimension] = self.__onlooker.calculate_positions(new_bee.values[random_dimension],
             self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
         fitness_score = new_bee.get_score(self._fitness_fxn(new_bee.values, **self._args))
+            #if np.isnan(fitness_score):
+            #print ("NAN FOUND " + str(new_bee.error))
         return (fitness_score, new_bee.values, new_bee.error)
 
     def __update(self, score, values, error):
