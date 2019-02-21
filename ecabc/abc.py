@@ -65,10 +65,10 @@ class ABC:
         Add an argument that will be processed by the fitness
         function. Doing this after you have initiliazed the abc
         employers and have started running the abc may produce
-        some weird results\n
+        some weird results
 
-        Args:\n
-        arg_name: The keyword name of your argument\n
+        Args:
+        arg_name: The keyword name of your argument
         arg_value: The value of the given argument
         '''
         if len(self._employers) > 0:
@@ -81,11 +81,11 @@ class ABC:
         '''
         Add another value that will be factored into the calculation
         of the bee's fitness. Calling this after the abc has run for
-        a few iterations may produce wonky results\n
-        Args:\n
-        value_type: Either of type 'int' or type 'float'\n
-        value_min: Minimum numerical value\n
-        value_max: Maximum numerical value\n
+        a few iterations may produce wonky results
+        Args:
+        value_type: Either of type 'int' or type 'float'
+        value_min: Minimum numerical value
+        value_max: Maximum numerical value
         '''
         if len(self._employers) > 0:
             self._logger.log('warn', 'Adding a value after employers have been created')
@@ -208,10 +208,11 @@ class ABC:
 
     def run_iteration(self):
         '''
-        Run a single iteration of the bee colony. This will produce fitness scores
-        for each bee, merge bees based on probabilities, and calculate new positions for
-        bees if necessary. At the end of this method, the best_perforder attribute may
-        or may not have been updated if a better food source was found
+        Run a single iteration of the bee colony. This will run the employer phase
+        on an already created set of employer bees, calculate the probablities of
+        each bee, run the onlooker phase and then check positions. At the end of
+        this method, the best_performer attribute may or may not have been updated
+        if a better food source was found
         '''
         self._employer_phase()
         self._calc_probability()
@@ -230,8 +231,6 @@ class ABC:
             if self._processes <= 1:
                 employer.error = self._fitness_fxn(employer.values, **self._args)
                 employer.score = employer.get_score()
-                    #if np.isnan(employer.score):
-                    #print ("NAN FOUND " + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
                 self.__update(employer.score, employer.values, employer.error)
             else:
@@ -242,8 +241,6 @@ class ABC:
             try:
                 employer.error = employer.error.get()
                 employer.score = employer.get_score()
-                    #if np.isnan(employer.score):
-                    #print ("NAN FOUND " + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(idx + 1))
                 self.__update(employer.score, employer.values, employer.error)
             except Exception as e:
@@ -251,6 +248,10 @@ class ABC:
         self._logger.log('debug','Employer creation complete')
 
     def _employer_phase(self):
+        '''
+        Part of run_iteration. Iterates through the employer bees and calls merge bee on each
+        bee so get a new position and then moves bee to the new position.
+        '''
         self._logger.log('debug',"Employer bee phase")
         modified = []
         for bee in self._employers:
@@ -266,6 +267,11 @@ class ABC:
             self._move_bee(pair[0], pair[1].get())
 
     def _move_bee(self, bee, new_values):
+        '''
+        Moves bee to passed in position
+        Args:
+        new_values: The new position which is the output of merge bee
+        '''
         if bee.score > new_values[0]:
             bee.failed_trials += 1
         else:
@@ -277,11 +283,8 @@ class ABC:
 
     def _onlooker_phase(self):
         '''
-        Calculate new positions for well performing bees. Each bee that has performed better then
-        average is combined with another well performing bee to move to a more optimal location. A
-        location is a combination of values, the more optimal, the better that set of values will
-        perform given the fitness function. If the new position performs better than the bee's current
-        position, the bee will move to the new location
+        Chooses employer bee based on calculated probability. For that bee, merges bee then moves bee
+        (similar to employer phase)
         '''
         self.__verify_ready()
         self._logger.log('debug',"Onlooker bee phase")
@@ -303,7 +306,8 @@ class ABC:
                     
     def _calc_probability(self):
         '''
-        Calculate the average of bee cost. Will also update the best score and keep track of total score for probability
+        Calculates the total of bee score for probability. Will also update
+        the best score and calls employer bee method calculate probability
         '''
         self._logger.log('debug', "calculating total")
         self.__verify_ready()
@@ -320,9 +324,8 @@ class ABC:
 
     def _check_positions(self):
         '''
-        Check the fitness cost of every bee to the average. If below average, and that bee has been reassigned
-        a food source more than the allowed amount, assign that bee a new random set of values. Additionally, group
-        together well performing bees. If score is better than current best, set is as current best
+        If the bee with the highest number of failed trials is above th limit, it is
+        converted into a scout bee which means it gets a whole new position in all dimensions
         '''
         self.__verify_ready()
         max_trials = 0
@@ -334,20 +337,6 @@ class ABC:
         if scout != None and scout.failed_trials > self._limit:
             self._logger.log('debug', "Sending scout (error of {} with limit of {})".format(scout.error, scout.failed_trials))
             scout.values = self. __gen_random_values()
-            if self._processes <= 1:
-                scout.score = scout.get_score(self._fitness_fxn(scout.values, **self._args))
-            else:
-                scout.score = self._pool.apply_async(self._fitness_fxn, [scout.values], self._args)
-#if np.isnan(scout.score):
-#               print ("NAN FOUND " + str(scout.error))
-            scout.failed_trials = 0
-            try:
-                scout.score = scout.score.get()
-                scout.get_score()
-                self.__update(scout.score, scout.values, scout.error)
-            except Exception as e:
-                raise e
-            self.__update(scout.score, scout.values, scout.error)
 
     def import_settings(self, filename):
         '''
@@ -388,10 +377,10 @@ class ABC:
 
     def _merge_bee(self, bee):
         '''
-        Merge bee at self._to_modify[bee_index] with a well
-        performing bee. Should not be called by user. Method
-        cannot be self.__merge_bee to ensure that the method
-        is pickled when multiprocessing is enabled
+        A dimension and a second bee are randomly chosen. The first bee in shifted
+        in that dimension with respect to the second bee
+        Args:
+        bee: First employer bee
         '''
         # choose random dimension
         random_dimension = randint(0, len(self._value_ranges) - 1)
@@ -405,8 +394,6 @@ class ABC:
         new_bee.values[random_dimension] = self.__onlooker.calculate_positions(new_bee.values[random_dimension],
             self._employers[second_bee].values[random_dimension], self._value_ranges[random_dimension])
         fitness_score = new_bee.get_score(self._fitness_fxn(new_bee.values, **self._args))
-            #if np.isnan(fitness_score):
-            #print ("NAN FOUND " + str(new_bee.error))
         return (fitness_score, new_bee.values, new_bee.error)
 
     def __update(self, score, values, error):
