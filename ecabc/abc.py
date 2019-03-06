@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #  ecabc/abc.py
-#  v.2.2.0
+#  v.2.2.2
 #  Developed in 2018 by Sanskriti Sharma <sanskriti_sharma@student.uml.edu> & Hernan Gelaf-Romer <hernan_gelafromer@student.uml.edu>
 #
 #  This program implements an artificial bee colony to tune ecnet hyperparameters
@@ -34,18 +34,17 @@ class ABC:
     between bees.
     '''
 
-    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[],num_dimension=6, print_level='info', file_logging='disable', args={}, processes=4):
+    def __init__(self, fitness_fxn, num_employers=50, value_ranges=[], print_level='info', file_logging='disable', args={}, processes=4):
         self._logger = ColorLogger(stream_level=print_level, file_level=file_logging)
         self._value_ranges = value_ranges
         self._num_employers = num_employers
         self._best_values = []
         self._best_score = None
         self._best_error = None
-        self._minimize = False #minimizes score not error
+        self._minimize = True #minimizes error not score
         self._fitness_fxn = fitness_fxn
         self.__onlooker = OnlookerBee()
-        #self._limit = num_employers*num_dimension
-        self._limit = 2
+        self._limit = num_employers*len(value_ranges)
         self._employers = []
         self._args = args
         self._total_score = 0
@@ -231,6 +230,8 @@ class ABC:
             if self._processes <= 1:
                 employer.error = self._fitness_fxn(employer.values, **self._args)
                 employer.score = employer.get_score()
+                if np.isnan(employer.score):
+                    print("NAN:" + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(i + 1))
                 self.__update(employer.score, employer.values, employer.error)
             else:
@@ -241,6 +242,8 @@ class ABC:
             try:
                 employer.error = employer.error.get()
                 employer.score = employer.get_score()
+                if np.isnan(employer.score):
+                    print("NAN:" + str(employer.error))
                 self._logger.log('debug', "Bee number {} created".format(idx + 1))
                 self.__update(employer.score, employer.values, employer.error)
             except Exception as e:
@@ -402,14 +405,14 @@ class ABC:
         score is better than the current best score
         '''
         if self._minimize:
-            if self._best_score == None or score < self._best_score:
+            if self._best_score == None or score > self._best_score:
                 self._best_score = score
                 self._best_values = values.copy()
                 self._best_error = error
                 self._logger.log('debug','New best food source memorized: {}'.format(self._best_error))
                 return True
         elif not self._minimize:
-            if self._best_score == None or score > self._best_score:
+            if self._best_score == None or score < self._best_score:
                 self._best_score = score
                 self._best_values = values.copy()
                 self._best_error = error

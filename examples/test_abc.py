@@ -41,7 +41,7 @@ if __name__ == '__main__':
     while True:
         abc.save_settings('{}/settings.json'.format(os.getcwd()))
         abc._employer_phase()
-        abc._calc_total()
+        abc._calc_probability()
         abc._onlooker_phase()
         abc._check_positions()
         abc._cycle_number = abc._cycle_number + 1
