@@ -279,7 +279,7 @@ class ABC:
             bee.failed_trials += 1
         else:
             bee.values = new_values[1]
-            bee.score = new_values[0]
+            bee.score = np.nan_to_num(new_values[0])
             bee.error = new_values[2]
             bee.failed_trials = 0
             self._logger.log('debug', "Bee assigned to new merged position")
