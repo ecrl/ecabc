@@ -19,11 +19,6 @@ import numpy as np
 
 
 class EmployerBee:
-    '''
-    Class which stores individual employer bee information such as its id,
-    position (known as values), error, score and probability of getting chosen
-    in the onlooker phase.
-    '''
 
     def __init__(self, values=[]):
         '''EmployerBee object: stores individual employer bee information such
@@ -72,10 +67,6 @@ class EmployerBee:
 
 
 class OnlookerBee:
-    '''
-    Class to store best performing bees, and also calculate positions
-    for any given bees
-    '''
 
     def __init__(self):
         '''OnlookerBee object: stores best-performing bees, function for
