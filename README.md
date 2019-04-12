@@ -168,4 +168,11 @@ if __name__ == '__main__':
     print("execution time = {}".format(time.time() - start))
 ```
 
+# Contributing, Reporting Issues and Other Support:
+
+To contribute to ECabc, make a pull request. Contributions should include tests for new features added, as well as extensive documentation.
+
+To report problems with the software or feature requests, file an issue. When reporting problems, include information such as error messages, your OS/environment and Python version.
+
+For additional support/questions, contact Sanskriti Sharma (sanskriti_sharma@student.uml.edu), Travis Kessler (travis.j.kessler@gmail.com), Hernan Gelaf-Romer (hernan_gelafromer@student.uml.edu) and/or John Hunter Mack (Hunter_Mack@uml.edu).
 
