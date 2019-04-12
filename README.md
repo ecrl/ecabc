@@ -18,17 +18,17 @@ While it has several applications, ECabc has been successfully used by the Energ
 
 ### Method 1: pip
 If you are working in a Linux/Mac environment:
-```python
+```
 sudo pip install ecabc
 ```
 
 Alternatively, in a windows environment, make sure you are running cmd as administrator:
-```python
+```
 pip install ecabc
 ```
 
 To update your version of ECabc to the latest release version, use
-```python
+```
 pip install --upgrade ecabc
 ```
 
@@ -36,7 +36,7 @@ Note: if multiple Python releases are installed on your system (e.g. 2.7 and 3.6
 
 ### Method 2: From source
 - Download the ECabc repository, navigate to the download location on the command line/terminal, and execute:
-```python
+```
 python setup.py install
 ```
 
@@ -48,9 +48,11 @@ To get started import ECabc
 ```python
 from ecabc import *
 ```
-Then define your fitness function as a function. The fitness function is the user defined function whose solution is being optimized
+Then define your fitness function as a function. The fitness function is the user defined function whose solution is being optimized. Pass in the values and args and have it return the output that is being optimized
 ```python
-def fitness_function:
+def fitness_function(values,args):
+    ***code***
+    return output
 ```
 After that, in the main function define your value ranges i.e. the user defined ranges for the variables which are being optimized
 ```python
@@ -92,21 +94,21 @@ for i in range(500):
 Other parameters that can be specified in the loop are:
 file logging: debug'/'info'/'warn'/'error'/'crit' or 'disable
 ```python
-abc._logger.file_logging = 'info'
-abc._logger.file_logging = 'debug'
-abc._logger.file_logging = 'warn'
-abc._logger.file_logging = 'error'
-abc._logger.file_logging = 'crit'
-abc._logger.file_logging = 'disable'
+abc._logger.file_level = 'info'
+abc._logger.file_level = 'debug'
+abc._logger.file_level = 'warn'
+abc._logger.file_level = 'error'
+abc._logger.file_level = 'crit'
+abc._logger.file_level = 'disable'
 ```
 print_level. This will print out log information to the console:
 ```python
-abc._logger.print_level = 'info'
-abc._logger.print_level = 'debug'
-abc._logger.print_level = 'warn'
-abc._logger.print_level = 'error'
-abc._logger.print_level = 'crit'
-abc._logger.print_level = 'disable'
+abc._logger.stream_level = 'info'
+abc._logger.stream_level = 'debug'
+abc._logger.stream_level = 'warn'
+abc._logger.stream_level = 'error'
+abc._logger.stream_level = 'crit'
+abc._logger.stream_level = 'disable'
 ```
 and processes:
 ```python
