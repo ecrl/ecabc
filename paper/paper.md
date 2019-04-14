@@ -1,30 +1,30 @@
 ---
 title: 'ECabc: A feature tuning program focused on Artificial Neural Network hyperparameters'
 tags:
-- artificial bee colony
-- hyperparameter optimization
-- machine learning
-- artificial neural networks
+ - artificial bee colony
+ - hyperparameter optimization
+ - machine learning
+ - artificial neural networks
 authors:
-- name: Sanskriti Sharma
-orcid: 0000-0002-9884-7351
-affiliation: 1
+ - name: Sanskriti Sharma
+   orcid: 0000-0002-9884-7351
+   affiliation: 1
 - name: Hernan Gelaf-Romer
-orcid: N/A
-affiliation: 1
+   orcid: N/A
+   affiliation: 1
 - name: Travis Kessler
-orcid: 0000-0002-7363-4050
-affiliation: 1
+   orcid: 0000-0002-7363-4050
+   affiliation: 1
 - name: John Hunter Mack
-orcid: N/A
-affiliation: 1
+   orcid: N/A
+   affiliation: 1
 affiliations:
-- name: UMass Lowell Energy and Combustion Research Laboratory
-index: 1
+ - name: UMass Lowell Energy and Combustion Research Laboratory
+   index: 1
 date: 12 April 2019
 bibliography: paper.bib
 nocite: |
-@ecabc_github, @ecabc_pypi, @uml_ecrl
+ @ecabc_github, @ecabc_pypi, @uml_ecrl
 ---
 
 # Summary
