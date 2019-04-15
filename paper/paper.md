@@ -10,13 +10,11 @@ authors:
    orcid: 0000-0002-9884-7351
    affiliation: 1
  - name: Hernan Gelaf-Romer
-   orcid: N/A
    affiliation: 1
  - name: Travis Kessler
    orcid: 0000-0002-7363-4050
    affiliation: 1
  - name: John Hunter Mack
-   orcid: N/A
    affiliation: 1
 affiliations:
  - name: UMass Lowell Energy and Combustion Research Laboratory
