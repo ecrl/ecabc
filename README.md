@@ -167,6 +167,9 @@ if __name__ == '__main__':
             break
     print("execution time = {}".format(time.time() - start))
 ```
+# Testing
+
+Tests for ECabc are available in the examples folder.
 
 # Contributing, Reporting Issues and Other Support:
 
