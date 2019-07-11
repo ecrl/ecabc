@@ -4,6 +4,7 @@
 [![GitHub version](https://badge.fury.io/gh/ECRL%2FECabc.svg)](https://badge.fury.io/gh/ECRL%2FECabc)
 [![PyPI version](https://badge.fury.io/py/ecabc.svg)](https://badge.fury.io/py/ecabc)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ECRL/ecabc/blob/master/LICENSE)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.01420/status.svg)](https://doi.org/10.21105/joss.01420)
 
 **ECabc** is a generic, small scale feature tuning program based on the Artificial Bee Colony by N. Karboga that imitates the honey foraging techniques of bees.  ECabc optimizes user supplied functions called the **fitness function** using a given set of variables known as the **value set**. The bee colony consists of three types of bees: employers, onlookers and scouts. An **employer bee** is an object which stores a set of values and a **fitness score** that correlates to that value as well as the bee's probability of being picked by an onlooker bee. An **onlooker bee** is an object that chooses employer bees with a high probability and calculates new positions for them. The **scout bee** will create a new set of random values, which will then be assigned to a poorly performing employer bee as a replacement.
 
