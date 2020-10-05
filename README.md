@@ -74,15 +74,15 @@ def minimize_integers(integers):
     return sum(integers)
 
 abc = ABC(10, minimize_integers)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
+abc.add_param(0, 10, name='Int_1')
+abc.add_param(0, 10, name='Int_2')
+abc.add_param(0, 10, name='Int_3')
 ```
 
-Here we initialize the colony with 10 employer bees, supply our fitness function, and add our parameters. Parameters are added with minimum/maximum values for its search space. By default, parameter mutations (searching a neighboring food source) will not exceed the specified parameter bounds [min_val, max_val]; if this limitation is not desired, supply the "restrict=False" argument:
+Here we initialize the colony with 10 employer bees, supply our fitness function, and add our parameters. Parameters are added with minimum/maximum values for its search space and optionally a name. By default, parameter mutations (searching a neighboring food source) will not exceed the specified parameter bounds [min_val, max_val]; if this limitation is not desired, supply the "restrict=False" argument:
 
 ```python
-abc.add_param(0, 10, restrict=False)
+abc.add_param(0, 10, restrict=False, name='Int_1')
 ```
 
 Once we have created our colony and added our parameters, we then need to "initialize" the colony's bees:
@@ -95,9 +95,9 @@ def minimize_integers(integers):
     return sum(integers)
 
 abc = ABC(10, minimize_integers)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
+abc.add_param(0, 10, name='Int_1')
+abc.add_param(0, 10, name='Int_2')
+abc.add_param(0, 10, name='Int_3')
 abc.initialize()
 ```
 
@@ -113,9 +113,9 @@ def minimize_integers(integers):
     return sum(integers)
 
 abc = ABC(10, minimize_integers)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
+abc.add_param(0, 10, name='Int_1')
+abc.add_param(0, 10, name='Int_2')
+abc.add_param(0, 10, name='Int_3')
 abc.initialize()
 for _ in range(10):
     abc.search()
@@ -155,9 +155,9 @@ def minimize_integers(integers):
     return sum(integers)
 
 abc = ABC(10, minimize_integers)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
-abc.add_param(0, 10)
+abc.add_param(0, 10, name='Int_1')
+abc.add_param(0, 10, name='Int_2')
+abc.add_param(0, 10, name='Int_3')
 abc.initialize()
 for _ in range(10):
     abc.search()
@@ -171,65 +171,65 @@ for _ in range(10):
 Running this script produces:
 
 ```
-Average fitness: 0.07630512762091708
-Average obj. fn. return value: 12.55
-Best fitness score: 0.1
-Best obj. fn. return value: 9
-Best parameters: [0, 2, 7]
+Average fitness: 0.08244866244866243
+Average obj. fn. return value: 11.65
+Best fitness score: 0.125
+Best obj. fn. return value: 7
+Best parameters: {'Int_1': 4, 'Int_2': 3, 'Int_3': 0}
 
-Average fitness: 0.08782728601807548
-Average obj. fn. return value: 11.25
-Best fitness score: 0.14285714285714285
-Best obj. fn. return value: 6
-Best parameters: [1, 2, 3]
+Average fitness: 0.0885855117105117
+Average obj. fn. return value: 10.8
+Best fitness score: 0.125
+Best obj. fn. return value: 7
+Best parameters: {'Int_1': 4, 'Int_2': 3, 'Int_3': 0}
 
-Average fitness: 0.10526010753951928
-Average obj. fn. return value: 9.45
-Best fitness score: 0.25
-Best obj. fn. return value: 3
-Best parameters: [1, 0, 2]
+Average fitness: 0.10361832611832611
+Average obj. fn. return value: 9.4
+Best fitness score: 0.16666666666666666
+Best obj. fn. return value: 5
+Best parameters: {'Int_1': 2, 'Int_2': 3, 'Int_3': 0}
 
-Average fitness: 0.13604097291597292
-Average obj. fn. return value: 8.1
-Best fitness score: 0.5
-Best obj. fn. return value: 1
-Best parameters: [1, 0, 0]
+Average fitness: 0.11173502151443326
+Average obj. fn. return value: 8.8
+Best fitness score: 0.2
+Best obj. fn. return value: 4
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 4}
 
-Average fitness: 0.15408098845598844
-Average obj. fn. return value: 6.8
-Best fitness score: 0.5
-Best obj. fn. return value: 1
-Best parameters: [1, 0, 0]
+Average fitness: 0.12448879551820731
+Average obj. fn. return value: 7.95
+Best fitness score: 0.2
+Best obj. fn. return value: 4
+Best parameters: {'Int_1': 1, 'Int_2': 3, 'Int_3': 0}
 
-Average fitness: 0.1892857142857143
-Average obj. fn. return value: 5.75
-Best fitness score: 0.5
-Best obj. fn. return value: 1
-Best parameters: [1, 0, 0]
-
-Average fitness: 0.22303266178266182
-Average obj. fn. return value: 5.2
+Average fitness: 0.1767694805194805
+Average obj. fn. return value: 6.7
 Best fitness score: 1.0
 Best obj. fn. return value: 0
-Best parameters: [0, 0, 0]
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 0}
 
-Average fitness: 0.24969932844932846
-Average obj. fn. return value: 4.65
+Average fitness: 0.183255772005772
+Average obj. fn. return value: 6.3
 Best fitness score: 1.0
 Best obj. fn. return value: 0
-Best parameters: [0, 0, 0]
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 0}
 
-Average fitness: 0.2911525974025974
-Average obj. fn. return value: 4.2
+Average fitness: 0.20172799422799423
+Average obj. fn. return value: 5.65
 Best fitness score: 1.0
 Best obj. fn. return value: 0
-Best parameters: [0, 0, 0]
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 0}
 
-Average fitness: 0.4092478354978355
-Average obj. fn. return value: 3.4
+Average fitness: 0.23827561327561328
+Average obj. fn. return value: 4.95
 Best fitness score: 1.0
 Best obj. fn. return value: 0
-Best parameters: [0, 0, 0]
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 0}
+
+Average fitness: 0.28456349206349213
+Average obj. fn. return value: 4.35
+Best fitness score: 1.0
+Best obj. fn. return value: 0
+Best parameters: {'Int_1': 0, 'Int_2': 0, 'Int_3': 0}
 ```
 
 To run this script yourself, head over to our [examples](https://github.com/ecrl/ecabc/tree/master/examples) directory.

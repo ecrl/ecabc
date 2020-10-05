@@ -30,9 +30,9 @@ def main():
     abc = ABC(10, minimize_integers)
 
     # Add three integers, randomly initialized between 0 and 10 for each bee
-    abc.add_param(0, 10)
-    abc.add_param(0, 10)
-    abc.add_param(0, 10)
+    abc.add_param(0, 10, name='Int_1')
+    abc.add_param(0, 10, name='Int_2')
+    abc.add_param(0, 10, name='Int_3')
 
     # Initialize 10 employer bees, 10 onlooker bees
     abc.initialize()

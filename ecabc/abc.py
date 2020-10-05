@@ -62,10 +62,17 @@ class ABC:
         return determine_best_bee(self._bees)[1]
 
     @property
-    def best_params(self) -> list:
+    def best_params(self) -> dict:
         ''' Returns parameters from best-performing bee '''
 
-        return determine_best_bee(self._bees)[2]
+        vals = determine_best_bee(self._bees)[2]
+        ret_val = {}
+        for idx, param in enumerate(self._params):
+            if param._name is None:
+                ret_val['P{}'.format(idx)] = vals[idx]
+            else:
+                ret_val[param._name] = vals[idx]
+        return ret_val
 
     @property
     def average_fitness(self) -> float:
@@ -84,7 +91,7 @@ class ABC:
         return (sum(b._obj_fn_val for b in self._bees) / len(self._bees))
 
     def add_param(self, min_val: Union[int, float], max_val: Union[int, float],
-                  restrict: bool = True):
+                  restrict: bool = True, name: str = None):
         ''' ABC.add_param: adds a parameter to be processed by the user-
         supplied objective function
 
@@ -95,13 +102,14 @@ class ABC:
                 initialization
             restrict (bool): if `True`, parameter mutations must be within
                 [min_val, max_val], `False` allows out-of-bounds mutation
+            name (str): name of parameter, optional
         '''
 
         if len(self._bees) > 0:
             raise RuntimeError(
                 'Cannot add another parameter after bee initialization'
             )
-        self._params.append(Parameter(min_val, max_val, restrict))
+        self._params.append(Parameter(min_val, max_val, restrict, name))
 
     def initialize(self):
         ''' ABC.initialize: creates `num_employers` employer bees and

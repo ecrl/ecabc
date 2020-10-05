@@ -20,7 +20,7 @@ from typing import Union
 class Parameter:
 
     def __init__(self, min_val: Union[int, float], max_val: Union[int, float],
-                 restrict: bool = True):
+                 restrict: bool = True, name: str = None):
         ''' Parameter object: houses information about a user-supplied
         parameter including data type, minimum/maximum initialization values,
         and whether the parameter is limited to [min_val, max_val] when
@@ -33,6 +33,7 @@ class Parameter:
                 initialization
             restrict (bool): if `True`, parameter mutations must be within
                 [min_val, max_val]
+            name (str): name of parameter, optional
         '''
 
         if type(min_val) != type(max_val):
@@ -49,6 +50,7 @@ class Parameter:
         self._min_val = min_val
         self._max_val = max_val
         self._restrict = restrict
+        self._name = name
 
     @property
     def rand_val(self) -> Union[int, float]:
