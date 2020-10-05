@@ -5,6 +5,7 @@
 [![PyPI version](https://badge.fury.io/py/ecabc.svg)](https://badge.fury.io/py/ecabc)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ECRL/ecabc/blob/master/LICENSE)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01420/status.svg)](https://doi.org/10.21105/joss.01420)
+[![Build Status](https://dev.azure.com/uml-ecrl/package-management/_apis/build/status/ECRL.ecabc?branchName=master)](https://dev.azure.com/uml-ecrl/package-management/_build/latest?definitionId=5&branchName=master)
 
 **ECabc** is an open source Python package used to tune parameters for user-supplied functions based on the [Artificial Bee Colony by D. Karaboğa](http://scholarpedia.org/article/Artificial_bee_colony_algorithm). ECabc optimizes user supplied functions, or **fitness function**s, using a set of variables that exist within a search space. The bee colony consists of three types of bees: employers, onlookers and scouts. An **employer bee** exploits a solution comprised of a permutation of the variables in the search space, and evaluates the viability of the solution. An **onlooker bee** chooses an employer bee with an optimal solution and searches for new solutions near them. The **scout bee**, a variant of the employer bee, will search for a new solution if it has stayed too long at its current solution.
 
