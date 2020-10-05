@@ -36,7 +36,7 @@ class TestColony(unittest.TestCase):
         c = ABC(10, objective_function)
         self.assertEqual(c.best_fitness, 0)
         self.assertEqual(c.best_ret_val, None)
-        self.assertEqual(c.best_params, None)
+        self.assertEqual(c.best_params, {})
         self.assertEqual(c.average_fitness, None)
         self.assertEqual(c.average_ret_val, None)
 
@@ -81,7 +81,7 @@ class TestColony(unittest.TestCase):
         c.initialize()
         self.assertEqual(c.best_fitness, 1)
         self.assertEqual(c.best_ret_val, 0)
-        self.assertEqual(c.best_params, [0, 0])
+        self.assertEqual(c.best_params, {'P0': 0, 'P1': 0})
         self.assertEqual(c.average_fitness, 1)
         self.assertEqual(c.average_ret_val, 0)
 
@@ -103,7 +103,7 @@ class TestColony(unittest.TestCase):
             c.search()
         self.assertEqual(c.best_fitness, 1)
         self.assertEqual(c.best_ret_val, 0)
-        self.assertEqual(c.best_params, [0, 0])
+        self.assertEqual(c.best_params, {'P0': 0, 'P1': 0})
 
     def test_multiprocessing(self):
 
@@ -113,6 +113,16 @@ class TestColony(unittest.TestCase):
         c.add_param(0, 10)
         c.initialize()
         c.search()
+
+    def test_custom_param_name(self):
+
+        c = ABC(20, objective_function)
+        c.add_param(0, 10, name='int1')
+        c.add_param(0, 10, name='int2')
+        c.initialize()
+        for _ in range(50):
+            c.search()
+        self.assertEqual(c.best_params, {'int1': 0, 'int2': 0})
 
 
 if __name__ == '__main__':
