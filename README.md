@@ -42,7 +42,7 @@ Note: if multiple Python releases are installed on your system (e.g. 2.7 and 3.7
 ### Method 2: From source
 - Download the ECabc repository, navigate to the download location on the command line/terminal, and execute:
 ```
-python setup.py install
+pip install .
 ```
 
 There are currently no additional dependencies for ECabc.
