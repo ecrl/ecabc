@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["paper*"]
+
+[project]
+name = "ecabc"
+version = "3.0.1"
+authors = [
+    { name="Sanskriti Sharma", email="Sanskriti_Sharma@student.uml.edu" },
+    { name="Hernan Gelaf-Romer", email="Hernan_Gelafromer@student.uml.edu" },
+    { name="Travis Kessler", email="travis.j.kessler@gmail.com" },
+]
+description = "Artificial bee colony for function parameter optimization"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ecrl/ecabc"
+"Bug Tracker" = "https://github.com/ecrl/ecabc/issues"
